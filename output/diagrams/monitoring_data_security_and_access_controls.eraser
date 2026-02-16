@@ -1,0 +1,5 @@
+// Monitoring Data Security and Access Controls
+// Technical Diagram
+
+Component1 [icon: user] > Component2 [icon: server]
+Component2 > Component3 [icon: database]

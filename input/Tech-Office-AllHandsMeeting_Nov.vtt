@@ -1,0 +1,4020 @@
+WEBVTT
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/12-0
+00:00:03.689 --> 00:00:05.329
+<v Ajit Panaskar>OK, let me share my screen.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/15-0
+00:00:14.529 --> 00:00:15.969
+<v Dilip Kachot>Yeah, it's visible.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/20-0
+00:00:15.369 --> 00:00:19.243
+<v Ajit Panaskar>Hey, good. Yeah, good morning everyone.
+So to yeah,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/16-0
+00:00:16.769 --> 00:00:18.169
+Morning.
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/20-1
+00:00:19.243 --> 00:00:25.501
+<v Ajit Panaskar>today I'm going to just cover the various
+monitoring tools and like we will compare</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/20-2
+00:00:25.501 --> 00:00:31.684
+<v Ajit Panaskar>the tools along with the purpose and the
+case study which we have taken for Nazam.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/20-3
+00:00:31.684 --> 00:00:33.249
+<v Ajit Panaskar>So we will go 1 by 1.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/21-0
+00:00:33.289 --> 00:00:34.129
+<v Ajit Panaskar>By one.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/23-0
+00:00:35.649 --> 00:00:37.169
+<v Ajit Panaskar>Am I audible?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/24-0
+00:00:36.609 --> 00:00:36.729
+<v Dilip Kachot>Yep.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/26-0
+00:00:38.329 --> 00:00:40.169
+<v Palash Bharadwaj>You are, yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/25-0
+00:00:38.369 --> 00:00:38.489
+<v Ajit Panaskar>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/32-0
+00:00:39.849 --> 00:00:43.804
+<v Ajit Panaskar>Thanks. So Tim,
+as you know that monitoring is very</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/32-1
+00:00:43.804 --> 00:00:50.041
+<v Ajit Panaskar>crucial when we are like working either
+it's a be it a monolithic applications or</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/32-2
+00:00:50.041 --> 00:00:56.279
+<v Ajit Panaskar>be it a cloud native applications which
+involves micro services containerization.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/32-3
+00:00:56.279 --> 00:00:59.169
+<v Ajit Panaskar>So now what exactly is the monitoring?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/36-0
+00:00:59.609 --> 00:01:04.837
+<v Ajit Panaskar>And what is the difference between
+monitoring and observability that we are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/36-1
+00:01:04.837 --> 00:01:07.864
+<v Ajit Panaskar>going to like study today?
+So first of all,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/36-2
+00:01:07.864 --> 00:01:13.436
+<v Ajit Panaskar>as you know that monitoring is important
+and like first of all the monitoring is</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/36-3
+00:01:13.436 --> 00:01:15.569
+<v Ajit Panaskar>like the process of collecting.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/41-0
+00:01:15.889 --> 00:01:20.053
+<v Ajit Panaskar>Then analyzing,
+then taking the insights from the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/41-1
+00:01:20.053 --> 00:01:25.717
+<v Ajit Panaskar>valuable informations which we have
+received and then acting on it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/41-2
+00:01:25.717 --> 00:01:31.298
+<v Ajit Panaskar>So basically this process of data
+collection, then data analyzing,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/41-3
+00:01:31.298 --> 00:01:35.129
+<v Ajit Panaskar>data insights through visual
+representations.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/46-0
+00:01:35.569 --> 00:01:39.972
+<v Ajit Panaskar>And dashboards and then taking the
+preventive actions and the reactive</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/46-1
+00:01:39.972 --> 00:01:42.886
+<v Ajit Panaskar>actions also.
+So that comes under the scope of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/46-2
+00:01:42.886 --> 00:01:45.987
+<v Ajit Panaskar>monitoring.
+So what is the purpose of monitoring?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/46-3
+00:01:45.987 --> 00:01:50.948
+<v Ajit Panaskar>Now this monitoring will help you as I
+mentioned that when you are dealing with</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/46-4
+00:01:50.948 --> 00:01:55.289
+<v Ajit Panaskar>the complex micro services architecture,
+there are multiple services.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/52-0
+00:01:55.369 --> 00:02:01.258
+<v Ajit Panaskar>Interacting with each other and we don't
+like because of the increased complexity</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/52-1
+00:02:01.258 --> 00:02:05.783
+<v Ajit Panaskar>of this communication.
+So it is very hard to troubleshoot your</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/52-2
+00:02:05.783 --> 00:02:09.446
+<v Ajit Panaskar>application where exactly is the point of
+failure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/49-0
+00:02:08.169 --> 00:02:09.009
+<v Amit Hiremath>Hold on.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/52-3
+00:02:09.446 --> 00:02:14.689
+<v Ajit Panaskar>So in such cases while like dealing with
+this troubleshooting when beat.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/56-0
+00:02:15.249 --> 00:02:21.286
+<v Ajit Panaskar>Reported by our implementation team or be
+it reported by the customer in the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/56-1
+00:02:21.286 --> 00:02:26.461
+<v Ajit Panaskar>production environment.
+So that helps us you to troubleshoot your</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/56-2
+00:02:26.461 --> 00:02:31.009
+<v Ajit Panaskar>issues or critical bugs.
+So then you have to ensure that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/61-0
+00:02:31.209 --> 00:02:36.296
+<v Ajit Panaskar>Like sometimes like we the customer
+reports the cases like the CPU</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/61-1
+00:02:36.296 --> 00:02:40.244
+<v Ajit Panaskar>utilization is high or the high memory
+consumption.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/61-2
+00:02:40.244 --> 00:02:46.165
+<v Ajit Panaskar>So we have to exact figure out why the
+CPU utilization is going high or right</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/61-3
+00:02:46.165 --> 00:02:50.569
+<v Ajit Panaskar>when there is a spikes in the utilization.
+So there also.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/65-0
+00:02:51.249 --> 00:02:57.935
+<v Ajit Panaskar>Comes the main like significance of
+monitoring another like you can take like</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/65-1
+00:02:57.935 --> 00:03:04.620
+<v Ajit Panaskar>as I mentioned that you can take some
+valuable inputs from the insights which</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/65-2
+00:03:04.620 --> 00:03:06.849
+<v Ajit Panaskar>has come through the logs.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/70-0
+00:03:07.369 --> 00:03:10.969
+<v Ajit Panaskar>And the various metricses.
+So these are the,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/70-1
+00:03:10.969 --> 00:03:16.729
+<v Ajit Panaskar>I will say the purpose and objective that
+we need to go for monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/70-2
+00:03:16.729 --> 00:03:23.129
+<v Ajit Panaskar>So now the next like section is like what
+are the different types of monitoring</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/70-3
+00:03:23.129 --> 00:03:27.289
+<v Ajit Panaskar>system which we can apply in the
+production system.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/74-0
+00:03:27.569 --> 00:03:32.764
+<v Ajit Panaskar>So the first it can be infrastructure
+monitor where you can monitor the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/74-1
+00:03:32.764 --> 00:03:37.887
+<v Ajit Panaskar>different servers, virtual machines,
+containers when it comes with the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/74-2
+00:03:37.887 --> 00:03:41.783
+<v Ajit Panaskar>Kubernetes.
+Then it can be an application level which</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/74-3
+00:03:41.783 --> 00:03:46.689
+<v Ajit Panaskar>is like APM. We can monitor network logs,
+network monitor it comes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/77-0
+00:03:46.889 --> 00:03:49.913
+<v Ajit Panaskar>Under network monitoring,
+then security monitoring,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/77-1
+00:03:49.913 --> 00:03:53.228
+<v Ajit Panaskar>cloud monitoring.
+So these basically these are the types</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/77-2
+00:03:53.228 --> 00:03:55.089
+<v Ajit Panaskar>and business process monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/82-0
+00:03:57.609 --> 00:04:01.734
+<v Ajit Panaskar>Now what are the different metricses
+which we can track with the help of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/82-1
+00:04:01.734 --> 00:04:04.786
+<v Ajit Panaskar>monitoring?
+So the first is like uptime and downtime.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/82-2
+00:04:04.786 --> 00:04:09.137
+<v Ajit Panaskar>So ideally the purpose of monitoring is
+to make sure that it is whatever the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/82-3
+00:04:09.137 --> 00:04:12.924
+<v Ajit Panaskar>technical decisions or the technical
+implementation you have made,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/82-4
+00:04:12.924 --> 00:04:17.049
+<v Ajit Panaskar>it should be in aligned with the business
+objective. It should meet the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/87-0
+00:04:17.209 --> 00:04:22.408
+<v Ajit Panaskar>Service level agreements, SLAS and SLUs,
+so which covers like up time and downtime.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/87-1
+00:04:22.408 --> 00:04:26.122
+<v Ajit Panaskar>We have to ensure that the system is
+always up time, right?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/87-2
+00:04:26.122 --> 00:04:30.084
+<v Ajit Panaskar>It is up and running.
+So once you have that monitoring in place</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/87-3
+00:04:30.084 --> 00:04:33.488
+<v Ajit Panaskar>then you can,
+I will say you can identify the services</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/87-4
+00:04:33.488 --> 00:04:36.769
+<v Ajit Panaskar>right which needs to be monitored.
+You can have the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/92-0
+00:04:37.129 --> 00:04:42.034
+<v Ajit Panaskar>Heartbeat or health check with and just
+to ensure that the services are up and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/92-1
+00:04:42.034 --> 00:04:45.201
+<v Ajit Panaskar>running.
+So if in case any services goes down then</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/92-2
+00:04:45.201 --> 00:04:49.796
+<v Ajit Panaskar>it you should get some alert and
+notification instead of it has an impact</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/92-3
+00:04:49.796 --> 00:04:53.398
+<v Ajit Panaskar>on the business.
+So you just by ensuring the health check</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/92-4
+00:04:53.398 --> 00:04:56.689
+<v Ajit Panaskar>you are making that the services are up
+and running.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/96-0
+00:04:57.449 --> 00:05:00.306
+<v Ajit Panaskar>So this comes under the uptime and the
+downtime.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/96-1
+00:05:00.306 --> 00:05:03.514
+<v Ajit Panaskar>So you have to like again in the case of
+now business,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/96-2
+00:05:03.514 --> 00:05:07.829
+<v Ajit Panaskar>right requirement or the business
+objective is that the latency should be</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/96-3
+00:05:07.829 --> 00:05:10.569
+<v Ajit Panaskar>minimized,
+the response time or the throughput</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/96-4
+00:05:10.569 --> 00:05:11.969
+<v Ajit Panaskar>should be very high, so.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/101-0
+00:05:13.449 --> 00:05:18.348
+<v Ajit Panaskar>Then next comes as mentioned in the
+traditional approach that CPU and memory</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/101-1
+00:05:18.348 --> 00:05:23.183
+<v Ajit Panaskar>utilization that also like we can track
+with the help of monitoring network</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/98-0
+00:05:22.689 --> 00:05:23.289
+<v Mujaffarkhan Sanadi>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/101-2
+00:05:23.183 --> 00:05:28.400
+<v Ajit Panaskar>throughput packet loss that again comes
+under errors which you can track and logs</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/101-3
+00:05:28.400 --> 00:05:31.009
+<v Ajit Panaskar>with the help of traces and the requests.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/104-0
+00:05:31.649 --> 00:05:34.807
+<v Ajit Panaskar>User experiences,
+metrics and alerts and threshold.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/104-1
+00:05:34.807 --> 00:05:38.329
+<v Ajit Panaskar>So basically these are the metricses
+which you can track.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/105-0
+00:05:40.209 --> 00:05:43.529
+<v Amit Hiremath>What is this app Dix score? App Dix score?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/110-0
+00:05:44.569 --> 00:05:47.963
+<v Ajit Panaskar>I think, yeah,
+it comes under user experience metrics.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/110-1
+00:05:47.963 --> 00:05:52.222
+<v Ajit Panaskar>We have to check actually what what
+exactly. Yeah, more into detail.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/110-2
+00:05:52.222 --> 00:05:55.369
+<v Ajit Panaskar>I will let you know about this.
+Aptic score, yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/109-0
+00:05:52.449 --> 00:05:55.209
+<v Amit Hiremath>Yeah, sure. Well, like honestly.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/116-0
+00:05:53.249 --> 00:06:01.540
+<v Palash Bharadwaj>But these are these are these are all
+more towards the infra part of it major</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/116-1
+00:06:01.540 --> 00:06:04.729
+<v Palash Bharadwaj>majority of them except right.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/112-0
+00:06:01.769 --> 00:06:02.249
+<v Ajit Panaskar>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/113-0
+00:06:02.329 --> 00:06:02.449
+<v Amit Hiremath>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/115-0
+00:06:03.409 --> 00:06:05.249
+<v Ajit Panaskar>Yes, yes, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/119-0
+00:06:09.049 --> 00:06:12.729
+<v Palash Bharadwaj>Because application monitoring will have
+a different way to look at.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/120-0
+00:06:12.729 --> 00:06:13.689
+<v Ajit Panaskar>Correct, correct, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/128-0
+00:06:15.529 --> 00:06:21.097
+<v Aashish Sonawane>So Appdex is application performance
+index. I just googled it out.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/123-0
+00:06:21.049 --> 00:06:22.609
+<v Ajit Panaskar>Patient.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/128-1
+00:06:21.097 --> 00:06:26.249
+<v Aashish Sonawane>So it's related to application
+application performance index.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/124-0
+00:06:21.689 --> 00:06:23.409
+<v Amit Hiremath>What is the application?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/126-0
+00:06:23.129 --> 00:06:24.529
+<v Dilip Kachot>Performance index.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/125-0
+00:06:24.009 --> 00:06:25.169
+<v Ajit Panaskar>Performance index.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/129-0
+00:06:30.369 --> 00:06:30.729
+<v Amit Hiremath>Interesting.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/132-0
+00:06:32.129 --> 00:06:34.889
+<v Amit Hiremath>And it's part of user experience metrics,
+huh?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/131-0
+00:06:32.769 --> 00:06:33.849
+<v Dilip Kachot>It's basically oh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/133-0
+00:06:34.249 --> 00:06:34.289
+<v Aashish Sonawane>Uh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/136-0
+00:06:36.529 --> 00:06:39.093
+<v Palash Bharadwaj>Yeah,
+it's basically how much time it's taking</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/135-0
+00:06:37.849 --> 00:06:38.249
+<v Amit Hiremath>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/136-1
+00:06:39.093 --> 00:06:40.129
+<v Palash Bharadwaj>and all this stuff.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/139-0
+00:06:39.209 --> 00:06:43.329
+<v Dilip Kachot>Response time.
+Basically your response time.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/137-0
+00:06:40.169 --> 00:06:40.889
+<v Ajit Panaskar>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/140-0
+00:06:43.809 --> 00:06:44.129
+<v Palash Bharadwaj>Yep.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/143-0
+00:06:45.089 --> 00:06:49.210
+<v Ajit Panaskar>Maybe the load also, right?
+Maybe how much time it is taking to load</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/143-1
+00:06:49.210 --> 00:06:53.569
+<v Ajit Panaskar>the applications or the user interfaces
+that may come? Yeah, yeah, yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/146-0
+00:06:49.809 --> 00:06:55.927
+<v Dilip Kachot>So that's that's how the response time
+and how how quickly user can see the you</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/146-1
+00:06:55.927 --> 00:06:59.369
+<v Dilip Kachot>know kind of performance of the
+application.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/145-0
+00:06:55.969 --> 00:06:58.969
+<v Ajit Panaskar>Yes, interact with the yes interface, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/148-0
+00:06:59.249 --> 00:07:04.171
+<v Amit Hiremath>Yeah, very interesting this thing.
+Maybe we should include that as the next</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/148-1
+00:07:04.171 --> 00:07:07.409
+<v Amit Hiremath>thing in our architectural best practices
+checks.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/150-0
+00:07:08.409 --> 00:07:10.049
+<v Amit Hiremath>It could be a good indicator.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/151-0
+00:07:11.369 --> 00:07:11.889
+<v Ajit Panaskar>6.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/156-0
+00:07:11.489 --> 00:07:17.022
+<v Dilip Kachot>So we have it Amit in our list.
+We have this in a different areas like</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/156-1
+00:07:17.022 --> 00:07:23.334
+<v Dilip Kachot>for you know database query we have also
+kind of a response time as a one of the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/153-0
+00:07:18.409 --> 00:07:18.649
+<v Amit Hiremath>Hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/162-0
+00:07:22.329 --> 00:07:25.066
+<v Amit Hiremath>You got it. Yeah. Yeah, no, no,
+I understand.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/156-2
+00:07:23.334 --> 00:07:25.049
+<v Dilip Kachot>checklist even in API.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/162-1
+00:07:25.066 --> 00:07:29.112
+<v Amit Hiremath>So what what I'm saying is abdex as such.
+See, it's like, you know,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/162-2
+00:07:29.112 --> 00:07:31.849
+<v Amit Hiremath>if somebody has created a framework for
+this,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/162-3
+00:07:31.849 --> 00:07:34.527
+<v Amit Hiremath>they must have thought through entire
+thing.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/158-0
+00:07:32.289 --> 00:07:34.529
+<v Dilip Kachot>Uh, then yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/162-4
+00:07:34.527 --> 00:07:37.562
+<v Amit Hiremath>So we can just understand if there is a,
+you know,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/162-5
+00:07:37.562 --> 00:07:41.489
+<v Amit Hiremath>defined metric to kind of measure this so
+that we can include it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/167-0
+00:07:41.569 --> 00:07:45.399
+<v Amit Hiremath>I know we we are doing,
+I think performance is one of the thing</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/161-0
+00:07:41.929 --> 00:07:43.289
+<v Dilip Kachot>Yes, yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/167-1
+00:07:45.399 --> 00:07:50.186
+<v Amit Hiremath>that we have of course you you're right.
+I'm just checking if this is something</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/167-2
+00:07:50.186 --> 00:07:55.033
+<v Amit Hiremath>like you know we had that that whatever
+well factor you know framework something</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/167-3
+00:07:55.033 --> 00:07:56.409
+<v Amit Hiremath>like that. So it helps.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/165-0
+00:07:55.529 --> 00:07:55.769
+<v Dilip Kachot>Hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/172-0
+00:07:56.809 --> 00:08:00.961
+<v Amit Hiremath>Because there's a lot of knowledge and
+experience already has gone in creating</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/172-1
+00:08:00.961 --> 00:08:03.379
+<v Amit Hiremath>this.
+So why to reinvent that wheel is what I</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/168-0
+00:08:01.449 --> 00:08:01.729
+<v Dilip Kachot>Exit.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/172-2
+00:08:03.379 --> 00:08:05.849
+<v Amit Hiremath>was thinking. Just check if it's useful.
+Good.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/176-0
+00:08:05.249 --> 00:08:08.888
+<v Dilip Kachot>Certainly. So yeah,
+right now it's more kind of in, you know,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/170-0
+00:08:05.329 --> 00:08:06.089
+<v Ajit Panaskar>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/176-1
+00:08:08.888 --> 00:08:11.763
+<v Dilip Kachot>numbers,
+but probably in terms of metrics we can</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/176-2
+00:08:11.763 --> 00:08:15.519
+<v Dilip Kachot>change. So rather than having, you know,
+30 seconds, 5 seconds,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/174-0
+00:08:12.769 --> 00:08:13.649
+<v Amit Hiremath>Yeah, perfect.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/176-3
+00:08:15.519 --> 00:08:18.219
+<v Dilip Kachot>it could be between rating like zero to
+five,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/176-4
+00:08:18.219 --> 00:08:20.449
+<v Dilip Kachot>what is the rating of the performance?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/180-0
+00:08:19.009 --> 00:08:24.489
+<v Amit Hiremath>Perfect. Yeah. Yeah. Sure. Makes sense.
+Thank you. Thank you, Ajit. OK, continue.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/177-0
+00:08:20.689 --> 00:08:21.329
+<v Aashish Sonawane>Yeah, I.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/178-0
+00:08:20.889 --> 00:08:21.809
+<v Dilip Kachot>Got it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/181-0
+00:08:23.929 --> 00:08:24.849
+<v Ajit Panaskar>Yeah. Yeah. Thanks. Thanks.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/187-0
+00:08:24.649 --> 00:08:29.542
+<v Aashish Sonawane>Yeah, Amit, just one thing.
+There is a formula to calculate this</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/184-0
+00:08:29.049 --> 00:08:30.729
+<v Amit Hiremath>OK, that's what I want to know.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/187-1
+00:08:29.542 --> 00:08:34.209
+<v Aashish Sonawane>aptic score as well.
+I so we can have that. Yeah, yeah, yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/186-0
+00:08:32.289 --> 00:08:34.889
+<v Amit Hiremath>So share that later maybe. Yeah. OK, cool.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/188-0
+00:08:35.729 --> 00:08:37.409
+<v Ajit Panaskar>Yeah, and uh, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/190-0
+00:08:36.089 --> 00:08:39.929
+<v Amit Hiremath>Is Kishor not there today?
+Is Kishor on leave or something?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/192-0
+00:08:39.889 --> 00:08:44.209
+<v Dilip Kachot>It seems to be offline.
+I just checked and I don't get any.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/195-0
+00:08:45.809 --> 00:08:50.089
+<v Dilip Kachot>Notification from him that he's not going
+to join. Hope things are good.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/194-0
+00:08:48.849 --> 00:08:49.329
+<v Amit Hiremath>OK, sure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/196-0
+00:08:51.009 --> 00:08:52.449
+<v Amit Hiremath>OK, sure no worries.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/203-0
+00:08:53.409 --> 00:08:56.480
+<v Ajit Panaskar>Yeah.
+And so team as we like we are heading so</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/203-1
+00:08:56.480 --> 00:09:01.839
+<v Ajit Panaskar>we can check like what are the different
+monitoring tools available in the market</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/203-2
+00:09:01.839 --> 00:09:07.001
+<v Ajit Panaskar>and what criteria we can apply to select,
+yeah, one of these monitoring tools.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/203-3
+00:09:07.001 --> 00:09:11.510
+<v Ajit Panaskar>So if we categorize those monitoring
+tools, yeah, based on the type,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/203-4
+00:09:11.510 --> 00:09:13.209
+<v Ajit Panaskar>so Nageos and comes under.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/208-0
+00:09:13.289 --> 00:09:19.659
+<v Ajit Panaskar>Monitoring for application performance
+monitoring you can use Datadog,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/208-1
+00:09:19.659 --> 00:09:25.402
+<v Ajit Panaskar>App Dynamics, New Relic,
+then Azure Monitor and AWS Cloudwatch.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/208-2
+00:09:25.402 --> 00:09:32.849
+<v Ajit Panaskar>Also for network you can use Solarwinds,
+Wireshark, PRTG, Log Management, ELK and.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/212-0
+00:09:33.489 --> 00:09:37.919
+<v Ajit Panaskar>Stack then for cloud Azure and AWS is the
+market leader.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/212-1
+00:09:37.919 --> 00:09:44.370
+<v Ajit Panaskar>For security we can use Splunk IBM Qradar.
+So now I I'm not sure whether like as a</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/212-2
+00:09:44.370 --> 00:09:50.588
+<v Ajit Panaskar>like customer wise or the account wise
+what different types of monitoring tools</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/212-3
+00:09:50.588 --> 00:09:52.609
+<v Ajit Panaskar>our like Clarion like has.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/217-0
+00:09:52.809 --> 00:09:58.371
+<v Ajit Panaskar>That expansion but what I have worked
+upon earlier like Datadoc and the one</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/217-1
+00:09:58.371 --> 00:10:02.982
+<v Ajit Panaskar>which we are highlighted here in the
+brown so new Datadoc AWS.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/217-2
+00:10:02.982 --> 00:10:09.129
+<v Ajit Panaskar>So these these are the paid and there is
+rest ones are the open sources so be like.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/223-0
+00:10:09.169 --> 00:10:14.208
+<v Ajit Panaskar>Like I have used Datadog,
+I have used Azure Cloud Azure monitoring</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/223-1
+00:10:14.208 --> 00:10:19.999
+<v Ajit Panaskar>and what I like found that Datadog is
+very much like advanced visualization.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/223-2
+00:10:19.999 --> 00:10:26.241
+<v Ajit Panaskar>It has then it has like scalability also
+and like it is very helpful in monitoring</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/223-3
+00:10:26.241 --> 00:10:27.369
+<v Ajit Panaskar>your databases.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/229-0
+00:10:27.929 --> 00:10:32.316
+<v Ajit Panaskar>Queries like if you want to understand
+like what queries are impacting the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/229-1
+00:10:32.316 --> 00:10:36.470
+<v Ajit Panaskar>performance of your application,
+what stored it it goes like up to the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/229-2
+00:10:36.470 --> 00:10:40.623
+<v Ajit Panaskar>very stored procedure level,
+granular level where you can troubleshoot</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/229-3
+00:10:40.623 --> 00:10:44.777
+<v Ajit Panaskar>what part of the stored procedure is
+causing the performance overhead.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/229-4
+00:10:44.777 --> 00:10:47.409
+<v Ajit Panaskar>So that is how that Datadog is very
+helpful.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/233-0
+00:10:47.409 --> 00:10:52.148
+<v Ajit Panaskar>So you can monitor different services
+infrastructure like as I mentioned</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/233-1
+00:10:52.148 --> 00:10:56.953
+<v Ajit Panaskar>databases with the help of Datadog.
+So I was like I was extensively using</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/233-2
+00:10:56.953 --> 00:11:00.784
+<v Ajit Panaskar>this Datadog tool.
+Then Azure Application Insights is also</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/233-3
+00:11:00.784 --> 00:11:04.809
+<v Ajit Panaskar>very much important while troubleshooting
+the micro services.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/238-0
+00:11:05.089 --> 00:11:09.387
+<v Ajit Panaskar>An exact point of failure.
+So these two are like like I have used to</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/238-1
+00:11:09.387 --> 00:11:12.564
+<v Ajit Panaskar>with it.
+Apart from that I'm not sure like whether</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/238-2
+00:11:12.564 --> 00:11:16.613
+<v Ajit Panaskar>our like for monitoring our
+infrastructure we generally use just</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/238-3
+00:11:16.613 --> 00:11:19.416
+<v Ajit Panaskar>Nagios.
+So just we need like to check at the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/238-4
+00:11:19.416 --> 00:11:24.649
+<v Ajit Panaskar>Clarion side also what are the different
+monitoring tools we are that are in place.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/243-0
+00:11:25.209 --> 00:11:31.030
+<v Ajit Panaskar>So that is what I yeah need to check then
+like as I mentioned the what are the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/243-1
+00:11:31.030 --> 00:11:36.925
+<v Ajit Panaskar>criterias like for selection of the tool.
+So if you would like to have the high</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/243-2
+00:11:36.925 --> 00:11:40.904
+<v Ajit Panaskar>availability,
+high scalability advanced vigilation go</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/243-3
+00:11:40.904 --> 00:11:44.809
+<v Ajit Panaskar>for Datadoc when like I think for Nazam
+side we are.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/248-0
+00:11:44.929 --> 00:11:49.415
+<v Ajit Panaskar>We are using Prometheus CS,
+Prometheus where it is open source and it</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/248-1
+00:11:49.415 --> 00:11:54.221
+<v Ajit Panaskar>is like integrated with the help of
+Grafana to have the visualizations and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/248-2
+00:11:54.221 --> 00:11:57.809
+<v Ajit Panaskar>the dashboards.
+So this the Prometheus and Grafana goes</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/248-3
+00:11:57.809 --> 00:12:01.269
+<v Ajit Panaskar>hand in hand.
+Then Nagios is like open source and for</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/248-4
+00:12:01.269 --> 00:12:04.089
+<v Ajit Panaskar>medium scalability and basic
+visualization.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/252-0
+00:12:04.529 --> 00:12:09.208
+<v Ajit Panaskar>Zabbix is again open source,
+high scalability, strong visualization.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/252-1
+00:12:09.208 --> 00:12:13.006
+<v Ajit Panaskar>New Relic is paid.
+Generally it is used for application</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/252-2
+00:12:13.006 --> 00:12:17.347
+<v Ajit Panaskar>performance monitoring and advanced for
+advanced visualization.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/252-3
+00:12:17.347 --> 00:12:22.230
+<v Ajit Panaskar>So that is the collection. OK,
+that is the selection for the monitoring</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/260-0
+00:12:21.209 --> 00:12:24.220
+<v Amit Hiremath>Yeah, and just to add,
+I think we have PRTG,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/252-4
+00:12:22.230 --> 00:12:22.569
+<v Ajit Panaskar>tool.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/260-1
+00:12:24.220 --> 00:12:28.369
+<v Amit Hiremath>we have got Prometheus,
+we have Wazoo is another one that has</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/254-0
+00:12:26.729 --> 00:12:26.849
+<v Ajit Panaskar>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/260-2
+00:12:28.369 --> 00:12:33.320
+<v Amit Hiremath>been installed now and Nagios is already
+there in our premises basically.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/256-0
+00:12:31.369 --> 00:12:31.609
+<v Ajit Panaskar>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/260-3
+00:12:33.320 --> 00:12:38.674
+<v Amit Hiremath>So if anyone really wants to try it out,
+if you need any access to monitor your</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/257-0
+00:12:35.929 --> 00:12:36.409
+<v Ajit Panaskar>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/260-4
+00:12:38.674 --> 00:12:39.209
+<v Amit Hiremath>servers.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/261-0
+00:12:40.689 --> 00:12:42.529
+<v Amit Hiremath>You can ask ID team.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/262-0
+00:12:41.969 --> 00:12:44.809
+<v Ajit Panaskar>OK. That's good to know. Yes, Amit.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/263-0
+00:12:44.769 --> 00:12:45.049
+<v Amit Hiremath>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/269-0
+00:12:47.489 --> 00:12:50.914
+<v Ajit Panaskar>OK, so now what?
+What are the basic steps in the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/269-1
+00:12:50.914 --> 00:12:54.968
+<v Ajit Panaskar>monitoring processes?
+As you know that we have to 1st the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/269-2
+00:12:54.968 --> 00:13:00.699
+<v Ajit Panaskar>collect the data using agents, then APIs.
+You have to install those agents on the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/269-3
+00:13:00.699 --> 00:13:05.312
+<v Ajit Panaskar>virtual machines or on the Kubernetes
+just to trace all the logs,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/269-4
+00:13:05.312 --> 00:13:07.409
+<v Ajit Panaskar>application logs. So once you.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/274-0
+00:13:07.489 --> 00:13:13.580
+<v Ajit Panaskar>To collect the data you should like like
+now as I mentioned that when you are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/274-1
+00:13:13.580 --> 00:13:19.983
+<v Ajit Panaskar>dealing with the cloud native platforms,
+you have different micro services in the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/274-2
+00:13:19.983 --> 00:13:24.668
+<v Ajit Panaskar>distributed platform.
+So now all those logs specific to the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/274-3
+00:13:24.668 --> 00:13:27.089
+<v Ajit Panaskar>micro services, those are at a.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/279-0
+00:13:27.209 --> 00:13:30.579
+<v Ajit Panaskar>The virtual machine level or the
+container level.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/279-1
+00:13:30.579 --> 00:13:35.972
+<v Ajit Panaskar>So you need to have a central mechanism
+where you can collect all the logs from</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/279-2
+00:13:35.972 --> 00:13:40.960
+<v Ajit Panaskar>the different systems and it will be
+placed at a central location so that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/279-3
+00:13:40.960 --> 00:13:46.082
+<v Ajit Panaskar>comes under the data aggregation.
+So once you have collected and aggregated</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/279-4
+00:13:46.082 --> 00:13:46.689
+<v Ajit Panaskar>the data.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/283-0
+00:13:46.769 --> 00:13:51.019
+<v Ajit Panaskar>Data you have to then now take the
+valuable insights, right?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/283-1
+00:13:51.019 --> 00:13:56.733
+<v Ajit Panaskar>So for getting that insights you have to
+analyze the data and show it in the form</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/283-2
+00:13:56.733 --> 00:14:02.377
+<v Ajit Panaskar>of like dashboards and the visualizations
+and once like as I mentioned that once</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/283-3
+00:14:02.377 --> 00:14:06.209
+<v Ajit Panaskar>let us say we have observed some like
+deviations from.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/288-0
+00:14:06.329 --> 00:14:10.640
+<v Ajit Panaskar>What is expected?
+So you can definitely keep the alerts in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/288-1
+00:14:10.640 --> 00:14:15.243
+<v Ajit Panaskar>place where you can,
+for example if CPU utilization goes high,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/288-2
+00:14:15.243 --> 00:14:20.869
+<v Ajit Panaskar>so you should have that alert mechanism
+to send that alert to the respective</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/288-3
+00:14:20.869 --> 00:14:22.769
+<v Ajit Panaskar>teams to take that action.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/287-0
+00:14:23.169 --> 00:14:24.249
+<v Mujaffarkhan Sanadi>Mm-hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/293-0
+00:14:25.449 --> 00:14:30.063
+<v Ajit Panaskar>Criteria for selecting this, this,
+this criteria for selecting the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/293-1
+00:14:30.063 --> 00:14:35.572
+<v Ajit Panaskar>monitoring tool like as scalability then
+up cost also is very important because</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/293-2
+00:14:35.572 --> 00:14:40.943
+<v Ajit Panaskar>some tools are very costly like Datadog
+so that you have to check first while</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/293-3
+00:14:40.943 --> 00:14:43.009
+<v Ajit Panaskar>selecting the monitoring tool.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/298-0
+00:14:43.409 --> 00:14:46.942
+<v Ajit Panaskar>Then ease of integrations like what is
+the capability,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/298-1
+00:14:46.942 --> 00:14:49.833
+<v Ajit Panaskar>visualization capability that tool
+provides.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/298-2
+00:14:49.833 --> 00:14:54.651
+<v Ajit Panaskar>So basically these three 3-4 are the very
+crucial like as I mentioned that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/298-3
+00:14:54.651 --> 00:14:59.918
+<v Ajit Panaskar>scalability then it should allow you to
+extend your infrastructure right when you</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/298-4
+00:14:59.918 --> 00:15:02.809
+<v Ajit Panaskar>want to monitor if number of
+infrastructure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/302-0
+00:15:03.169 --> 00:15:06.603
+<v Ajit Panaskar>Was increasing.
+So you that tool should have that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/302-1
+00:15:06.603 --> 00:15:11.685
+<v Ajit Panaskar>capability to configure the Uh newly
+added infrastructure for monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/302-2
+00:15:11.685 --> 00:15:16.629
+<v Ajit Panaskar>So then it should have the good
+visualization capability in the form of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/300-0
+00:15:11.769 --> 00:15:12.009
+<v Amit Hiremath>And.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/302-3
+00:15:16.629 --> 00:15:18.209
+<v Ajit Panaskar>dashboards. Uh then uh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/307-0
+00:15:18.449 --> 00:15:24.194
+<v Ajit Panaskar>Cost is very important while selecting
+the monitoring tool and again the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/307-1
+00:15:24.194 --> 00:15:28.128
+<v Ajit Panaskar>community.
+If it is in open source how you can it</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/307-2
+00:15:28.128 --> 00:15:32.535
+<v Ajit Panaskar>will be supported by the community for
+any new add-ons.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/307-3
+00:15:32.535 --> 00:15:37.729
+<v Ajit Panaskar>Now let us say now I will just give two
+differences between what?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/312-0
+00:15:38.129 --> 00:15:43.516
+<v Ajit Panaskar>Exactly is the monitoring and what is the
+observability and what is the difference.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/312-1
+00:15:43.516 --> 00:15:48.775
+<v Ajit Panaskar>So basically let us take one case study
+where you observe that let us say we have</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/312-2
+00:15:48.775 --> 00:15:53.777
+<v Ajit Panaskar>one e-commerce website and like on Friday
+when you observe that there are the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/312-3
+00:15:53.777 --> 00:15:57.369
+<v Ajit Panaskar>number of usage of that e-commerce system
+is very high.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/316-0
+00:15:57.849 --> 00:16:03.502
+<v Ajit Panaskar>So when our goal is that if there is any
+spike in the usage of that site,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/316-1
+00:16:03.502 --> 00:16:09.461
+<v Ajit Panaskar>you should ensure that the site is up and
+running irrespective of even though</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/316-2
+00:16:09.461 --> 00:16:14.961
+<v Ajit Panaskar>number of users are growing.
+So that that is our business goal ideally.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/316-3
+00:16:14.961 --> 00:16:17.329
+<v Ajit Panaskar>So now how to ensure that high?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/320-0
+00:16:17.409 --> 00:16:23.122
+<v Ajit Panaskar>Like the scalability, Yep in such cases.
+So you should have some metrics in place</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/320-1
+00:16:23.122 --> 00:16:26.815
+<v Ajit Panaskar>where if you observe that CPU utilization
+goes high,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/320-2
+00:16:26.815 --> 00:16:31.692
+<v Ajit Panaskar>then we should be able to add new
+instances to the to the like to the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/320-3
+00:16:31.692 --> 00:16:34.409
+<v Ajit Panaskar>system. So that is how that monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/325-0
+00:16:34.769 --> 00:16:38.945
+<v Ajit Panaskar>But it will what the action it will take
+is that it will increase the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/325-1
+00:16:38.945 --> 00:16:42.405
+<v Ajit Panaskar>infrastructure right or the instances
+based on the usage.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/325-2
+00:16:42.405 --> 00:16:46.820
+<v Ajit Panaskar>So that that comes under the monitoring
+because what exactly it is doing.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/325-3
+00:16:46.820 --> 00:16:51.055
+<v Ajit Panaskar>So it is just checking if any spikes
+happens then it will increase the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/325-4
+00:16:51.055 --> 00:16:52.129
+<v Ajit Panaskar>instances that is.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/329-0
+00:16:52.369 --> 00:16:55.670
+<v Ajit Panaskar>That is the,
+I will say the reactive approach that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/329-1
+00:16:55.670 --> 00:17:00.719
+<v Ajit Panaskar>monitoring takes monitoring system take.
+But now if you compare this with the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/329-2
+00:17:00.719 --> 00:17:04.345
+<v Ajit Panaskar>observability,
+so consider the observability is like if</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/329-3
+00:17:04.345 --> 00:17:09.329
+<v Ajit Panaskar>monitoring gives you what exactly is to
+be done, the observability give you.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/334-0
+00:17:09.329 --> 00:17:13.612
+<v Ajit Panaskar>Why something could not happen and what
+action you should take.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/334-1
+00:17:13.612 --> 00:17:17.226
+<v Ajit Panaskar>So monitoring refers to what actually you
+have to do.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/334-2
+00:17:17.226 --> 00:17:21.910
+<v Ajit Panaskar>But monitoring observability just ensures
+that why it did not happen.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/334-3
+00:17:21.910 --> 00:17:26.729
+<v Ajit Panaskar>Maybe for example let us now this let us
+take another case study where.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/338-0
+00:17:27.009 --> 00:17:30.579
+<v Ajit Panaskar>Like user,
+the scenario is that micro services it</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/338-1
+00:17:30.579 --> 00:17:36.291
+<v Ajit Panaskar>generally observability comes under a
+complex system and monitoring comes under</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/338-2
+00:17:36.291 --> 00:17:39.718
+<v Ajit Panaskar>a very traditional or a monolithic
+application.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/338-3
+00:17:39.718 --> 00:17:45.501
+<v Ajit Panaskar>So when there is a distributed system and
+the micro services are deployed on the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/338-4
+00:17:45.501 --> 00:17:46.929
+<v Ajit Panaskar>clouds and they are.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/343-0
+00:17:47.129 --> 00:17:51.554
+<v Ajit Panaskar>Like hosted on the Kubernetes.
+So you need to check like there are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/343-1
+00:17:51.554 --> 00:17:56.441
+<v Ajit Panaskar>multiple like components or the services
+interacting with each other in a</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/343-2
+00:17:56.441 --> 00:18:00.932
+<v Ajit Panaskar>sequential flow for example.
+So like for example order order system</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/343-3
+00:18:00.932 --> 00:18:04.036
+<v Ajit Panaskar>right?
+So once you place an order then it will</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/343-4
+00:18:04.036 --> 00:18:05.489
+<v Ajit Panaskar>check into the invent.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/347-0
+00:18:06.689 --> 00:18:07.169
+<v Ajit Panaskar>3 and.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/349-0
+00:18:07.169 --> 00:18:10.727
+<v Ajit Panaskar>And once it is available,
+it will then redirect to the payment</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/349-1
+00:18:10.727 --> 00:18:14.851
+<v Ajit Panaskar>gateway. So in in case for example,
+let us understand that the inventory</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/349-2
+00:18:14.851 --> 00:18:18.183
+<v Ajit Panaskar>system is taking somewhat time for five
+second to respond.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/349-3
+00:18:18.183 --> 00:18:20.838
+<v Ajit Panaskar>But now if you have this proper
+observability,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/349-4
+00:18:20.838 --> 00:18:25.357
+<v Ajit Panaskar>so observability is nothing but you are
+tracking each and every microservice to</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/349-5
+00:18:25.357 --> 00:18:26.769
+<v Ajit Panaskar>with the help of sensors.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/354-0
+00:18:26.849 --> 00:18:31.198
+<v Ajit Panaskar>That this how that microservice is
+behaving and if any let us say any</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/354-1
+00:18:31.198 --> 00:18:35.921
+<v Ajit Panaskar>dependent microservice will fail,
+definitely it will have the impact on the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/354-2
+00:18:35.921 --> 00:18:38.965
+<v Ajit Panaskar>first microserving or the invoking
+microservice.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/354-3
+00:18:38.965 --> 00:18:43.812
+<v Ajit Panaskar>So you should if you apply let us say
+some correlation ID mechanism where you</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/354-4
+00:18:43.812 --> 00:18:46.049
+<v Ajit Panaskar>are tracking each and every request.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/358-0
+00:18:46.529 --> 00:18:51.224
+<v Ajit Panaskar>Along all these micro services.
+So with the help of that correlation ID</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/358-1
+00:18:51.224 --> 00:18:55.919
+<v Ajit Panaskar>you will come to know that this
+particular microservice took let us say</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/358-2
+00:18:55.919 --> 00:19:00.092
+<v Ajit Panaskar>this much of amount like because of some
+error in the database.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/358-3
+00:19:00.092 --> 00:19:05.243
+<v Ajit Panaskar>So let us say here in the case of this
+case study the inventory is taking some</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/358-4
+00:19:05.243 --> 00:19:05.569
+<v Ajit Panaskar>time.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/362-0
+00:19:06.489 --> 00:19:11.785
+<v Ajit Panaskar>Because it is like fetching some of the
+records from the database and let us say</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/362-1
+00:19:11.785 --> 00:19:16.753
+<v Ajit Panaskar>the database service itself is maybe
+itself it is not responding because of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/362-2
+00:19:16.753 --> 00:19:22.049
+<v Ajit Panaskar>the high processing or CPU caused by the
+some another service service B. So now.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/366-0
+00:19:22.049 --> 00:19:26.692
+<v Ajit Panaskar>It is observed that database something
+maybe the database is not like working</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/366-1
+00:19:26.692 --> 00:19:30.085
+<v Ajit Panaskar>properly because of some issues in
+another microservice,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/366-2
+00:19:30.085 --> 00:19:32.942
+<v Ajit Panaskar>but it is having that impact on
+microservice A.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/366-3
+00:19:32.942 --> 00:19:37.049
+<v Ajit Panaskar>So now once we with the help of
+correlation ID we track the problem.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/371-0
+00:19:37.329 --> 00:19:42.547
+<v Ajit Panaskar>Exact point of failure or the exact root
+cause is the service B which is causing</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/371-1
+00:19:42.547 --> 00:19:47.186
+<v Ajit Panaskar>problem in database and because of that
+the inventory micro services is</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/371-2
+00:19:47.186 --> 00:19:50.729
+<v Ajit Panaskar>responding slow.
+So these observabilities give you the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/371-3
+00:19:50.729 --> 00:19:55.367
+<v Ajit Panaskar>exact cause or the root cause why the
+overall system is not functioning</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/371-4
+00:19:55.367 --> 00:19:56.849
+<v Ajit Panaskar>properly and then once.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/375-0
+00:19:56.929 --> 00:19:57.049
+<v Ajit Panaskar>To.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/377-0
+00:19:57.089 --> 00:20:00.668
+<v Ajit Panaskar>To identify that this particular service
+is causing problem,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/377-1
+00:20:00.668 --> 00:20:05.479
+<v Ajit Panaskar>maybe you have either revamped the code
+in such a way that the database calls are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/377-2
+00:20:05.479 --> 00:20:08.707
+<v Ajit Panaskar>taking slow,
+the stored procedures are executing slow.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/377-3
+00:20:08.707 --> 00:20:13.401
+<v Ajit Panaskar>So you get that exact point of I will say
+the root cause for the misbehavior of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/377-4
+00:20:13.401 --> 00:20:16.569
+<v Ajit Panaskar>that service.
+So that is how where the observability.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/382-0
+00:20:17.169 --> 00:20:22.155
+<v Ajit Panaskar>Comes into picture and then you can here.
+If you observe that here the system is</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/382-1
+00:20:22.155 --> 00:20:27.018
+<v Ajit Panaskar>like working, everything is fine right?
+If you just monitor that health checks</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/382-2
+00:20:27.018 --> 00:20:30.158
+<v Ajit Panaskar>and all,
+you will find that the other services are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/382-3
+00:20:30.158 --> 00:20:35.144
+<v Ajit Panaskar>up and running. The CPU is also normal,
+but you don't know exactly where exactly</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/382-4
+00:20:35.144 --> 00:20:36.129
+<v Ajit Panaskar>is causing that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/386-0
+00:20:36.729 --> 00:20:39.073
+<v Ajit Panaskar>Problem.
+So observability helps you to</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/386-1
+00:20:39.073 --> 00:20:42.620
+<v Ajit Panaskar>troubleshoot more with the help of
+correlation ID and all.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/386-2
+00:20:42.620 --> 00:20:47.188
+<v Ajit Panaskar>So that is where the observability plays
+a like significant role instead of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/386-3
+00:20:47.188 --> 00:20:47.849
+<v Ajit Panaskar>monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/387-0
+00:20:47.569 --> 00:20:49.729
+<v Amit Hiremath>Makes sense.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/392-0
+00:20:52.569 --> 00:20:57.995
+<v Ajit Panaskar>OK. This emerging trends in monitoring,
+these are the latest trends.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/392-1
+00:20:57.995 --> 00:21:03.106
+<v Ajit Panaskar>I will say AIML based predictive
+monitoring we we can apply then</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/392-2
+00:21:03.106 --> 00:21:09.318
+<v Ajit Panaskar>observability platforms just we discussed
+automation maybe what yeah if we can</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/392-3
+00:21:09.318 --> 00:21:10.969
+<v Ajit Panaskar>automate some of the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/396-0
+00:21:11.089 --> 00:21:16.578
+<v Ajit Panaskar>Processes in this troubleshooting so that
+is a that comes under the automation and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/396-1
+00:21:16.578 --> 00:21:20.612
+<v Ajit Panaskar>the self healing systems,
+cloud native container monitoring,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/396-2
+00:21:20.612 --> 00:21:25.241
+<v Ajit Panaskar>age computing and IoT monitoring.
+So these are the emerging trends in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/396-3
+00:21:25.241 --> 00:21:25.969
+<v Ajit Panaskar>monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/401-0
+00:21:27.689 --> 00:21:30.397
+<v Ajit Panaskar>OK,
+challenges data overloaded like there</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/401-1
+00:21:30.397 --> 00:21:35.554
+<v Ajit Panaskar>since we are having millions of logs.
+So we like the main challenge is like how</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/401-2
+00:21:35.554 --> 00:21:40.389
+<v Ajit Panaskar>to deal with this huge volumes of data
+and how to keep the backup of this.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/401-3
+00:21:40.389 --> 00:21:45.804
+<v Ajit Panaskar>So that is a challenge then complexity of
+integration with cloud native systems and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/401-4
+00:21:45.804 --> 00:21:46.449
+<v Ajit Panaskar>Microsoft.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/405-0
+00:21:47.649 --> 00:21:53.859
+<v Ajit Panaskar>Services for the distributed architecture
+then cost management again it comes yeah</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/405-1
+00:21:53.859 --> 00:21:59.995
+<v Ajit Panaskar>because of the like advanced capabilities
+then tools may go at a higher cost side</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/405-2
+00:21:59.995 --> 00:22:02.689
+<v Ajit Panaskar>so that also we need to check so as.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/410-0
+00:22:03.369 --> 00:22:08.652
+<v Ajit Panaskar>Then log analytic workspace.
+It comes under the Azure actually Azure</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/410-1
+00:22:08.652 --> 00:22:13.705
+<v Ajit Panaskar>site where are the different types of
+logs be it let us say HTTP.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/410-2
+00:22:13.705 --> 00:22:20.060
+<v Ajit Panaskar>If you want to track the request incoming
+request where those are coming then what</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/410-3
+00:22:20.060 --> 00:22:22.969
+<v Ajit Panaskar>are the different maybe like external?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/414-0
+00:22:23.169 --> 00:22:29.321
+<v Ajit Panaskar>Calls like database calls, exceptions,
+traces so which you can like I will store</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/414-1
+00:22:29.321 --> 00:22:34.259
+<v Ajit Panaskar>in the log analytics workspace.
+So that is comes under the Azure</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/414-2
+00:22:34.259 --> 00:22:37.449
+<v Ajit Panaskar>Application Insights and Azure Monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/418-0
+00:22:39.129 --> 00:22:46.433
+<v Ajit Panaskar>OK, so yeah,
+now let us go to one case study which we</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/418-1
+00:22:46.433 --> 00:22:49.409
+<v Ajit Panaskar>applied for Nazam for.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/417-0
+00:22:50.529 --> 00:22:51.249
+<v Amit Hiremath>Mm-hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/428-0
+00:23:07.569 --> 00:23:12.416
+<v Ajit Panaskar>So, OK,
+we're in the discussion with the Nazam</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/428-1
+00:23:12.416 --> 00:23:20.769
+<v Ajit Panaskar>customer and what we observe these are
+the pin points which yeah Nazam is facing</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/428-2
+00:23:20.769 --> 00:23:22.729
+<v Ajit Panaskar>currently. So like.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/434-0
+00:23:25.129 --> 00:23:29.743
+<v Ajit Panaskar>Let us say OK,
+So what one use case we observed here is</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/434-1
+00:23:29.743 --> 00:23:36.664
+<v Ajit Panaskar>that the rabbit MQ we had used the rabbit
+MQ for asynchronous communication between</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/434-2
+00:23:36.664 --> 00:23:42.679
+<v Ajit Panaskar>the multiple services and one scenario
+was that one exchange was I think</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/434-3
+00:23:42.679 --> 00:23:44.409
+<v Ajit Panaskar>accidentally deleted.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/438-0
+00:23:44.929 --> 00:23:51.938
+<v Ajit Panaskar>In the corporate fleet I believe and then
+but it was though it was deleted because</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/438-1
+00:23:51.938 --> 00:23:58.862
+<v Ajit Panaskar>of that exchange deletion the I will say
+the messages that suppose that that were</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/438-2
+00:23:58.862 --> 00:24:04.689
+<v Ajit Panaskar>supposed to be consumed by the worker
+application so that since the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/443-0
+00:24:04.689 --> 00:24:10.340
+<v Ajit Panaskar>The exchange was itself deleted.
+The worker was unable to retrieve all the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/443-1
+00:24:10.340 --> 00:24:16.067
+<v Ajit Panaskar>messages from the rabbit MQ and then
+process it for the corporate fleet and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/443-2
+00:24:16.067 --> 00:24:22.170
+<v Ajit Panaskar>that issue was like ongoing and it did
+not bring into notice because there was a</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/443-3
+00:24:22.170 --> 00:24:24.129
+<v Ajit Panaskar>lack of monitoring or the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/450-0
+00:24:24.409 --> 00:24:29.037
+<v Ajit Panaskar>The team was not properly having any
+heartbeat or health check mechanism.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/450-1
+00:24:29.037 --> 00:24:32.352
+<v Ajit Panaskar>So like it was,
+it was having a direct impact on the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/450-2
+00:24:32.352 --> 00:24:37.480
+<v Ajit Panaskar>business because if you're let us say the
+messages are not consumed by the worker</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/445-0
+00:24:33.049 --> 00:24:33.209
+<v Amit Hiremath>Mm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/450-3
+00:24:37.480 --> 00:24:40.857
+<v Ajit Panaskar>application,
+so it was like just it was residing into</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/448-0
+00:24:40.809 --> 00:24:41.129
+<v Amit Hiremath>Face.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/450-4
+00:24:40.857 --> 00:24:43.609
+<v Ajit Panaskar>the database but no action was being
+taken.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/456-0
+00:24:44.729 --> 00:24:49.399
+<v Ajit Panaskar>So that's why the volume of that data was
+increasing and I I was told that it was</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/456-1
+00:24:49.399 --> 00:24:54.183
+<v Ajit Panaskar>like since last three to four months that
+those logs or the messages are still kept</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/456-2
+00:24:54.183 --> 00:24:58.682
+<v Ajit Panaskar>in the database without any processing.
+So then we after 3-4 months we came to</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/453-0
+00:24:56.689 --> 00:24:56.969
+<v Amit Hiremath>Mm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/456-3
+00:24:58.682 --> 00:25:02.782
+<v Ajit Panaskar>know that this is the problem.
+Now we thought that if we could have got</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/456-4
+00:25:02.782 --> 00:25:03.409
+<v Ajit Panaskar>some alert.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/461-0
+00:25:04.049 --> 00:25:09.013
+<v Ajit Panaskar>Right. That this, for example,
+this number of volumes of data which are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/461-1
+00:25:09.013 --> 00:25:12.392
+<v Ajit Panaskar>unprocessed,
+those are growing more than what we</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/461-2
+00:25:12.392 --> 00:25:16.874
+<v Ajit Panaskar>expect on a daily basis.
+So if we could have such a mechanism in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/461-3
+00:25:16.874 --> 00:25:21.425
+<v Ajit Panaskar>place in the form of alert,
+so definitely we could have yet taken</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/461-4
+00:25:21.425 --> 00:25:23.769
+<v Ajit Panaskar>that action at the earlier stages.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/466-0
+00:25:24.169 --> 00:25:30.033
+<v Ajit Panaskar>Instead of maybe reported by the customer.
+So such there was this actual real time</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/466-1
+00:25:30.033 --> 00:25:33.777
+<v Ajit Panaskar>case we observed.
+Then the another use case was that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/466-2
+00:25:33.777 --> 00:25:39.499
+<v Ajit Panaskar>sometimes we observe that the hang fire
+job itself is sometimes maybe it is down</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/466-3
+00:25:39.499 --> 00:25:43.809
+<v Ajit Panaskar>and the hang fire services are stopped
+but we are unable to.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/472-0
+00:25:43.809 --> 00:25:47.664
+<v Ajit Panaskar>No at a earlier stage.
+So because there is no any like maybe</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/472-1
+00:25:47.664 --> 00:25:50.951
+<v Ajit Panaskar>health check we are applied at the hang
+fire level.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/472-2
+00:25:50.951 --> 00:25:55.692
+<v Ajit Panaskar>So whether we we don't know with that
+hang fire is up and not then then on</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/468-0
+00:25:52.409 --> 00:25:52.649
+<v Amit Hiremath>Hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/472-3
+00:25:55.692 --> 00:26:00.874
+<v Ajit Panaskar>maybe and at some point of day we just go
+to that server and observe that oh this</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/472-4
+00:26:00.874 --> 00:26:03.529
+<v Ajit Panaskar>hang fire, this hang fire service is down.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/477-0
+00:26:03.729 --> 00:26:09.140
+<v Ajit Panaskar>Then we manually go and start it.
+So that is also another problem which we</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/471-0
+00:26:06.249 --> 00:26:06.489
+<v Amit Hiremath>Hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/477-1
+00:26:09.140 --> 00:26:12.531
+<v Ajit Panaskar>face.
+So that let us say these two cases where</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/477-2
+00:26:12.531 --> 00:26:18.374
+<v Ajit Panaskar>the real time we faced for Nazam and for
+what now what we decided is that let us</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/477-3
+00:26:18.374 --> 00:26:23.569
+<v Ajit Panaskar>say for example if we have some this is
+the architecture diagram which.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/482-0
+00:26:23.649 --> 00:26:28.583
+<v Ajit Panaskar>Like we prepared along with Tushar Yusuf.
+So you can see that this is,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/482-1
+00:26:28.583 --> 00:26:34.073
+<v Ajit Panaskar>I will say the approach we can take.
+We can categorize this in three sections.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/482-2
+00:26:34.073 --> 00:26:37.062
+<v Ajit Panaskar>OK.
+The first as you observed here is that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/482-3
+00:26:37.062 --> 00:26:42.413
+<v Ajit Panaskar>these are the different endpoints, OK,
+be it a rabbit MQ, be it a APG proxy,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/482-4
+00:26:42.413 --> 00:26:42.969
+<v Ajit Panaskar>be it a.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/487-0
+00:26:43.329 --> 00:26:47.535
+<v Ajit Panaskar>Signal R and the API endpoints.
+So let us say we will have one.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/487-1
+00:26:47.535 --> 00:26:52.990
+<v Ajit Panaskar>I will say it's a hill check right where
+we will just check whether that rabbit MQ</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/487-2
+00:26:52.990 --> 00:26:57.525
+<v Ajit Panaskar>node is up and running or not,
+whether that particular API is, yeah,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/487-3
+00:26:57.525 --> 00:27:01.403
+<v Ajit Panaskar>functioning properly,
+whether all those AP APG proxies are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/487-4
+00:27:01.403 --> 00:27:02.849
+<v Ajit Panaskar>configured in the APG.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/491-0
+00:27:02.849 --> 00:27:07.082
+<v Ajit Panaskar>Level or not.
+So such kind of health check we can apply</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/491-1
+00:27:07.082 --> 00:27:11.845
+<v Ajit Panaskar>OK just to know that these services are
+up and running or not.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/491-2
+00:27:11.845 --> 00:27:17.968
+<v Ajit Panaskar>Then another I will say that concept is
+that heartbeat right as explained in the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/491-3
+00:27:17.968 --> 00:27:20.009
+<v Ajit Panaskar>case of corporate fleet so.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/496-0
+00:27:20.569 --> 00:27:26.139
+<v Ajit Panaskar>There was a business failure because of
+the deletion of the Rabbit MQ exchange.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/496-1
+00:27:26.139 --> 00:27:31.153
+<v Ajit Panaskar>The data was already stored in the
+database for more than three months.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/496-2
+00:27:31.153 --> 00:27:36.236
+<v Ajit Panaskar>So if we can monitor the business
+failures by going through the database</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/496-3
+00:27:36.236 --> 00:27:39.369
+<v Ajit Panaskar>transaction system,
+let us say the conflict.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/501-0
+00:27:40.409 --> 00:27:40.729
+<v Ajit Panaskar>You.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/503-0
+00:27:40.969 --> 00:27:45.147
+<v Ajit Panaskar>Its own transaction database and it is
+having the transaction table.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/503-1
+00:27:45.147 --> 00:27:49.870
+<v Ajit Panaskar>So if we can check those transaction
+table volumes and if we identify that it</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/503-2
+00:27:49.870 --> 00:27:54.533
+<v Ajit Panaskar>is deviating from the standard case,
+so you can use that heartbeat mechanism</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/503-3
+00:27:54.533 --> 00:27:59.135
+<v Ajit Panaskar>which will check all those database
+transaction system every let us say one</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/503-4
+00:27:59.135 --> 00:28:00.649
+<v Ajit Panaskar>hour and we can identify.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/507-0
+00:28:00.849 --> 00:28:03.775
+<v Ajit Panaskar>A deviation with the help of this
+heartbeat.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/507-1
+00:28:03.775 --> 00:28:07.677
+<v Ajit Panaskar>This is the second use case where we can
+use the heartbeat.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/507-2
+00:28:07.677 --> 00:28:12.425
+<v Ajit Panaskar>The third I will say the scenario is that
+the micro services right where</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/507-3
+00:28:12.425 --> 00:28:17.758
+<v Ajit Panaskar>observability comes to and with the help
+of the correlation ID you can track each</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/507-4
+00:28:17.758 --> 00:28:20.489
+<v Ajit Panaskar>request. So if you would like to know why.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/512-0
+00:28:21.009 --> 00:28:26.107
+<v Ajit Panaskar>Some for example this micro services
+causing high processing time so you can</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/512-1
+00:28:26.107 --> 00:28:30.676
+<v Ajit Panaskar>with the help of query ID you can track
+all those the micro services</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/512-2
+00:28:30.676 --> 00:28:34.781
+<v Ajit Panaskar>communication also.
+So these three if you have one let us say</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/512-3
+00:28:34.781 --> 00:28:39.879
+<v Ajit Panaskar>A1 application where you can configure
+all these three scenarios and you can</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/512-4
+00:28:39.879 --> 00:28:40.409
+<v Ajit Panaskar>monitor.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/517-0
+00:28:40.609 --> 00:28:46.168
+<v Ajit Panaskar>Maybe you can fetch all those logs what
+we have captured in ELK and with the help</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/517-1
+00:28:46.168 --> 00:28:50.778
+<v Ajit Panaskar>of Prometheus and Grafana,
+you can then visually have some valuable</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/517-2
+00:28:50.778 --> 00:28:56.066
+<v Ajit Panaskar>insights and you can take the reactive
+actions as well as I mentioned that in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/517-3
+00:28:56.066 --> 00:28:59.049
+<v Ajit Panaskar>the form of alert or if it is like
+related.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/522-0
+00:29:00.289 --> 00:29:05.286
+<v Ajit Panaskar>To observability so you can again take
+some action why exactly some micro</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/522-1
+00:29:05.286 --> 00:29:10.352
+<v Ajit Panaskar>services having some performance
+overrides and all so that this is the use</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/522-2
+00:29:10.352 --> 00:29:15.754
+<v Ajit Panaskar>case which we applied for Nasam and now
+we will like click and look forward how</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/522-3
+00:29:15.754 --> 00:29:20.009
+<v Ajit Panaskar>we can take it to the next level.
+So these are the I will say.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/526-0
+00:29:20.209 --> 00:29:26.358
+<v Ajit Panaskar>The monitoring the I will say the case
+studies which we have like progressed so</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/526-1
+00:29:26.358 --> 00:29:32.584
+<v Ajit Panaskar>far and then we will look forward like
+what are the new actions that we can take</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/526-2
+00:29:32.584 --> 00:29:36.889
+<v Ajit Panaskar>by getting these valuable insights from
+the monitoring.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/529-0
+00:29:38.169 --> 00:29:41.929
+<v Ajit Panaskar>So there, yeah,
+that's it team from my end. So yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/528-0
+00:29:40.329 --> 00:29:40.889
+<v Amit Hiremath>Oh, great.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/531-0
+00:29:45.449 --> 00:29:47.569
+<v Amit Hiremath>Thank you. That's good to know, Ajit.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/535-0
+00:29:46.609 --> 00:29:51.656
+<v Dilip Kachot>Thanks. Thank you, Ajit.
+I think it's really insightful session.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/533-0
+00:29:48.849 --> 00:29:50.889
+<v Ajit Panaskar>Yes, yes. Welcome, team. Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/535-1
+00:29:51.656 --> 00:29:55.849
+<v Dilip Kachot>Mostly people don't focus on these topics,
+so thanks.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/540-0
+00:29:55.009 --> 00:29:57.978
+<v Ajit Panaskar>Yes, yes,
+because DevOps right means mostly we are,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/540-1
+00:29:57.978 --> 00:30:00.776
+<v Ajit Panaskar>we are from development and
+implementation team.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/540-2
+00:30:00.776 --> 00:30:05.116
+<v Ajit Panaskar>We generally focus on the development
+implementation, but operational side,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/537-0
+00:30:04.249 --> 00:30:04.649
+<v Dilip Kachot>Exactly.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/540-3
+00:30:05.116 --> 00:30:08.885
+<v Ajit Panaskar>yeah that that should be collaborated
+effectively as well between</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/540-4
+00:30:08.885 --> 00:30:11.169
+<v Ajit Panaskar>implementation and the operational side.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/542-0
+00:30:11.289 --> 00:30:15.495
+<v Ajit Panaskar>So that's why I just thought that let us
+take this, yeah,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/542-1
+00:30:15.495 --> 00:30:19.049
+<v Ajit Panaskar>this I will say the section of
+operational side.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/544-0
+00:30:19.529 --> 00:30:19.689
+<v Ajit Panaskar>Right.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/545-0
+00:30:20.049 --> 00:30:22.089
+<v Dilip Kachot>Of course, of course, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/546-0
+00:30:24.089 --> 00:30:24.369
+<v Amit Hiremath>Yep.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/548-0
+00:30:24.609 --> 00:30:28.689
+<v Dilip Kachot>Any any questions anybody has any input?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/553-0
+00:30:32.929 --> 00:30:38.760
+<v Dilip Kachot>OK. OK. Thank you, Ajit.
+Thanks for this presentation. OK, I'll,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/552-0
+00:30:37.529 --> 00:30:39.209
+<v Ajit Panaskar>Yes, it's welcome team. Yeah. Thanks,
+Dilip.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/553-1
+00:30:38.760 --> 00:30:39.209
+<v Dilip Kachot>yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/554-0
+00:30:38.969 --> 00:30:40.809
+<v Vijay Nadar>Thank you. Thank you, Ajit. Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/556-0
+00:30:40.529 --> 00:30:42.009
+<v Ajit Panaskar>Yeah. Thanks. Thanks, Vijay.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/559-0
+00:30:43.969 --> 00:30:49.557
+<v Dilip Kachot>OK, now next we'll go with the, you know,
+good news session.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/559-1
+00:30:49.557 --> 00:30:53.129
+<v Dilip Kachot>So let's start round the table, Ashish.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/565-0
+00:30:55.529 --> 00:30:59.092
+<v Aashish Sonawane>Yeah.
+So the news from my end is nothing in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/565-1
+00:30:59.092 --> 00:31:03.141
+<v Aashish Sonawane>particular,
+just what what the focus releases are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/565-2
+00:31:03.141 --> 00:31:07.433
+<v Aashish Sonawane>going good.
+So that's the thing to be shared. So no,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/565-3
+00:31:07.433 --> 00:31:08.729
+<v Aashish Sonawane>no major things.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/566-0
+00:31:10.169 --> 00:31:10.409
+<v Aashish Sonawane>Thanks.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/568-0
+00:31:10.809 --> 00:31:12.329
+<v Dilip Kachot>OK, Ajit.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/574-0
+00:31:13.009 --> 00:31:17.600
+<v Ajit Panaskar>Dilip, yes, I'm good.
+Yeah from personal and professional and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/569-0
+00:31:16.169 --> 00:31:16.289
+<v Dilip Kachot>But.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/574-1
+00:31:17.600 --> 00:31:21.376
+<v Ajit Panaskar>as well.
+So just looking Tushar was only for a few</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/574-2
+00:31:21.376 --> 00:31:26.781
+<v Ajit Panaskar>days now since he's back so I will be
+able to today we are having weekly</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/574-3
+00:31:26.781 --> 00:31:32.409
+<v Ajit Panaskar>meeting so and Yusuf will be able to
+communicate with him to just know the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/575-0
+00:31:32.649 --> 00:31:36.449
+<v Ajit Panaskar>Road map, yeah,
+from the architectural side as well.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/586-0
+00:31:38.729 --> 00:31:42.670
+<v Ajit Panaskar>Personal side. I'm good, Dilip. Yeah,
+my daughter. Actually,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/586-1
+00:31:42.670 --> 00:31:47.387
+<v Ajit Panaskar>my daughter's birthday was there on last
+Sunday, so I could. Yeah, yeah,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/580-0
+00:31:45.369 --> 00:31:46.489
+<v Amit Hiremath>Oh, nice.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/579-0
+00:31:46.009 --> 00:31:46.489
+<v Dilip Kachot>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/586-2
+00:31:47.387 --> 00:31:52.427
+<v Ajit Panaskar>I so I could not come there to celebrate
+with Tushar's housewarming ceremony.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/583-0
+00:31:50.929 --> 00:31:53.649
+<v Dilip Kachot>Oh, mm-hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/586-3
+00:31:52.427 --> 00:31:55.723
+<v Ajit Panaskar>Because of that,
+my daughter's birthday was there,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/586-4
+00:31:55.723 --> 00:31:57.209
+<v Ajit Panaskar>so I had to prepare so.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/584-0
+00:31:57.049 --> 00:31:57.569
+<v Dilip Kachot>That's it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/587-0
+00:31:57.489 --> 00:32:01.569
+<v Ajit Panaskar>That was the personal Uh one event which
+happened at my end.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/590-0
+00:32:02.809 --> 00:32:08.134
+<v Dilip Kachot>Yeah, do do you enjoy a lot at your home?
+But you've missed many things,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/591-0
+00:32:04.849 --> 00:32:08.889
+<v Ajit Panaskar>Yes, yes, Miss. Yeah, yes, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/590-1
+00:32:08.134 --> 00:32:09.009
+<v Dilip Kachot>right Vijay?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/596-0
+00:32:10.609 --> 00:32:14.307
+<v Dilip Kachot>OK. I can go next. OK.
+So from professional front,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/596-1
+00:32:14.307 --> 00:32:20.325
+<v Dilip Kachot>I think we are good in terms of, you know,
+we are learning multiple things from AI</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/596-2
+00:32:20.325 --> 00:32:25.836
+<v Dilip Kachot>teams and we know people, you know,
+we must keep engaged with the internal,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/596-3
+00:32:25.836 --> 00:32:29.244
+<v Dilip Kachot>you know,
+AI implementation as well As for the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/596-4
+00:32:29.244 --> 00:32:29.969
+<v Dilip Kachot>customers.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/601-0
+00:32:30.009 --> 00:32:34.664
+<v Dilip Kachot>Things our customer projects.
+So it's a good things that we have you</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/601-1
+00:32:34.664 --> 00:32:37.700
+<v Dilip Kachot>know good pipeline to work upon for AI
+team.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/601-2
+00:32:37.700 --> 00:32:42.490
+<v Dilip Kachot>There are multiple innovation ideas
+coming from a different functions.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/601-3
+00:32:42.490 --> 00:32:47.752
+<v Dilip Kachot>So that's a good things and I see the
+pipeline for prospect is also very good</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/601-4
+00:32:47.752 --> 00:32:49.169
+<v Dilip Kachot>for the AI solutions.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/607-0
+00:32:49.929 --> 00:32:53.809
+<v Dilip Kachot>So let's give us a good, you know,
+road map for the AI team.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/607-1
+00:32:53.809 --> 00:32:58.833
+<v Dilip Kachot>So that's a good news from professional
+point of view, personal point of view.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/607-2
+00:32:58.833 --> 00:33:03.794
+<v Dilip Kachot>I think, yeah, that was, you know,
+we all met Vijay, Yusuf come here. We had,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/607-3
+00:33:03.794 --> 00:33:08.055
+<v Dilip Kachot>you know, fun at office.
+Also we met on Saturday at Tushar's home.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/606-0
+00:33:05.849 --> 00:33:09.969
+<v Amit Hiremath>Nice. Ajit,
+you can stop sharing the screen.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/607-4
+00:33:08.055 --> 00:33:09.009
+<v Dilip Kachot>So it was good.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/608-0
+00:33:09.169 --> 00:33:09.729
+<v Dilip Kachot>Better.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/610-0
+00:33:11.809 --> 00:33:16.249
+<v Dilip Kachot>So it was good time. Uh,
+hope Vijay and Yusuf also enjoyed.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/611-0
+00:33:18.249 --> 00:33:20.889
+<v Amit Hiremath>That's good. Nice. Nice to hear that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/612-0
+00:33:24.929 --> 00:33:28.169
+<v Dilip Kachot>Yeah, uh, Kishor, then Mayur,
+then Muzaffar.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/614-0
+00:33:28.969 --> 00:33:31.797
+<v Kishor Gwala>Sure.
+So professional good news is like for RER</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/614-1
+00:33:31.797 --> 00:33:36.745
+<v Kishor Gwala>we are preparing for second release so we
+are in UET phase so that that seems to be</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/613-0
+00:33:34.329 --> 00:33:34.529
+<v Amit Hiremath>Mm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/614-2
+00:33:36.745 --> 00:33:41.575
+<v Kishor Gwala>a little stable then then the first one
+still couple of things here and there but</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/614-3
+00:33:41.575 --> 00:33:46.053
+<v Kishor Gwala>then yes so that was one and then on
+personal front just just next week I'm</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/614-4
+00:33:46.053 --> 00:33:48.409
+<v Kishor Gwala>having a function at my sister's and so.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/615-0
+00:33:48.929 --> 00:33:53.464
+<v Kishor Gwala>Structing couple of relatives at my place
+also. So Yep, good, good family time.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/615-1
+00:33:53.464 --> 00:33:56.809
+<v Kishor Gwala>I'm looking for a true back. So Yep,
+that's it. Thank you.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/617-0
+00:33:58.369 --> 00:34:03.182
+<v Mayurkumar Chaniyara>Yeah, good morning everyone.
+So like professional front of view like</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/616-0
+00:34:01.209 --> 00:34:02.049
+<v Amit Hiremath>From him.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/617-1
+00:34:03.182 --> 00:34:08.622
+<v Mayurkumar Chaniyara>in the DHHD like we have successfully
+delivered the first phase and lots from</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/617-2
+00:34:08.622 --> 00:34:13.575
+<v Mayurkumar Chaniyara>last week itself we are getting some
+feedbacks from the business team.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/617-3
+00:34:13.575 --> 00:34:17.969
+<v Mayurkumar Chaniyara>There are some minor correction or
+enhancement that is needed.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/619-0
+00:34:18.129 --> 00:34:22.815
+<v Mayurkumar Chaniyara>But whatever the functionalities that we
+have decided as per the user stories and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/619-1
+00:34:22.815 --> 00:34:27.329
+<v Mayurkumar Chaniyara>everything that we have successfully
+completed and everything is going good in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/619-2
+00:34:27.329 --> 00:34:30.415
+<v Mayurkumar Chaniyara>that DH and D part,
+minor things are there as per the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/619-3
+00:34:30.415 --> 00:34:34.529
+<v Mayurkumar Chaniyara>business feedbacks so that we will work,
+we start working on that part.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/620-0
+00:34:35.689 --> 00:34:41.939
+<v Mayurkumar Chaniyara>And another thing is that that for the
+Najam public app again we will get to get</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/620-1
+00:34:41.939 --> 00:34:47.958
+<v Mayurkumar Chaniyara>chance to work on the report accident
+functionalities like recently the Najam</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/620-2
+00:34:47.958 --> 00:34:51.894
+<v Mayurkumar Chaniyara>public app is totally revamped in the
+Flutter. OK,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/620-3
+00:34:51.894 --> 00:34:55.289
+<v Mayurkumar Chaniyara>so it is not developed by the Clarion
+team.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/621-0
+00:34:55.489 --> 00:34:58.939
+<v Mayurkumar Chaniyara>OK.
+So it was developed by some other vendors</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/621-1
+00:34:58.939 --> 00:35:03.889
+<v Mayurkumar Chaniyara>from the Najam by Najam.
+So like we have get a chance to complete</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/621-2
+00:35:03.889 --> 00:35:10.039
+<v Mayurkumar Chaniyara>a report accident module like yesterday
+itself we had connected with like SDM and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/621-3
+00:35:10.039 --> 00:35:15.289
+<v Mayurkumar Chaniyara>manager regarding that particular
+personalities that what we need to.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/622-0
+00:35:15.409 --> 00:35:20.011
+<v Mayurkumar Chaniyara>To do and what are the challenges
+currently they are facing in the report</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/622-1
+00:35:20.011 --> 00:35:24.800
+<v Mayurkumar Chaniyara>accident modules and why they want us to
+work on these particular things and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/622-2
+00:35:24.800 --> 00:35:28.345
+<v Mayurkumar Chaniyara>complete the report accident module as
+soon as possible.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/622-3
+00:35:28.345 --> 00:35:33.321
+<v Mayurkumar Chaniyara>So today from today we will start working
+on that part and probably it's a very</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/622-4
+00:35:33.321 --> 00:35:35.249
+<v Mayurkumar Chaniyara>tight deadline we need to come.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/623-0
+00:35:35.249 --> 00:35:39.303
+<v Mayurkumar Chaniyara>Complete report accident,
+complete flow within eight to 10 days</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/623-1
+00:35:39.303 --> 00:35:43.864
+<v Mayurkumar Chaniyara>including queue and everything.
+So they expecting us to deliver as soon</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/623-2
+00:35:43.864 --> 00:35:47.601
+<v Mayurkumar Chaniyara>as possible. Yeah,
+so that we will start today working and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/623-3
+00:35:47.601 --> 00:35:50.515
+<v Mayurkumar Chaniyara>yeah and personal front of view,
+nothing new,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/623-4
+00:35:50.515 --> 00:35:54.569
+<v Mayurkumar Chaniyara>it's just things are going good and where
+seasons are going on.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/624-0
+00:35:55.169 --> 00:35:59.523
+<v Mayurkumar Chaniyara>So we'll attending the marriage of the
+Emily's numbers and everything. Yeah,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/624-1
+00:35:59.523 --> 00:36:00.089
+<v Mayurkumar Chaniyara>that's it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/625-0
+00:36:03.209 --> 00:36:06.703
+<v Mujaffarkhan Sanadi>Yeah.
+So from my end with the project</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/625-1
+00:36:06.703 --> 00:36:11.208
+<v Mujaffarkhan Sanadi>perspective,
+so as we are doing at critical best</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/625-2
+00:36:11.208 --> 00:36:15.529
+<v Mujaffarkhan Sanadi>practices,
+so we are improving so many things.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/626-0
+00:36:17.289 --> 00:36:24.009
+<v Mujaffarkhan Sanadi>So by that the project looks in good
+shape with all the different aspect.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/628-0
+00:36:25.409 --> 00:36:30.873
+<v Mujaffarkhan Sanadi>And from personal perspective, yeah,
+so we had a family function.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/628-1
+00:36:30.873 --> 00:36:36.089
+<v Mujaffarkhan Sanadi>So in last week my cousin brother's
+marriage we have attended.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/629-0
+00:36:37.249 --> 00:36:39.689
+<v Mujaffarkhan Sanadi>So yeah, so that that's the thing from.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/630-0
+00:36:41.849 --> 00:36:45.689
+<v Dilip Kachot>OK. Thank you. Thank you,
+Muzaffar Praveen Vijay.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/631-0
+00:36:46.569 --> 00:36:50.732
+<v Pravin Gaikwad>Yes, hi team, good morning.
+So from professional front there is</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/631-1
+00:36:50.732 --> 00:36:55.546
+<v Pravin Gaikwad>nothing in the specific but I'm just
+coordinating with the Brahma team to</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/631-2
+00:36:55.546 --> 00:37:00.750
+<v Pravin Gaikwad>configure the time sheet application for
+staging and there are I think two more</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/631-3
+00:37:00.750 --> 00:37:05.889
+<v Pravin Gaikwad>applications we have to set up and create
+a build for the staging environment.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/634-0
+00:37:06.289 --> 00:37:12.359
+<v Pravin Gaikwad>And along with that I have initiated like
+analysis on unit testing feasibility for</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/634-1
+00:37:12.359 --> 00:37:15.870
+<v Pravin Gaikwad>the Brahma project.
+So I'm working with Kishor.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/633-0
+00:37:14.369 --> 00:37:15.049
+<v Amit Hiremath>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/634-2
+00:37:15.870 --> 00:37:21.209
+<v Pravin Gaikwad>So this is the update and nothing is
+specific to mention about personal.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/635-0
+00:37:23.609 --> 00:37:23.929
+<v Pravin Gaikwad>And.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/636-0
+00:37:25.289 --> 00:37:31.346
+<v Vijay Nadar>Yeah, thanks. From my side actually, yeah,
+means it was a really good trip with</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/636-1
+00:37:31.346 --> 00:37:36.418
+<v Vijay Nadar>meeting everyone in Ahmedabad, Dilip,
+Tushar and Pratik, everyone.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/636-2
+00:37:36.418 --> 00:37:42.626
+<v Vijay Nadar>So it was a really good trip and and also
+I enjoyed with Yusuf after long time we</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/636-3
+00:37:42.626 --> 00:37:42.929
+<v Vijay Nadar>met.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/640-0
+00:37:43.249 --> 00:37:48.365
+<v Vijay Nadar>And again, back to shopping and and yeah,
+yeah,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/640-1
+00:37:48.365 --> 00:37:56.572
+<v Vijay Nadar>work wise also we finally sent a proposal
+to the period client. So and yeah,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/637-0
+00:37:48.409 --> 00:37:49.529
+<v Amit Hiremath>That's OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/638-0
+00:37:51.009 --> 00:37:51.449
+<v Amit Hiremath>Good.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/640-2
+00:37:56.572 --> 00:38:00.729
+<v Vijay Nadar>we we were waiting for the feedback so.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/639-0
+00:38:01.209 --> 00:38:01.449
+<v Amit Hiremath>Hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/641-0
+00:38:02.089 --> 00:38:02.609
+<v Vijay Nadar>It was.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/643-0
+00:38:03.649 --> 00:38:03.929
+<v Vijay Nadar>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/642-0
+00:38:03.889 --> 00:38:05.209
+<v Amit Hiremath>Very nice.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/646-0
+00:38:07.769 --> 00:38:14.476
+<v Amit Hiremath>Cool. Are you good? So professional front,
+there are actually many of them.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/644-0
+00:38:08.209 --> 00:38:08.729
+<v Vijay Nadar>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/645-0
+00:38:08.689 --> 00:38:10.369
+<v Dilip Kachot>But yeah, Amit, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/646-1
+00:38:14.476 --> 00:38:21.361
+<v Amit Hiremath>One is I think Saudi Arabia as such is
+showing good intent for some of our AI</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/646-2
+00:38:21.361 --> 00:38:26.126
+<v Amit Hiremath>initiatives.
+I think we've starting the I fund one in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/646-3
+00:38:26.126 --> 00:38:27.009
+<v Amit Hiremath>a big way.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/647-0
+00:38:27.089 --> 00:38:30.686
+<v Amit Hiremath>The funding,
+Microsoft funding is also showing good</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/647-1
+00:38:30.686 --> 00:38:34.144
+<v Amit Hiremath>progress to Palash, Titvilik,
+Sunil and everyone.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/647-2
+00:38:34.144 --> 00:38:38.709
+<v Amit Hiremath>The uptick as I mentioned,
+we are we are signing up a partnership</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/647-3
+00:38:38.709 --> 00:38:43.689
+<v Amit Hiremath>and we see good amount of intent problems
+for the Arabian market again.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/648-0
+00:38:44.089 --> 00:38:49.017
+<v Amit Hiremath>For financial agent API,
+so we presented to almost 3-4 prospective</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/648-1
+00:38:49.017 --> 00:38:52.547
+<v Amit Hiremath>customers and everyone seems to end up
+aligned.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/648-2
+00:38:52.547 --> 00:38:57.254
+<v Amit Hiremath>So seeing for a good and plus we are
+launching an XLQ campaign.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/648-3
+00:38:57.254 --> 00:39:02.329
+<v Amit Hiremath>So XLQ partnership is also going good and
+that also showing is very.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/649-0
+00:39:02.809 --> 00:39:03.929
+<v Amit Hiremath>Positive response.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/650-0
+00:39:05.329 --> 00:39:12.593
+<v Amit Hiremath>Apart from that, in terms of personally,
+my good news is with my background.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/650-1
+00:39:12.593 --> 00:39:18.913
+<v Amit Hiremath>I did a hike last weekend.
+It was there's a Fort called Estorna in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/650-2
+00:39:18.913 --> 00:39:21.649
+<v Amit Hiremath>Maharashtra. This is so weak.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/652-0
+00:39:22.049 --> 00:39:26.464
+<v Amit Hiremath>Climbed up the Torna Fort and then we
+walked across the Ridge.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/652-1
+00:39:26.464 --> 00:39:31.789
+<v Amit Hiremath>You see the Ridge on the top side.
+So we walked alongside that to the other</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/652-2
+00:39:31.789 --> 00:39:36.204
+<v Amit Hiremath>Fort called as Rajgad.
+So it's almost like 12 kilometers trek.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/651-0
+00:39:32.569 --> 00:39:32.649
+<v Vijay Nadar>Oh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/652-3
+00:39:36.204 --> 00:39:40.969
+<v Amit Hiremath>Amazing in because it's just finished
+raining so it is not too wet.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/653-0
+00:39:41.409 --> 00:39:47.427
+<v Amit Hiremath>And quite kind of good sunlight,
+clean weather, good jungle. So it was fun.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/653-1
+00:39:47.427 --> 00:39:49.169
+<v Amit Hiremath>It was really amazing.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/654-0
+00:39:50.049 --> 00:39:51.769
+<v Dilip Kachot>Good a minute. Good.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/655-0
+00:39:51.009 --> 00:39:53.209
+<v Amit Hiremath>Select that was personal, yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/656-0
+00:39:51.409 --> 00:39:52.569
+<v Vijay Nadar>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/657-0
+00:39:58.329 --> 00:39:58.729
+<v Dilip Kachot>Good.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/658-0
+00:40:00.009 --> 00:40:00.889
+<v Vijay Nadar>Hey, hey.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/659-0
+00:40:00.169 --> 00:40:00.609
+<v Amit Hiremath>Cool, OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/660-0
+00:40:01.209 --> 00:40:03.466
+<v Dilip Kachot>OK, um,
+I think we complete with the eject term.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/660-1
+00:40:03.466 --> 00:40:05.769
+<v Dilip Kachot>Any anything anyone would like to discuss
+or say?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/661-0
+00:40:11.009 --> 00:40:14.129
+<v Dilip Kachot>Any other discussion point anybody has?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/662-0
+00:40:23.449 --> 00:40:23.929
+<v Dilip Kachot>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/664-0
+00:40:24.089 --> 00:40:28.202
+<v Amit Hiremath>Who are they?
+If you guys can check your own inboxes,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/664-1
+00:40:28.202 --> 00:40:32.696
+<v Amit Hiremath>maybe I can just check the Microsoft view.
+I think Ashish,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/663-0
+00:40:30.449 --> 00:40:30.769
+<v Dilip Kachot>Hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/664-2
+00:40:32.696 --> 00:40:35.209
+<v Amit Hiremath>have we completed the Nginx part?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/665-0
+00:40:37.089 --> 00:40:41.618
+<v Aashish Sonawane>Yes, Amit, I think, uh,
+the other part is remaining the DevOps</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/665-1
+00:40:41.618 --> 00:40:42.049
+<v Aashish Sonawane>thing.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/667-0
+00:40:43.129 --> 00:40:52.209
+<v Amit Hiremath>Uh, yeah. And and then the the,
+I think Rakesh from AWS infrastructure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/666-0
+00:40:44.369 --> 00:40:45.769
+<v Aashish Sonawane>Engineering system.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/669-0
+00:40:55.369 --> 00:40:59.214
+<v Amit Hiremath>Dilip this video, audio,
+language translation that is remaining,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/669-1
+00:40:59.214 --> 00:40:59.569
+<v Amit Hiremath>right?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/670-0
+00:41:01.169 --> 00:41:05.169
+<v Dilip Kachot>Yeah, it it it seems to be remaining.
+I OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/672-0
+00:41:04.129 --> 00:41:07.529
+<v Amit Hiremath>And and then the liability detection also
+I think we've not completed.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/671-0
+00:41:06.769 --> 00:41:06.889
+<v Dilip Kachot>Oh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/674-0
+00:41:08.849 --> 00:41:15.824
+<v Amit Hiremath>Then fast optimization of AWS cloud.
+I think this is the remaining jug Jagbhan.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/673-0
+00:41:09.209 --> 00:41:09.449
+<v Dilip Kachot>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/674-1
+00:41:15.824 --> 00:41:20.969
+<v Amit Hiremath>Ashish, can you just check with him?
+I'll add you to this.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/675-0
+00:41:20.929 --> 00:41:23.449
+<v Aashish Sonawane>Sure, sure, sure. I'll check with them.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/676-0
+00:41:23.249 --> 00:41:26.849
+<v Amit Hiremath>And then a disarm of high trust is also
+not done I think.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/677-0
+00:41:26.729 --> 00:41:29.969
+<v Aashish Sonawane>Huh. This one is remaining from my.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/679-0
+00:41:29.449 --> 00:41:32.731
+<v Amit Hiremath>Right,
+so I think I think Nginx is not done.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/679-1
+00:41:32.731 --> 00:41:35.941
+<v Amit Hiremath>I don't.
+I've not marked it as done because</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/679-2
+00:41:35.941 --> 00:41:40.609
+<v Amit Hiremath>usually what I do is when it is done,
+I mark it as done on the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/678-0
+00:41:36.369 --> 00:41:36.969
+<v Aashish Sonawane>Oh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/680-0
+00:41:42.169 --> 00:41:45.529
+<v Aashish Sonawane>But I'm not sure, but it was done.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/681-0
+00:41:47.529 --> 00:41:50.809
+<v Amit Hiremath>Can you just check?
+Can you ping me in that group?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/682-0
+00:41:51.849 --> 00:41:52.809
+<v Aashish Sonawane>Yes, yes.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/683-0
+00:41:53.409 --> 00:41:55.628
+<v Amit Hiremath>Vijay,
+have we completed the signal R</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/683-1
+00:41:55.628 --> 00:41:56.329
+<v Amit Hiremath>scalability?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/684-0
+00:41:58.449 --> 00:42:01.529
+<v Vijay Nadar>That is pending. I'll come check with you.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/689-0
+00:42:00.009 --> 00:42:03.024
+<v Amit Hiremath>So,
+so can you guys just make sure that you</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/685-0
+00:42:02.609 --> 00:42:03.089
+<v Vijay Nadar>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/689-1
+00:42:03.024 --> 00:42:08.507
+<v Amit Hiremath>know you follow up with me and we get
+this recorded. Usually what I do is I'll,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/686-0
+00:42:04.209 --> 00:42:05.649
+<v Vijay Nadar>Yeah, yeah, we'll do it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/687-0
+00:42:06.889 --> 00:42:07.209
+<v Vijay Nadar>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/689-2
+00:42:08.507 --> 00:42:13.715
+<v Amit Hiremath>I'll just show you how how I mark it.
+So once I complete I mark it as done.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/689-3
+00:42:13.715 --> 00:42:18.032
+<v Amit Hiremath>So usually I do that.
+I think I don't see that done for these.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/689-4
+00:42:18.032 --> 00:42:19.129
+<v Amit Hiremath>So you see like.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/692-0
+00:42:19.409 --> 00:42:22.258
+<v Amit Hiremath>These are all done, done, done, on hold,
+whatever.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/692-1
+00:42:22.258 --> 00:42:24.940
+<v Amit Hiremath>And then like Mayuk's guy's done,
+this is done.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/692-2
+00:42:24.940 --> 00:42:28.237
+<v Amit Hiremath>So these are remaining and and Genx is
+not marked as done.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/692-3
+00:42:28.237 --> 00:42:29.969
+<v Amit Hiremath>So maybe we need to just check.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/694-0
+00:42:31.009 --> 00:42:34.514
+<v Amit Hiremath>Maybe we recorded it and we were to
+rerecord it something like that,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/694-1
+00:42:34.514 --> 00:42:37.409
+<v Amit Hiremath>maybe because the first one was not
+correct or whatever.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/697-0
+00:42:39.009 --> 00:42:42.889
+<v Aashish Sonawane>Maybe, yeah, yeah,
+we can rerecord if required.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/696-0
+00:42:40.529 --> 00:42:41.689
+<v Amit Hiremath>The check once up.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/704-0
+00:42:42.689 --> 00:42:46.972
+<v Amit Hiremath>I don't know if it is recorded and we
+have shared with the marketing team.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/704-1
+00:42:46.972 --> 00:42:50.569
+<v Amit Hiremath>I can mark it as done,
+but just ping me in that group wherever</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/704-2
+00:42:50.569 --> 00:42:55.138
+<v Amit Hiremath>it may be. I'm not search for it. Dilip,
+I think two things Nimeri and DSOM for</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/700-0
+00:42:51.129 --> 00:42:52.729
+<v Aashish Sonawane>Sure, sure, sure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/704-3
+00:42:55.138 --> 00:42:59.649
+<v Amit Hiremath>Hitus and cost optimization by Rakesh.
+This is something that we need to take.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/708-0
+00:43:01.689 --> 00:43:06.772
+<v Amit Hiremath>Sorry, disaster recovery of AWS.
+This is Jagbhan and Vinita.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/703-0
+00:43:02.369 --> 00:43:02.649
+<v Vijay Nadar>Hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/708-1
+00:43:06.772 --> 00:43:11.272
+<v Amit Hiremath>So maybe Ashish,
+you can check disaster recovery cost</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/708-2
+00:43:11.272 --> 00:43:16.689
+<v Amit Hiremath>optimization. This is from Jagbhan again.
+This is again Jagbhan.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/710-0
+00:43:17.169 --> 00:43:20.157
+<v Amit Hiremath>And this one is Rakesh.
+I think the study code is up.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/710-1
+00:43:20.157 --> 00:43:23.089
+<v Amit Hiremath>There's one for Rakesh.
+I'm not sure which was that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/713-0
+00:43:24.049 --> 00:43:28.708
+<v Amit Hiremath>Oh, AWS infrastructure cost saving.
+But these two seem to be same cost</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/713-1
+00:43:28.708 --> 00:43:34.089
+<v Amit Hiremath>optimization of AWS cloud and AWS cost.
+So I think maybe we can take it together.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/715-0
+00:43:34.769 --> 00:43:37.849
+<v Aashish Sonawane>OK, with all three or Rakesh and Jagpal.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/719-0
+00:43:36.529 --> 00:43:39.682
+<v Amit Hiremath>So Rakesh, you, me and Jagbhan,
+we can do it together.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/719-1
+00:43:39.682 --> 00:43:44.210
+<v Amit Hiremath>So if you can just remind them or maybe
+create a group and just remind them on</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/716-0
+00:43:40.809 --> 00:43:42.009
+<v Aashish Sonawane>OK, sure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/719-2
+00:43:44.210 --> 00:43:46.789
+<v Amit Hiremath>that, I'll share.
+Once you create the group,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/719-3
+00:43:46.789 --> 00:43:49.369
+<v Amit Hiremath>I'll share this loop link with them in
+that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/720-0
+00:43:50.809 --> 00:43:52.009
+<v Aashish Sonawane>OK. Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/722-0
+00:43:50.809 --> 00:43:57.644
+<v Amit Hiremath>Huh. OK, let's get this done.
+And any any other podcast that you feel</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/722-1
+00:43:57.644 --> 00:44:03.209
+<v Amit Hiremath>that are subjects, guys? Muzaffar, Vijay,
+Ajit, Kishore.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/723-0
+00:44:05.849 --> 00:44:06.289
+<v Amit Hiremath>Praveen.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/724-0
+00:44:07.729 --> 00:44:11.009
+<v Amit Hiremath>So if there are any,
+please suggest so that we can take it up.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/726-0
+00:44:11.049 --> 00:44:16.289
+<v Vijay Nadar>Yeah, means I've added that case study,
+not the podcast for blockchain I added.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/725-0
+00:44:12.649 --> 00:44:12.929
+<v Mujaffarkhan Sanadi>Sure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/728-0
+00:44:16.489 --> 00:44:20.454
+<v Amit Hiremath>Oh, we can take that, but but no,
+that's that's a case study where you have</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/727-0
+00:44:17.729 --> 00:44:18.569
+<v Vijay Nadar>Enter the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/728-1
+00:44:20.454 --> 00:44:21.289
+<v Amit Hiremath>to implement it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/729-0
+00:44:20.689 --> 00:44:21.129
+<v Vijay Nadar>Yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/730-0
+00:44:22.569 --> 00:44:25.459
+<v Amit Hiremath>So that, I mean, let's see,
+let's take up something that we've</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/730-1
+00:44:25.459 --> 00:44:26.009
+<v Amit Hiremath>implemented.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/731-0
+00:44:27.289 --> 00:44:27.409
+<v Vijay Nadar>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/735-0
+00:44:27.489 --> 00:44:32.608
+<v Amit Hiremath>OK, cool. That's it. I think Dilip,
+I don't have anything else right now.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/734-0
+00:44:31.009 --> 00:44:36.009
+<v Dilip Kachot>OK. Sure. Thank you. Thank you, Ahmed.
+Thank you, everybody. Yeah, so.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/735-1
+00:44:32.608 --> 00:44:37.935
+<v Amit Hiremath>Just just to no, no, just a minute.
+I think I let me update everyone on what</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/733-0
+00:44:33.769 --> 00:44:34.449
+<v Vijay Nadar>Yeah. Thanks.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/735-2
+00:44:37.935 --> 00:44:42.432
+<v Amit Hiremath>we are doing in Saudi Arabia. Actually,
+I think I'm not updated.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/735-3
+00:44:42.432 --> 00:44:44.369
+<v Amit Hiremath>I did discuss this with the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/736-0
+00:44:44.449 --> 00:44:49.340
+<v Amit Hiremath>Tech Architects team.
+So I just wanted to discuss with everyone</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/736-1
+00:44:49.340 --> 00:44:55.606
+<v Amit Hiremath>here is guys we are doing one very unique
+I think offering in Saudi Arabia market</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/736-2
+00:44:55.606 --> 00:45:00.574
+<v Amit Hiremath>is what we do is this product based
+partnership based offerings.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/736-3
+00:45:00.574 --> 00:45:04.089
+<v Amit Hiremath>So we partner Excel Q as you know it's an
+AI.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/737-0
+00:45:04.209 --> 00:45:10.334
+<v Amit Hiremath>Automation tool testing automation we are
+we are already a services partner so that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/737-1
+00:45:10.334 --> 00:45:13.470
+<v Amit Hiremath>is 1.
+So we are going into market in Saudi</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/737-2
+00:45:13.470 --> 00:45:19.449
+<v Amit Hiremath>Arabia as XLQ partner and we are offering
+these services specifically to all the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/738-0
+00:45:19.569 --> 00:45:21.909
+<v Amit Hiremath>Sama,
+which is a Saudi Arabia Monetary</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/738-1
+00:45:21.909 --> 00:45:25.089
+<v Amit Hiremath>Authority,
+Sama funded companies as they are called,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/738-2
+00:45:25.089 --> 00:45:29.829
+<v Amit Hiremath>they have a public trust and then public
+investment fund PIF funded companies.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/738-3
+00:45:29.829 --> 00:45:33.849
+<v Amit Hiremath>So we are approaching them.
+We have shortlisted and we are kind of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/738-4
+00:45:33.849 --> 00:45:38.409
+<v Amit Hiremath>doing a campaign with them. That is one.
+The second is we are targeting to.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/739-0
+00:45:39.049 --> 00:45:43.667
+<v Amit Hiremath>Now with a couple called as Uptiq, UPTIQ,
+they are into financial agentic AI.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/739-1
+00:45:43.667 --> 00:45:46.804
+<v Amit Hiremath>They're already a very successful company
+in the US.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/739-2
+00:45:46.804 --> 00:45:50.830
+<v Amit Hiremath>They have like multiple financial
+institutions have been onboarded.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/739-3
+00:45:50.830 --> 00:45:54.323
+<v Amit Hiremath>They have done almost 1 billion
+transactions and all that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/739-4
+00:45:54.323 --> 00:45:55.329
+<v Amit Hiremath>So they are very.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/741-0
+00:45:55.409 --> 00:46:01.134
+<v Amit Hiremath>Mature and kind of reliable in US Now we
+are going into Saudi Arabia as a partner</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/741-1
+00:46:01.134 --> 00:46:06.649
+<v Amit Hiremath>with them again for this Sama company,
+especially for the financial companies.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/740-0
+00:46:03.729 --> 00:46:03.929
+<v Aashish Sonawane>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/743-0
+00:46:07.769 --> 00:46:14.055
+<v Amit Hiremath>So those two are very unique offerings
+and like one of the things Vijay which we</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/742-0
+00:46:08.489 --> 00:46:08.969
+<v Dilip Kachot>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/743-1
+00:46:14.055 --> 00:46:18.945
+<v Amit Hiremath>may want to kind of take up,
+I'm not sure Vijay as Vijay left.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/743-2
+00:46:18.945 --> 00:46:24.688
+<v Amit Hiremath>So is about this uptick since it's a
+financial agentic AI looks like SAMA</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/743-3
+00:46:24.688 --> 00:46:27.249
+<v Amit Hiremath>which is a so monetary authority.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/744-0
+00:46:27.289 --> 00:46:32.681
+<v Amit Hiremath>As a sandbox in Saudi Arabia and if we
+run or execute or implement this tool on</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/744-1
+00:46:32.681 --> 00:46:36.927
+<v Amit Hiremath>their sandbox successfully,
+then it becomes certified by SAMA.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/744-2
+00:46:36.927 --> 00:46:41.914
+<v Amit Hiremath>So that's something that we are looking
+at and there's there are not many</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/744-3
+00:46:41.914 --> 00:46:45.351
+<v Amit Hiremath>companies in AI,
+in agentic AI in Saudi Arabia and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/744-4
+00:46:45.351 --> 00:46:46.969
+<v Amit Hiremath>especially in financial.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/746-0
+00:46:47.249 --> 00:46:51.260
+<v Amit Hiremath>So that is a a a greater opportunity.
+So these two are very unique ways of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/746-1
+00:46:51.260 --> 00:46:54.309
+<v Amit Hiremath>going. We've not,
+we've never gone into market with this</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/746-2
+00:46:54.309 --> 00:46:57.679
+<v Amit Hiremath>kind of an offering.
+We've been always saying that we are good</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/745-0
+00:46:56.369 --> 00:46:56.449
+<v Aashish Sonawane>Um.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/746-3
+00:46:57.679 --> 00:47:00.995
+<v Amit Hiremath>at testing, we are good at dotnet,
+we're good at Python, PHP,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/746-4
+00:47:00.995 --> 00:47:04.471
+<v Amit Hiremath>but we never said that OK,
+we are a partner with the company and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/746-5
+00:47:04.471 --> 00:47:05.969
+<v Amit Hiremath>we're going into the market.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/748-0
+00:47:06.049 --> 00:47:12.420
+<v Amit Hiremath>So that's kind of something that you know.
+So basically we are trying to go with the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/748-1
+00:47:12.420 --> 00:47:17.816
+<v Amit Hiremath>flow because AI is something that we need
+to go with the some offering.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/748-2
+00:47:17.816 --> 00:47:21.489
+<v Amit Hiremath>We cannot just go, OK,
+we know everything in AI.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/749-0
+00:47:21.489 --> 00:47:23.849
+<v Amit Hiremath>So that is what we are trying to
+capitalize on.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/747-0
+00:47:21.649 --> 00:47:21.689
+<v Dilip Kachot>Oh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/750-0
+00:47:24.609 --> 00:47:26.809
+<v Dilip Kachot>Good. Good, Amit. Yep.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/751-0
+00:47:26.049 --> 00:47:29.333
+<v Amit Hiremath>Any questions or any, you know,
+views or any suggestions,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/751-1
+00:47:29.333 --> 00:47:31.089
+<v Amit Hiremath>recommendations from your side?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/753-0
+00:47:32.609 --> 00:47:36.491
+<v Dilip Kachot>Summit,
+will this partner help us to understand</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/753-1
+00:47:36.491 --> 00:47:41.506
+<v Dilip Kachot>the product, technology, stakes,
+architect, all these things,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/752-0
+00:47:40.209 --> 00:47:44.689
+<v Amit Hiremath>They will train, yeah, they will train,
+yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/753-2
+00:47:41.506 --> 00:47:47.006
+<v Dilip Kachot>they will train us, right? OK.
+And so any plan when we are going to</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/753-3
+00:47:47.006 --> 00:47:50.969
+<v Dilip Kachot>start this training,
+how we'll learn it because.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/756-0
+00:47:50.449 --> 00:47:55.024
+<v Amit Hiremath>So I am into, yeah,
+so I I'm into final stages of you know</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/754-0
+00:47:51.249 --> 00:47:52.729
+<v Dilip Kachot>Or is it opportunity?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/756-1
+00:47:55.024 --> 00:47:59.366
+<v Amit Hiremath>getting the approval from business.
+I've done with Sid,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/755-0
+00:47:58.689 --> 00:47:59.449
+<v Dilip Kachot>Mm-hmm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/756-2
+00:47:59.366 --> 00:48:05.801
+<v Amit Hiremath>it's already kind of approved and to this
+final few things like you know how do we</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/756-3
+00:48:05.801 --> 00:48:06.809
+<v Amit Hiremath>go to market.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/760-0
+00:48:07.289 --> 00:48:10.935
+<v Amit Hiremath>What can we do to, you know,
+get business on that all and kind of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/760-1
+00:48:10.935 --> 00:48:14.525
+<v Amit Hiremath>prepare that. So Ashish,
+this is I think what we need to also do</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/760-2
+00:48:14.525 --> 00:48:17.950
+<v Amit Hiremath>for Odu. But right now I'm continuing.
+I'll share the uptick,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/760-3
+00:48:17.950 --> 00:48:22.038
+<v Amit Hiremath>the one that I've created with you so
+that you get an idea because you're</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/760-4
+00:48:22.038 --> 00:48:25.959
+<v Amit Hiremath>working on Odu so you can start thinking
+like that on Odu. By the way,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/757-0
+00:48:23.849 --> 00:48:23.929
+<v Aashish Sonawane>Oh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/758-0
+00:48:25.769 --> 00:48:26.009
+<v Dilip Kachot>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/760-5
+00:48:25.959 --> 00:48:27.009
+<v Amit Hiremath>that Motaz guy had.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/761-0
+00:48:27.089 --> 00:48:31.774
+<v Amit Hiremath>Called up. So that's another Uh, Uh,
+Odu is another Um thing that we are</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/759-0
+00:48:28.329 --> 00:48:28.729
+<v Aashish Sonawane>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/761-1
+00:48:31.774 --> 00:48:36.009
+<v Amit Hiremath>trying to get into as a partner,
+which Ashish is kind of leading.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/762-0
+00:48:39.129 --> 00:48:39.249
+<v Dilip Kachot>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/764-0
+00:48:39.889 --> 00:48:45.011
+<v Aashish Sonawane>So Amit, once once we onboard this,
+so we will be will we be doing the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/763-0
+00:48:40.929 --> 00:48:41.769
+<v Amit Hiremath>So yeah.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/764-1
+00:48:45.011 --> 00:48:47.969
+<v Aashish Sonawane>technical part of that implementation or?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/767-0
+00:48:47.569 --> 00:48:51.255
+<v Amit Hiremath>Yeah, implementations,
+implementation and integrations with and</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/765-0
+00:48:49.369 --> 00:48:51.049
+<v Aashish Sonawane>OK, so we'll have to build a tree.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/767-1
+00:48:51.255 --> 00:48:55.459
+<v Amit Hiremath>implementation of different workflows,
+which basically it implements the</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/767-2
+00:48:55.459 --> 00:48:58.569
+<v Amit Hiremath>workflows and all.
+So that's what we need to look at.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/766-0
+00:48:56.089 --> 00:48:56.569
+<v Aashish Sonawane>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/768-0
+00:49:00.169 --> 00:49:02.841
+<v Aashish Sonawane>OK.
+So it would be more like a development or</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/768-1
+00:49:02.841 --> 00:49:05.049
+<v Aashish Sonawane>only the Technical Support part of it?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/770-0
+00:49:04.209 --> 00:49:07.877
+<v Amit Hiremath>No, no, no.
+See what happens is even though this is a</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/770-1
+00:49:07.877 --> 00:49:11.138
+<v Amit Hiremath>agent AI,
+it needs to connect with lot of other</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/770-2
+00:49:11.138 --> 00:49:15.009
+<v Amit Hiremath>services, right?
+Like take for example yesterday we were</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/769-0
+00:49:12.729 --> 00:49:13.489
+<v Aashish Sonawane>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/770-3
+00:49:15.009 --> 00:49:19.289
+<v Amit Hiremath>discussing with a prospect perspective
+partner who has a bank.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/771-0
+00:49:19.729 --> 00:49:23.638
+<v Amit Hiremath>In Oman as a customer and what they're
+looking for is what they call as a</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/771-1
+00:49:23.638 --> 00:49:26.015
+<v Amit Hiremath>correspondence management system for a
+bank.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/771-2
+00:49:26.015 --> 00:49:29.607
+<v Amit Hiremath>Now correspondence management system in
+for a bank means, you know,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/771-3
+00:49:29.607 --> 00:49:33.781
+<v Amit Hiremath>anybody who corresponds with the bank,
+right? It could be a government agency,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/771-4
+00:49:33.781 --> 00:49:36.369
+<v Amit Hiremath>it could be another bank,
+it could be customers.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/772-0
+00:49:36.689 --> 00:49:41.504
+<v Amit Hiremath>It could be regulatory authorities,
+compliance authorities or all that, right?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/772-1
+00:49:41.504 --> 00:49:45.038
+<v Amit Hiremath>So anybody could be,
+and there could be multiple modes of</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/772-2
+00:49:45.038 --> 00:49:48.025
+<v Amit Hiremath>communication.
+It could be actual physical name,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/772-3
+00:49:48.025 --> 00:49:50.767
+<v Amit Hiremath>it could be an e-mail,
+it could be a portal,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/772-4
+00:49:50.767 --> 00:49:52.169
+<v Amit Hiremath>it could be a chat bot.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/773-0
+00:49:52.769 --> 00:49:55.598
+<v Amit Hiremath>It could be a help desk,
+it could be anything, right?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/773-1
+00:49:55.598 --> 00:49:59.736
+<v Amit Hiremath>Then what they want is correspondence
+management system so that any of the any</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/773-2
+00:49:59.736 --> 00:50:03.979
+<v Amit Hiremath>of these channels you receive something,
+we should be able to identify what that</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/773-3
+00:50:03.979 --> 00:50:07.698
+<v Amit Hiremath>communication is and then route it
+through the respective departments,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/773-4
+00:50:07.698 --> 00:50:09.689
+<v Amit Hiremath>functions, whatever, you know all the.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/774-0
+00:50:11.009 --> 00:50:13.643
+<v Amit Hiremath>And then get an entire feedback and you
+know,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/774-1
+00:50:13.643 --> 00:50:18.052
+<v Amit Hiremath>give the answer to that and all that,
+right? Look for closures and all that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/774-2
+00:50:18.052 --> 00:50:22.002
+<v Amit Hiremath>So right now they're doing it manually.
+They want to build a system.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/774-3
+00:50:22.002 --> 00:50:26.239
+<v Amit Hiremath>So this uptick agent AI becomes very
+useful. So one is the agent AI part.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/774-4
+00:50:26.239 --> 00:50:28.129
+<v Amit Hiremath>So you'll need to kind of really.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/775-0
+00:50:28.369 --> 00:50:30.962
+<v Amit Hiremath>Prepare the agentic AI or create that
+workflow,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/775-1
+00:50:30.962 --> 00:50:34.366
+<v Amit Hiremath>but also it needs to integrate with a
+portal help desk system.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/775-2
+00:50:34.366 --> 00:50:37.878
+<v Amit Hiremath>So as soon as a ticket is created I we
+should be able to get it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/775-3
+00:50:37.878 --> 00:50:40.741
+<v Amit Hiremath>So there is an API connection that we
+need to build.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/775-4
+00:50:40.741 --> 00:50:45.280
+<v Amit Hiremath>Then suppose if we need to send an e-mail
+to the you know some function so it needs</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/775-5
+00:50:45.280 --> 00:50:48.089
+<v Amit Hiremath>to be sent that e-mail and it should wait
+for that.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/776-0
+00:50:48.289 --> 00:50:52.494
+<v Amit Hiremath>E-mail to come back and as a response so
+it should get all the details.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/776-1
+00:50:52.494 --> 00:50:57.225
+<v Amit Hiremath>But suppose if it is supposed to call any
+of their APIs in their banking system,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/776-2
+00:50:57.225 --> 00:51:01.080
+<v Amit Hiremath>we need to call that so that integration
+needs to be implemented.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/776-3
+00:51:01.080 --> 00:51:04.233
+<v Amit Hiremath>So apart from just customization of the
+agent agents,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/776-4
+00:51:04.233 --> 00:51:07.329
+<v Amit Hiremath>it's also about the integrations with
+other systems.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/777-0
+00:51:07.609 --> 00:51:07.729
+<v Amit Hiremath>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/780-0
+00:51:09.849 --> 00:51:14.529
+<v Dilip Kachot>It may give a platform to create all this
+workflow which.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/786-0
+00:51:13.329 --> 00:51:16.579
+<v Amit Hiremath>Absolutely.
+And there's so much scope for innovation,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/778-0
+00:51:13.809 --> 00:51:14.529
+<v Aashish Sonawane>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/781-0
+00:51:16.169 --> 00:51:16.689
+<v Dilip Kachot>Mhm.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/786-1
+00:51:16.579 --> 00:51:20.130
+<v Amit Hiremath>right? Like, you know,
+once the basic workflow is working,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/786-2
+00:51:20.130 --> 00:51:23.561
+<v Amit Hiremath>so then you get.
+So you rather than you spending time in</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/786-3
+00:51:23.561 --> 00:51:27.232
+<v Amit Hiremath>developing that entire workflow from
+scratch, you are ready.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/786-4
+00:51:27.232 --> 00:51:31.084
+<v Amit Hiremath>You have got it ready now.
+Now you can go to the next level of,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/782-0
+00:51:29.089 --> 00:51:30.129
+<v Dilip Kachot>Next to it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/786-5
+00:51:31.084 --> 00:51:32.649
+<v Amit Hiremath>you know, intelligence or.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/783-0
+00:51:31.609 --> 00:51:32.809
+<v Dilip Kachot>Intelligence.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/784-0
+00:51:33.369 --> 00:51:33.409
+<v Aashish Sonawane>Oh.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/785-0
+00:51:34.889 --> 00:51:35.009
+<v Dilip Kachot>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/787-0
+00:51:37.569 --> 00:51:37.729
+<v Dilip Kachot>OK.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/788-0
+00:51:38.369 --> 00:51:39.529
+<v Aashish Sonawane>That answers. Thanks.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/789-0
+00:51:40.609 --> 00:51:44.369
+<v Amit Hiremath>Yeah, sure. Yeah. And and anyone else?</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/792-0
+00:51:45.609 --> 00:51:49.837
+<v Amit Hiremath>So think about it. You know,
+this could be a great solution. I I mean,</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/792-1
+00:51:49.837 --> 00:51:54.423
+<v Amit Hiremath>I'll share the details with you in terms
+of uptick. It's just uptick dot AI.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/792-2
+00:51:54.423 --> 00:51:58.056
+<v Amit Hiremath>I think you can go to the website and
+find a lot of details.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/790-0
+00:51:55.689 --> 00:51:56.809
+<v Dilip Kachot>I just see it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/792-3
+00:51:58.056 --> 00:52:01.689
+<v Amit Hiremath>Once we get the approval,
+I'll do an announcement of course.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/793-0
+00:52:01.809 --> 00:52:04.289
+<v Amit Hiremath>So that you will know all of it.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/791-0
+00:52:02.049 --> 00:52:02.289
+<v Dilip Kachot>Sure.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/798-0
+00:52:06.489 --> 00:52:09.969
+<v Dilip Kachot>OK. Thank you. Thank you, Ahmed.
+Thank you, everyone. Bye.</v>
+
+ee560717-667c-4a08-8cbf-a197ebe10bc5/796-0
+00:52:08.969 --> 00:52:09.169
+Thanks.

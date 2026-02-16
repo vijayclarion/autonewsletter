@@ -1,0 +1,2159 @@
+WEBVTT
+
+b08278d0-08bb-4e02-a219-e0718521863c/26-0
+00:00:03.299 --> 00:00:07.034
+<v Palash Bharadwaj>But you know,
+maybe a lot of people you guys know,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/26-1
+00:00:07.034 --> 00:00:12.526
+<v Palash Bharadwaj>but there's a lot of things which is also
+new that you would probably see.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/26-2
+00:00:12.526 --> 00:00:13.259
+<v Palash Bharadwaj>So let me.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/35-0
+00:00:15.379 --> 00:00:21.099
+<v Palash Bharadwaj>Share my screen. Once you see my screen,
+let me know. We will uh.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/38-0
+00:00:26.339 --> 00:00:27.099
+<v Palash Bharadwaj>Can you see my screen?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/39-0
+00:00:29.779 --> 00:00:30.059
+<v Mayurkumar Chaniyara>Yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/40-0
+00:00:30.659 --> 00:00:30.819
+Yes.
+
+b08278d0-08bb-4e02-a219-e0718521863c/81-0
+00:00:31.739 --> 00:00:36.331
+<v Palash Bharadwaj>OK, so basically again,
+everyone knows about database. I mean,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/81-1
+00:00:36.331 --> 00:00:41.068
+<v Palash Bharadwaj>I'm not doing something new,
+but want to kind of get little bit,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/81-2
+00:00:41.068 --> 00:00:47.118
+<v Palash Bharadwaj>you know, on the side where as you know,
+database has been always the backbone and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/81-3
+00:00:47.118 --> 00:00:51.419
+<v Palash Bharadwaj>is going to remain the backbone of any
+modern application.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/112-0
+00:00:51.659 --> 00:01:00.991
+<v Palash Bharadwaj>Application whether we are looking at in
+terms of directly impacting scalability</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/112-1
+00:01:00.991 --> 00:01:09.979
+<v Palash Bharadwaj>and what actually Ashish did help was
+that part on certain things, right? So.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/146-0
+00:01:10.179 --> 00:01:15.415
+<v Palash Bharadwaj>Having the right database choice can make
+or break the architecture based on the</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/146-1
+00:01:15.415 --> 00:01:19.552
+<v Palash Bharadwaj>changes that you're seeing,
+you know as we move forward, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/146-2
+00:01:19.552 --> 00:01:24.659
+<v Palash Bharadwaj>And choosing it could help in terms of
+scalability, which impacts scalability.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/149-0
+00:01:25.099 --> 00:01:27.459
+<v Palash Bharadwaj>Compliance and erformance all.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/191-0
+00:01:28.699 --> 00:01:34.040
+<v Palash Bharadwaj>So the first one that we're talking about
+the SQL relational database,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/191-1
+00:01:34.040 --> 00:01:39.307
+<v Palash Bharadwaj>which is the foundation, right?
+We have done that and which basically</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/191-2
+00:01:39.307 --> 00:01:43.219
+<v Palash Bharadwaj>stores database in rows and columns as we
+all know.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/233-0
+00:01:43.659 --> 00:01:47.508
+<v Palash Bharadwaj>It ensures the consistency with ACID
+compliance.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/233-1
+00:01:47.508 --> 00:01:53.871
+<v Palash Bharadwaj>What it means is basically all the ACID
+transactions are atomicity, consistency,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/233-2
+00:01:53.871 --> 00:01:59.685
+<v Palash Bharadwaj>isolation and durability, right?
+And it guarantees the data integrity for</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/233-3
+00:01:59.685 --> 00:02:03.299
+<v Palash Bharadwaj>any mission critical applications that we
+do.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/285-0
+00:02:03.659 --> 00:02:08.941
+<v Palash Bharadwaj>Of course security is pretty strong
+because got RBAC which is role based</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/285-1
+00:02:08.941 --> 00:02:12.704
+<v Palash Bharadwaj>access control,
+encryption and audit trails, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/285-2
+00:02:12.704 --> 00:02:17.915
+<v Palash Bharadwaj>And of course foreign keys and
+constraints ensures the data consistency</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/285-3
+00:02:17.915 --> 00:02:22.619
+<v Palash Bharadwaj>which is the referential integrity for
+across the tables, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/333-0
+00:02:23.179 --> 00:02:27.306
+<v Palash Bharadwaj>This is very, very important.
+Now if you look at from the examples of</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/333-1
+00:02:27.306 --> 00:02:30.313
+<v Palash Bharadwaj>the use cases, banking systems,
+if you look at it,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/333-2
+00:02:30.313 --> 00:02:33.733
+<v Palash Bharadwaj>they are very heavily on this because
+it's transactional,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/333-3
+00:02:33.733 --> 00:02:36.445
+<v Palash Bharadwaj>transaction safety and regulatory
+compliance.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/333-4
+00:02:36.445 --> 00:02:39.099
+<v Palash Bharadwaj>They maintain healthcare for patient
+record.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/369-0
+00:02:42.699 --> 00:02:49.621
+<v Palash Bharadwaj>Integrity and HIPAA compliance and ERP
+complex business logics. So as you know,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/369-1
+00:02:49.621 --> 00:02:56.024
+<v Palash Bharadwaj>MySQL, Postgres, SQL, Oracle, SQL Server,
+you know other gold standard of</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/369-2
+00:02:56.024 --> 00:02:59.659
+<v Palash Bharadwaj>structured transactional workloads, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/370-0
+00:03:00.499 --> 00:03:00.899
+<v Palash Bharadwaj>OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/402-0
+00:03:02.259 --> 00:03:06.752
+<v Palash Bharadwaj>Now the next one also we have used No SQL
+Revolution,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/402-1
+00:03:06.752 --> 00:03:12.410
+<v Palash Bharadwaj>which is again a document database,
+document database that we call.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/402-2
+00:03:12.410 --> 00:03:17.819
+<v Palash Bharadwaj>It is designed for scalability and
+feasibility basically, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/430-0
+00:03:18.219 --> 00:03:26.952
+<v Palash Bharadwaj>And it is schema less or you call it
+schema light model horizontal scaling</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/430-1
+00:03:26.952 --> 00:03:33.705
+<v Palash Bharadwaj>across the clusters.
+It's ideal for large scale real time</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/430-2
+00:03:33.705 --> 00:03:35.219
+<v Palash Bharadwaj>applications.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/465-0
+00:03:35.739 --> 00:03:39.644
+<v Palash Bharadwaj>Right.
+If you look at social media applications</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/465-1
+00:03:39.644 --> 00:03:45.664
+<v Palash Bharadwaj>needing, you know, rapid growth,
+no SQL would be the ideal choice, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/465-2
+00:03:45.664 --> 00:03:52.255
+<v Palash Bharadwaj>e-commerce cataloging and all the stuff
+also comes in Mongo DB and Dynamo Dynamo</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/465-3
+00:03:52.255 --> 00:03:52.499
+<v Palash Bharadwaj>DB.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/475-0
+00:03:53.619 --> 00:03:57.087
+<v Palash Bharadwaj>Excel, you know they are.
+They create those product hierarchy and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/475-1
+00:03:57.087 --> 00:03:58.979
+<v Palash Bharadwaj>all the stuff, right? So that helps.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/515-0
+00:04:00.379 --> 00:04:04.942
+<v Palash Bharadwaj>The next slide and again I'm going a
+little fast because I have another</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/515-1
+00:04:04.942 --> 00:04:08.745
+<v Palash Bharadwaj>meeting coming up.
+So I want to make sure that I go through</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/515-2
+00:04:08.745 --> 00:04:12.928
+<v Palash Bharadwaj>all the slides quickly.
+High performance data storage which has a</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/515-3
+00:04:12.928 --> 00:04:17.619
+<v Palash Bharadwaj>key value stores and the columnar
+database right the two different kinds.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/534-0
+00:04:19.299 --> 00:04:27.054
+<v Palash Bharadwaj>Oops, did it? Sharing stopped.
+I don't know why it happened</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/527-0
+00:04:21.179 --> 00:04:23.939
+<v Amit Hiremath>Yeah, this screen should stop. Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/534-1
+00:04:27.054 --> 00:04:31.579
+<v Palash Bharadwaj>automatically. OK, OK, can you see?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/538-0
+00:04:34.059 --> 00:04:34.859
+<v Shivkumar C>Yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/569-0
+00:04:34.139 --> 00:04:39.510
+<v Palash Bharadwaj>Let me know once, OK,
+high performance data storage,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/569-1
+00:04:39.510 --> 00:04:45.794
+<v Palash Bharadwaj>a columnar database.
+Now what it you know if you look at from</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/569-2
+00:04:45.794 --> 00:04:52.179
+<v Palash Bharadwaj>the high value storage point of you know
+view what it does is.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/599-0
+00:04:53.259 --> 00:04:58.781
+<v Palash Bharadwaj>It has lightning fast reads,
+so if you look at sub millisecond</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/599-1
+00:04:58.781 --> 00:05:05.530
+<v Palash Bharadwaj>response times like radius is ideal for
+session in a management or real time</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/599-2
+00:05:05.530 --> 00:05:07.459
+<v Palash Bharadwaj>caching IoT ingestion.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/655-0
+00:05:07.899 --> 00:05:13.792
+<v Palash Bharadwaj>That can handle millions of sensor writes
+per second because that's real-time data</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/655-1
+00:05:13.792 --> 00:05:18.905
+<v Palash Bharadwaj>which will position across the clusters.
+On the columnar database side,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/655-2
+00:05:18.905 --> 00:05:24.088
+<v Palash Bharadwaj>you'll have the analytics optimization
+where the column wise storage and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/655-3
+00:05:24.088 --> 00:05:26.219
+<v Palash Bharadwaj>compression delivers a faster.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/695-0
+00:05:26.859 --> 00:05:32.771
+<v Palash Bharadwaj>Analytical queries and real time insights
+like Cassandra or Hbase will have massive</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/695-1
+00:05:32.771 --> 00:05:38.050
+<v Palash Bharadwaj>data set and the customer behavior
+tracking with the business intelligence</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/695-2
+00:05:38.050 --> 00:05:42.555
+<v Palash Bharadwaj>comes handy with that.
+If you look at from high performance and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/695-3
+00:05:42.555 --> 00:05:46.779
+<v Palash Bharadwaj>compress compression and indexing,
+this would be very very.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/698-0
+00:05:46.859 --> 00:05:48.099
+<v Palash Bharadwaj>Valuable.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/734-0
+00:05:50.499 --> 00:05:54.425
+<v Palash Bharadwaj>OK,
+now I'm talking about the specialized</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/734-1
+00:05:54.425 --> 00:06:00.502
+<v Palash Bharadwaj>database architecture.
+What are those data? One is the graph DB.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/734-2
+00:06:00.502 --> 00:06:04.897
+<v Palash Bharadwaj>Again,
+you know probably of are aware Neo4j or</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/734-3
+00:06:04.897 --> 00:06:06.019
+<v Palash Bharadwaj>AWS Neptune.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/767-0
+00:06:06.459 --> 00:06:12.099
+<v Palash Bharadwaj>Because they are,
+they are good at the relationship heavy</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/767-1
+00:06:12.099 --> 00:06:17.447
+<v Palash Bharadwaj>data where you can look at fraud
+detection algorithms,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/767-2
+00:06:17.447 --> 00:06:23.379
+<v Palash Bharadwaj>you can focus on great deep insights in
+terms of traversals.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/801-0
+00:06:23.739 --> 00:06:28.242
+<v Palash Bharadwaj>Or you're looking at in terms of
+recommendations,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/801-1
+00:06:28.242 --> 00:06:34.546
+<v Palash Bharadwaj>influence and all the stuff.
+Graph database would be a great database</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/801-2
+00:06:34.546 --> 00:06:39.139
+<v Palash Bharadwaj>time series database like Influx DB or
+Prometheus.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/828-0
+00:06:41.819 --> 00:06:50.157
+<v Palash Bharadwaj>It optimize for the timestamp data.
+It stores the metrics right and events</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/828-1
+00:06:50.157 --> 00:06:57.939
+<v Palash Bharadwaj>efficiently as well as use.
+It is very useful for monitoring the IoT.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/846-0
+00:06:58.579 --> 00:07:01.758
+<v Palash Bharadwaj>We were just talking about IoT systems,
+right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/846-1
+00:07:01.758 --> 00:07:05.209
+<v Palash Bharadwaj>So server performance and monitoring
+becomes very,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/846-2
+00:07:05.209 --> 00:07:09.539
+<v Palash Bharadwaj>very handy with this high frequency
+writing and all this stuff.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/872-0
+00:07:10.619 --> 00:07:19.560
+<v Palash Bharadwaj>Now there are a couple of things that are
+emerging now in the database site.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/872-1
+00:07:19.560 --> 00:07:26.179
+<v Palash Bharadwaj>One is the object oriented database,
+Object DB or Zo DB.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/906-0
+00:07:26.779 --> 00:07:33.943
+<v Palash Bharadwaj>Which basically what it does is is great
+for simulations, engineering,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/906-1
+00:07:33.943 --> 00:07:40.099
+<v Palash Bharadwaj>CAD services, you know,
+very important spatial database like</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/906-2
+00:07:40.099 --> 00:07:44.539
+<v Palash Bharadwaj>Oracle Spatial or Post GIS.
+It is more for.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/937-0
+00:07:44.859 --> 00:07:52.728
+<v Palash Bharadwaj>GIS and logistics, mapping applications,
+logistics, optimization and planning.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/937-1
+00:07:52.728 --> 00:08:00.099
+<v Palash Bharadwaj>And then the last one actually has a new
+SQL revolution, which is on the.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/966-0
+00:08:01.139 --> 00:08:09.997
+<v Palash Bharadwaj>Cockroach DB and Volt DB which combines
+the acid guarantees and with horizontal</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/966-1
+00:08:09.997 --> 00:08:16.419
+<v Palash Bharadwaj>scalability ideal for global SAS
+platforms and it powers.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/981-0
+00:08:17.939 --> 00:08:21.708
+<v Palash Bharadwaj>The you know,
+if you look at for SAS applications,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/981-1
+00:08:21.708 --> 00:08:25.699
+<v Palash Bharadwaj>it's you know,
+consistent and it can scale massively.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1018-0
+00:08:27.979 --> 00:08:36.479
+<v Palash Bharadwaj>I kind of created a matrix here based on
+the primary use cases and weakness like</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1018-1
+00:08:36.479 --> 00:08:44.979
+<v Palash Bharadwaj>SQL and relation database type could be
+mature for tooling but again limited on.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1059-0
+00:08:46.179 --> 00:08:52.401
+<v Palash Bharadwaj>Horizontal scaling, so ERP, finance,
+healthcare could be one and document no</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1059-1
+00:08:52.401 --> 00:08:57.088
+<v Palash Bharadwaj>SQL could be, you know,
+schema flexible and limited asset</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1059-2
+00:08:57.088 --> 00:09:01.451
+<v Palash Bharadwaj>transactions,
+so it's good for CMS or e-commerce kind</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1059-3
+00:09:01.451 --> 00:09:02.179
+<v Palash Bharadwaj>of thing.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1093-0
+00:09:02.619 --> 00:09:10.156
+<v Palash Bharadwaj>Key value no SQL again, high performance,
+simplicity, limited querying capability,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1093-1
+00:09:10.156 --> 00:09:17.058
+<v Palash Bharadwaj>so caching session management could be
+one of the graph no SQL relationship</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1093-2
+00:09:17.058 --> 00:09:19.419
+<v Palash Bharadwaj>insights traversal it can.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1122-0
+00:09:19.739 --> 00:09:24.650
+<v Palash Bharadwaj>Complex query you know,
+optimizations like fraud detection,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1122-1
+00:09:24.650 --> 00:09:30.544
+<v Palash Bharadwaj>social media and you know networks and
+all the stuff. New SQL is again,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1122-2
+00:09:30.544 --> 00:09:35.619
+<v Palash Bharadwaj>it's the strength is basically asset plus
+horizontal scaling.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1154-0
+00:09:35.899 --> 00:09:42.296
+<v Palash Bharadwaj>And technology still is maturing,
+so global says high traffic systems if</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1154-1
+00:09:42.296 --> 00:09:46.151
+<v Palash Bharadwaj>you choose,
+if we choose the right workload</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1154-2
+00:09:46.151 --> 00:09:51.059
+<v Palash Bharadwaj>characteristics,
+not just on the technology preference.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1192-0
+00:09:51.739 --> 00:09:56.079
+<v Palash Bharadwaj>I think that's the right way to make a
+decision.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1192-1
+00:09:56.079 --> 00:10:01.747
+<v Palash Bharadwaj>If you look at from the architectural
+consideration part of it,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1192-2
+00:10:01.747 --> 00:10:06.884
+<v Palash Bharadwaj>you would look at what are the
+overlapping pieces, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1192-3
+00:10:06.884 --> 00:10:11.579
+<v Palash Bharadwaj>So certain things are partition tolerant
+consistent.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1223-0
+00:10:11.619 --> 00:10:18.001
+<v Palash Bharadwaj>And available, available partition.
+So you need to look at how the</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1223-1
+00:10:18.001 --> 00:10:23.240
+<v Palash Bharadwaj>consistency,
+availability and partition tolerance kind</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1223-2
+00:10:23.240 --> 00:10:30.099
+<v Palash Bharadwaj>of overlaps with each other and which one
+to use at what point of time.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1224-0
+00:10:30.939 --> 00:10:31.339
+<v Palash Bharadwaj>Um.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1260-0
+00:10:34.699 --> 00:10:40.042
+<v Palash Bharadwaj>Hybrid architecture.
+This is the modern approach that anybody</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1260-1
+00:10:40.042 --> 00:10:45.041
+<v Palash Bharadwaj>is looking at.
+If you look at from the leading, you know,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1260-2
+00:10:45.041 --> 00:10:50.902
+<v Palash Bharadwaj>organizations, they, you know,
+adopt polyglot persistent strategies</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1260-3
+00:10:50.902 --> 00:10:51.419
+<v Palash Bharadwaj>which.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1306-0
+00:10:52.179 --> 00:10:58.448
+<v Palash Bharadwaj>Selects the optimal database for specific
+user use cases rather than you know just</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1306-1
+00:10:58.448 --> 00:11:03.132
+<v Palash Bharadwaj>going into a single solution.
+So it's kind of a mixed hybrid.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1306-2
+00:11:03.132 --> 00:11:07.513
+<v Palash Bharadwaj>We would look at the transactional core
+analytical layer,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1306-3
+00:11:07.513 --> 00:11:11.819
+<v Palash Bharadwaj>caching strategy and search and discovery.
+So all those.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1312-0
+00:11:11.939 --> 00:11:18.299
+<v Palash Bharadwaj>Would kind of bring your modern approach
+of making it more.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1342-0
+00:11:20.259 --> 00:11:26.765
+<v Palash Bharadwaj>You know best way to look at from the
+architecture standpoint, what would be,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1342-1
+00:11:26.765 --> 00:11:30.935
+<v Palash Bharadwaj>you know,
+database selection strategy in terms of</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1342-2
+00:11:30.935 --> 00:11:34.939
+<v Palash Bharadwaj>recommendation and next steps you should
+audit.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1393-0
+00:11:35.379 --> 00:11:40.999
+<v Palash Bharadwaj>The current architecture identify the
+performance bottleneck scalability with</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1393-1
+00:11:40.999 --> 00:11:45.395
+<v Palash Bharadwaj>the existing database infrastructure,
+run proof of concepts,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1393-2
+00:11:45.395 --> 00:11:49.070
+<v Palash Bharadwaj>define hybrid strategy,
+establish that governance,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1393-3
+00:11:49.070 --> 00:11:54.330
+<v Palash Bharadwaj>and then recommend the approach.
+I think that's where the recommendation</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1393-4
+00:11:54.330 --> 00:11:54.979
+<v Palash Bharadwaj>comes in.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1416-0
+00:11:55.139 --> 00:12:01.601
+<v Palash Bharadwaj>And that's where the future belongs,
+where people can strategically combine</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1416-1
+00:12:01.601 --> 00:12:07.979
+<v Palash Bharadwaj>database technologies and rather than
+just bidding on one single solution.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1415-0
+00:12:08.099 --> 00:12:08.299
+<v Mujaffarkhan Sanadi>Mm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1421-0
+00:12:10.459 --> 00:12:10.819
+<v Amit Hiremath>Amazing.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1446-0
+00:12:10.499 --> 00:12:13.501
+<v Palash Bharadwaj>So that's, you know,
+and I'll share the slides,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1446-1
+00:12:13.501 --> 00:12:18.444
+<v Palash Bharadwaj>but I just thought to share quickly this
+because nobody was ready and this was</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1446-2
+00:12:18.444 --> 00:12:21.259
+<v Palash Bharadwaj>ready with me.
+So I just thought I'll share.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1473-0
+00:12:21.819 --> 00:12:26.205
+<v Amit Hiremath>Thank you. Thank you, Palash.
+I think that's quite helpful.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1473-1
+00:12:26.205 --> 00:12:30.737
+<v Amit Hiremath>A very summarized one,
+but quite neat and very something that</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1473-2
+00:12:30.737 --> 00:12:36.659
+<v Amit Hiremath>could be used in actual practical ways
+when you're designing a system basically.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1466-0
+00:12:34.779 --> 00:12:35.219
+<v Palash Bharadwaj>That's.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1469-0
+00:12:36.219 --> 00:12:36.779
+<v Palash Bharadwaj>Correct.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1489-0
+00:12:36.739 --> 00:12:39.462
+<v Amit Hiremath>Vijay,
+maybe you can look at it when we're</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1489-1
+00:12:39.462 --> 00:12:43.072
+<v Amit Hiremath>designing this,
+you know Aramco systems and all it would</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1489-2
+00:12:43.072 --> 00:12:45.099
+<v Amit Hiremath>be useful to analyze and select.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1487-0
+00:12:43.299 --> 00:12:43.699
+<v Shivkumar C>Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1490-0
+00:12:46.259 --> 00:12:48.259
+<v Vijay Nadar>Yeah, yeah, sure.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1501-0
+00:12:48.859 --> 00:12:50.739
+<v Amit Hiremath>OK, cool.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1558-0
+00:12:49.099 --> 00:12:52.590
+<v Yusuf Kumarkiri>Thank you Palash.
+I think you're lots of new things here,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1502-0
+00:12:50.339 --> 00:12:50.859
+<v Vijay Nadar>Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1558-1
+00:12:52.590 --> 00:12:57.044
+<v Yusuf Kumarkiri>especially the logistic you mentioned
+couple of things CAD, CAM, the new.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1518-0
+00:12:55.699 --> 00:12:56.219
+<v Vijay Nadar>Mhm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1558-2
+00:12:57.044 --> 00:13:01.559
+<v Yusuf Kumarkiri>I think that is very important to
+understand which database suits based on</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1558-3
+00:13:01.559 --> 00:13:05.231
+<v Yusuf Kumarkiri>your architecture.
+It is correct statement make or break and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1545-0
+00:13:05.139 --> 00:13:05.299
+<v Vijay Nadar>Mm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1558-4
+00:13:05.231 --> 00:13:07.579
+<v Yusuf Kumarkiri>that I have seen in my last experience.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1547-0
+00:13:05.419 --> 00:13:05.619
+<v Amit Hiremath>Thanks.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1552-0
+00:13:07.099 --> 00:13:07.139
+<v Aashish Sonawane>Oh.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1603-0
+00:13:08.539 --> 00:13:13.505
+<v Yusuf Kumarkiri>So we spend like for first data client,
+right? You might heard.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1603-1
+00:13:13.505 --> 00:13:17.928
+<v Yusuf Kumarkiri>So they started one project,
+spent three years with DB2,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1567-0
+00:13:14.059 --> 00:13:14.219
+<v Palash Bharadwaj>Yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1603-2
+00:13:17.928 --> 00:13:23.903
+<v Yusuf Kumarkiri>almost 50 resource on site and 100
+offshore. After three-year they break it.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1603-3
+00:13:23.903 --> 00:13:27.939
+<v Yusuf Kumarkiri>They said DB2 will not fit due to X for
+the reason.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1609-0
+00:13:28.219 --> 00:13:32.379
+<v Yusuf Kumarkiri>Then it was like crash everything.
+They started from scratch.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1610-0
+00:13:32.299 --> 00:13:32.619
+<v Palash Bharadwaj>Hello.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1620-0
+00:13:37.059 --> 00:13:38.939
+<v Yusuf Kumarkiri>It it definitely.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1629-0
+00:13:37.379 --> 00:13:40.331
+<v Palash Bharadwaj>Yeah, I'll. I'll share this.
+I'll share this with the team.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1629-1
+00:13:40.331 --> 00:13:42.939
+<v Palash Bharadwaj>At least you can put it in the repository.
+Oh, yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1631-0
+00:13:44.939 --> 00:13:46.419
+<v Amit Hiremath>Makes sense, OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1632-0
+00:13:45.739 --> 00:13:46.339
+<v Yusuf Kumarkiri>Thank you.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1636-0
+00:13:47.619 --> 00:13:48.619
+<v Shivkumar C>For sure.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1634-0
+00:13:47.659 --> 00:13:47.699
+<v Amit Hiremath>Oh.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1648-0
+00:13:48.419 --> 00:13:52.779
+<v Palash Bharadwaj>OK, I need to jump on another call,
+so I will speak relief.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1651-0
+00:13:51.579 --> 00:13:54.979
+<v Amit Hiremath>Sure, sure. No worries, Palash.
+Thank you so much.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1652-0
+00:13:54.299 --> 00:13:54.859
+<v Palash Bharadwaj>Thank you.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1657-0
+00:13:55.579 --> 00:13:56.299
+<v Kishor Gwala>Thank you.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1656-0
+00:13:55.739 --> 00:13:56.059
+<v Yusuf Kumarkiri>Thank you.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1659-0
+00:13:55.939 --> 00:13:57.419
+<v Vijay Nadar>Thanks. Have a good one.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1681-0
+00:13:59.099 --> 00:14:03.311
+<v Kishor Gwala>OK, Amit,
+so far today's agenda like do do you want</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1681-1
+00:14:03.311 --> 00:14:05.499
+<v Kishor Gwala>to cover anything specific?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1718-0
+00:14:05.379 --> 00:14:10.174
+<v Amit Hiremath>Yeah, yeah. So I wanted to just check up,
+take up one more point.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1718-1
+00:14:10.174 --> 00:14:15.188
+<v Amit Hiremath>I hope you guys have all the tech leads,
+especially tech architects.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1718-2
+00:14:15.188 --> 00:14:19.620
+<v Amit Hiremath>I'm working with them for their KRAS and
+KPIs. Are you guys,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1718-3
+00:14:19.620 --> 00:14:24.779
+<v Amit Hiremath>have you guys all got your all your KPIs,
+KRAs uploaded in the Darwin?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1721-0
+00:14:25.139 --> 00:14:28.019
+<v Amit Hiremath>Box. Do you need any help there?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1755-0
+00:14:30.739 --> 00:14:37.794
+<v Amit Hiremath>I think this is specifically for Muzaffar,
+Shiv, Praveen and Mayur.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1755-1
+00:14:37.794 --> 00:14:44.539
+<v Amit Hiremath>I think the architects, Yusuf,
+I think your KR is also there on.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1758-0
+00:14:44.379 --> 00:14:47.259
+<v Yusuf Kumarkiri>Yes, yes, yes, I'm at it, yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1765-0
+00:14:45.699 --> 00:14:51.619
+<v Amit Hiremath>Yeah, Darwin box. OK. And so Praveen,
+what about you?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1783-0
+00:14:52.539 --> 00:14:57.819
+<v Praviin Dhhonne>Oh, I have not done yet. Not done yet,
+Amit. I'll do it now.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1771-0
+00:14:53.299 --> 00:14:54.699
+<v Amit Hiremath>Have you bought your?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1790-0
+00:14:55.939 --> 00:14:58.613
+<v Amit Hiremath>OK, OK.
+But you are aware that it has to be done,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1790-1
+00:14:58.613 --> 00:15:00.379
+<v Amit Hiremath>right? I know what is to be done.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1810-0
+00:15:00.859 --> 00:15:05.241
+<v Praviin Dhhonne>Yes,
+I am aware of that and also I got one</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1810-1
+00:15:05.241 --> 00:15:12.579
+<v Praviin Dhhonne>e-mail with the training as well if you
+want to look at how to do that.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1812-0
+00:15:12.539 --> 00:15:15.579
+<v Amit Hiremath>Sure, sure. How about you, Muzaffar?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1811-0
+00:15:14.179 --> 00:15:14.339
+<v Praviin Dhhonne>No.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1822-0
+00:15:16.899 --> 00:15:18.299
+<v Amit Hiremath>I said, is that press?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1838-0
+00:15:17.899 --> 00:15:20.965
+<v Mujaffarkhan Sanadi>Yeah, yeah,
+I attended the training and yeah,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1828-0
+00:15:20.779 --> 00:15:20.899
+<v Amit Hiremath>OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1838-1
+00:15:20.965 --> 00:15:24.899
+<v Mujaffarkhan Sanadi>I will go go through that. Not yet done,
+but I will check.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1846-0
+00:15:24.579 --> 00:15:28.179
+<v Amit Hiremath>OK, OK, sure, sure. How about you,
+Mayur and Shiv?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1866-0
+00:15:30.379 --> 00:15:33.611
+<v Mayurkumar Chaniyara>Uh, yes Sir.
+I have attended the training but I'm not</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1866-1
+00:15:33.611 --> 00:15:37.082
+<v Mayurkumar Chaniyara>at that part, so I need to get that.
+How can you do that?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1866-2
+00:15:37.082 --> 00:15:38.459
+<v Mayurkumar Chaniyara>So I reach that number.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1877-0
+00:15:38.659 --> 00:15:42.939
+<v Amit Hiremath>OK, OK.
+So go ahead and get that done sooner.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1905-0
+00:15:41.059 --> 00:15:46.121
+<v Mayurkumar Chaniyara>So, Amit, yeah, so, OK, OK.
+So like that is a regular KRA that I am</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1905-1
+00:15:46.121 --> 00:15:51.259
+<v Mayurkumar Chaniyara>killing with the manager.
+That is the only one, right? OK, yes, yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1908-0
+00:15:47.779 --> 00:15:52.939
+<v Amit Hiremath>Yeah, yeah, it's the same thing. Hey,
+same thing, but to be done on Darwin box.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1912-0
+00:15:53.179 --> 00:15:55.099
+<v Mayurkumar Chaniyara>That inbox open, yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1959-0
+00:15:54.419 --> 00:16:00.144
+<v Amit Hiremath>Only for architects we are creating new
+because there's something called as a 5 +</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1959-1
+00:16:00.144 --> 00:16:04.752
+<v Amit Hiremath>5 which is based on the scaling of
+framework. So I get my 5 to 5.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1932-0
+00:16:04.099 --> 00:16:04.619
+<v Mayurkumar Chaniyara>Mhm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1959-2
+00:16:04.752 --> 00:16:09.779
+<v Amit Hiremath>Similarly we use five to five.
+So because everybody's there I think and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1959-3
+00:16:09.779 --> 00:16:13.619
+<v Amit Hiremath>I felt this could be useful for you to
+understand how.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2001-0
+00:16:14.179 --> 00:16:17.600
+<v Amit Hiremath>Things work, you know,
+as a technology office, new practices,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1960-0
+00:16:17.179 --> 00:16:17.219
+<v Mayurkumar Chaniyara>Oh.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2001-1
+00:16:17.600 --> 00:16:20.359
+<v Amit Hiremath>what happens.
+So what I'll do is I did share this</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2001-2
+00:16:20.359 --> 00:16:24.443
+<v Amit Hiremath>yesterday with I think Kishore, right.
+I think Kishore I shared with you.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2001-3
+00:16:24.443 --> 00:16:27.367
+<v Amit Hiremath>But like, yeah,
+I've shared this with the architect.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1985-0
+00:16:24.579 --> 00:16:25.619
+<v Yusuf Kumarkiri>Yeah, I am.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/1989-0
+00:16:27.259 --> 00:16:27.539
+<v Kishor Gwala>M.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2001-4
+00:16:27.367 --> 00:16:29.299
+<v Amit Hiremath>I'll just share with everyone here.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2008-0
+00:16:29.779 --> 00:16:34.259
+<v Amit Hiremath>So that they get an idea about how things
+work. OK, so I'll share my window.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2033-0
+00:16:36.259 --> 00:16:40.506
+<v Yusuf Kumarkiri>But Amit, we have not done with 5 + 5,
+I think we have done the normal under,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2045-0
+00:16:39.299 --> 00:16:43.697
+<v Amit Hiremath>Yeah, I know. I think for you, yeah,
+for you, because you are,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2033-1
+00:16:40.506 --> 00:16:40.779
+<v Yusuf Kumarkiri>yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2045-1
+00:16:43.697 --> 00:16:46.979
+<v Amit Hiremath>I know completely on Nazam, it may be OK,
+but.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2097-0
+00:16:48.459 --> 00:16:51.433
+<v Amit Hiremath>But you can also have a look at it.
+I know it.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2097-1
+00:16:51.433 --> 00:16:54.598
+<v Amit Hiremath>It helps you to also align yourself to,
+you know,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2097-2
+00:16:54.598 --> 00:16:58.522
+<v Amit Hiremath>what we're doing in the technology
+function basically, right.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2097-3
+00:16:58.522 --> 00:17:03.648
+<v Amit Hiremath>So now in technology there are what we
+call as 5 + 5. So there are 5 priorities,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2097-4
+00:17:03.648 --> 00:17:07.699
+<v Amit Hiremath>which is basically what we call as
+projects basically and five.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2145-0
+00:17:07.699 --> 00:17:11.796
+<v Amit Hiremath>Metrics that we track.
+Now that doesn't mean that we only do</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2145-1
+00:17:11.796 --> 00:17:15.423
+<v Amit Hiremath>those five.
+These are the things that are tracked and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2145-2
+00:17:15.423 --> 00:17:19.588
+<v Amit Hiremath>reported every week,
+every month to the leadership and across</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2145-3
+00:17:19.588 --> 00:17:23.686
+<v Amit Hiremath>all the functions, right? We do like,
+I do like 2025 things,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2145-4
+00:17:23.686 --> 00:17:27.179
+<v Amit Hiremath>but out of that only five are very
+important where?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2196-0
+00:17:27.619 --> 00:17:32.970
+<v Amit Hiremath>It is completely focused on organization
+success or the organization road map. OK,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2196-1
+00:17:32.970 --> 00:17:37.290
+<v Amit Hiremath>so there are priorities.
+So first priority is again this is coming</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2196-2
+00:17:37.290 --> 00:17:40.384
+<v Amit Hiremath>from both tech and new practices.
+So just help.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2196-3
+00:17:40.384 --> 00:17:44.769
+<v Amit Hiremath>So if you see I mentioned this priorities
+belongs to new practices.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2196-4
+00:17:44.769 --> 00:17:47.219
+<v Amit Hiremath>It's about growth of Python practices.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2237-0
+00:17:47.219 --> 00:17:52.309
+<v Amit Hiremath>Is using paid campaigns.
+So we're doing some Google paid campaigns</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2237-1
+00:17:52.309 --> 00:17:58.158
+<v Amit Hiremath>where we have to assist and help the
+there is a agency that we are hiring to</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2237-2
+00:17:58.158 --> 00:18:03.476
+<v Amit Hiremath>help them with the content to finalize
+the audience, target audience,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2237-3
+00:18:03.476 --> 00:18:06.819
+<v Amit Hiremath>the ad copies, the keywords,
+the different.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2283-0
+00:18:07.059 --> 00:18:13.375
+<v Amit Hiremath>Content and there are also geographical,
+you know locations that you need to.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2283-1
+00:18:13.375 --> 00:18:19.853
+<v Amit Hiremath>There are a lot of things that you do
+that is that is one of the priorities for</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2283-2
+00:18:19.853 --> 00:18:23.416
+<v Amit Hiremath>me.
+Then the tech priority too is pre sales</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2283-3
+00:18:23.416 --> 00:18:26.979
+<v Amit Hiremath>as pre sales X as we call it.
+So there are.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2320-0
+00:18:26.979 --> 00:18:31.722
+<v Amit Hiremath>There are some 27 pipeline we were to
+close 14 out of them and there is a pre</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2320-1
+00:18:31.722 --> 00:18:36.647
+<v Amit Hiremath>sales CSAT that happens to the pre sales
+team that has to move from 4.25 to 4.5.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2320-2
+00:18:36.647 --> 00:18:41.268
+<v Amit Hiremath>So that was the target that was taken.
+So that was this is the technology's</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2320-3
+00:18:41.268 --> 00:18:42.059
+<v Amit Hiremath>priority too.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2378-0
+00:18:42.179 --> 00:18:46.181
+<v Amit Hiremath>Then then the new practices priority 3
+where we are working on Saudi cloud</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2378-1
+00:18:46.181 --> 00:18:49.704
+<v Amit Hiremath>strategy and door openers where we have
+identified the use cases,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2378-2
+00:18:49.704 --> 00:18:53.707
+<v Amit Hiremath>we have to provide the content.
+So we did one of the SharePoint migration,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2378-3
+00:18:53.707 --> 00:18:57.122
+<v Amit Hiremath>then there's Ms. Fabric,
+then there's a cyber security you know</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2378-4
+00:18:57.122 --> 00:18:59.684
+<v Amit Hiremath>content.
+So that all is provided purpose we are</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2378-5
+00:18:59.684 --> 00:19:01.659
+<v Amit Hiremath>working with cloud partnerships like.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2419-0
+00:19:01.779 --> 00:19:06.977
+<v Amit Hiremath>Like with Azure, AWS, Google,
+there's a second tier data provider cloud</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2419-1
+00:19:06.977 --> 00:19:12.320
+<v Amit Hiremath>protocol as V2 and we are working even
+partnership with Outsystems, Odoo.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2419-2
+00:19:12.320 --> 00:19:18.023
+<v Amit Hiremath>So all that comes under this and the
+target is to provide all the use cases or</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2419-3
+00:19:18.023 --> 00:19:19.179
+<v Amit Hiremath>provide content.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2464-0
+00:19:19.459 --> 00:19:23.292
+<v Amit Hiremath>Then the 4th priority is a JPP practice,
+Java, Python,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2464-1
+00:19:23.292 --> 00:19:27.684
+<v Amit Hiremath>Power BI and how do we grow that from 6
+to 10 and achieve a 4.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2464-2
+00:19:27.684 --> 00:19:33.190
+<v Amit Hiremath>5 plus rating from all the customers.
+This is more Palash is driving that this</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2464-3
+00:19:33.190 --> 00:19:35.979
+<v Amit Hiremath>as a lead or a head of the practice but.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2515-0
+00:19:36.419 --> 00:19:40.135
+<v Amit Hiremath>This is one of the priorities and make
+sure that this happens.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2515-1
+00:19:40.135 --> 00:19:43.321
+<v Amit Hiremath>Then the priority 5 is growth of
+potential customers.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2515-2
+00:19:43.321 --> 00:19:47.391
+<v Amit Hiremath>So we've chosen 5 like if you see the
+customers, here's SMS, Aramco,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2515-3
+00:19:47.391 --> 00:19:51.580
+<v Amit Hiremath>then there is Officer Track,
+Excel Queue and there's vector solutions,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2515-4
+00:19:51.580 --> 00:19:55.179
+<v Amit Hiremath>all of these we want them to kind of grow
+to the next level.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2561-0
+00:19:55.939 --> 00:20:00.031
+<v Amit Hiremath>So that is the five priority.
+So this is a combination of tech and new</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2561-1
+00:20:00.031 --> 00:20:04.641
+<v Amit Hiremath>practices. Now that is just a priority.
+So these are the things that we have to</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2561-2
+00:20:04.641 --> 00:20:09.310
+<v Amit Hiremath>report and make sure that it's tracked.
+The other is the metrics that means very</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2561-3
+00:20:09.310 --> 00:20:12.364
+<v Amit Hiremath>the specific level targets and numbers
+that we take.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2561-4
+00:20:12.364 --> 00:20:15.419
+<v Amit Hiremath>So there are 5 metrics that I've taken so
+pre sales.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2608-0
+00:20:15.459 --> 00:20:19.164
+<v Amit Hiremath>Sales X is 1 A.
+growth of strategic customers focused</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2608-1
+00:20:19.164 --> 00:20:23.898
+<v Amit Hiremath>best practice improvement,
+POC based business growth and GPB growth,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2608-2
+00:20:23.898 --> 00:20:27.123
+<v Amit Hiremath>right.
+And in that like in presales X closures</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2608-3
+00:20:27.123 --> 00:20:32.819
+<v Amit Hiremath>and sales is that is the you know target
+15 out of 27 and five is the target CSAT.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2646-0
+00:20:32.899 --> 00:20:37.802
+<v Amit Hiremath>And this is gets tracked as you see on A.
+weekly basis till the end and then growth</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2646-1
+00:20:37.802 --> 00:20:41.538
+<v Amit Hiremath>of strategic customers,
+these are the five ones, officer track,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2646-2
+00:20:41.538 --> 00:20:44.632
+<v Amit Hiremath>excel queue.
+So we are going good as of now in terms</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2646-3
+00:20:44.632 --> 00:20:48.835
+<v Amit Hiremath>of these officer track, excel,
+the other three are kind of still to get</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2646-4
+00:20:48.835 --> 00:20:49.419
+<v Amit Hiremath>initiated.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2700-0
+00:20:49.779 --> 00:20:54.262
+<v Amit Hiremath>Focus best practices there.
+We are working on 10 projects this time</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2700-1
+00:20:54.262 --> 00:20:58.944
+<v Amit Hiremath>and we're looking at all the best
+practices like it starts from agile,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2700-2
+00:20:58.944 --> 00:21:04.417
+<v Amit Hiremath>sonar cube, CICD, usability, unit testing,
+architectural best practices checklist.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2700-3
+00:21:04.417 --> 00:21:09.099
+<v Amit Hiremath>So all that is tracked here to 100%
+achievement for these 10 projects.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2739-0
+00:21:09.379 --> 00:21:12.723
+<v Amit Hiremath>Projects and when you say 100%,
+there is A. target that is taken.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2739-1
+00:21:12.723 --> 00:21:16.725
+<v Amit Hiremath>So not every project will get 5 ratings.
+So now you maybe some of them were at</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2739-2
+00:21:16.725 --> 00:21:19.816
+<v Amit Hiremath>3:00. So we take A.
+target that in 1/4 will reach to four at</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2739-3
+00:21:19.816 --> 00:21:22.451
+<v Amit Hiremath>an overall level,
+but whatever is the target taken,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2739-4
+00:21:22.451 --> 00:21:24.579
+<v Amit Hiremath>they have to achieve it. So that's how we.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2803-0
+00:21:24.699 --> 00:21:28.360
+<v Amit Hiremath>Take the target as 100% then POCS.
+We worked on five POCS.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2803-1
+00:21:28.360 --> 00:21:33.076
+<v Amit Hiremath>We worked with Nazam. There are two POCS.
+One was an audit management tool,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2803-2
+00:21:33.076 --> 00:21:35.930
+<v Amit Hiremath>the second was RPA using automation
+anywhere.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2803-3
+00:21:35.930 --> 00:21:39.281
+<v Amit Hiremath>Then there was Omega Care where we did A.
+POC for Ms.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2803-4
+00:21:39.281 --> 00:21:44.059
+<v Amit Hiremath>Fabric which is successful with Microsoft
+funding then Crystal Vision Azure.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2851-0
+00:21:44.539 --> 00:21:47.757
+<v Amit Hiremath>IoT POC.
+Then the third one we are working on is</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2851-1
+00:21:47.757 --> 00:21:53.011
+<v Amit Hiremath>CVAS for Edge labs where we are trying to
+help them convert the existing legacy</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2851-2
+00:21:53.011 --> 00:21:56.754
+<v Amit Hiremath>application to A. more modern.
+net Blazor kind of setup.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2851-3
+00:21:56.754 --> 00:22:00.761
+<v Amit Hiremath>So that's another POC.
+So target is you have to implement 5,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2851-4
+00:22:00.761 --> 00:22:03.979
+<v Amit Hiremath>present five and at least get one weed
+billable.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2895-0
+00:22:04.339 --> 00:22:07.014
+<v Amit Hiremath>This is A.
+these are good POC that means based on</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2895-1
+00:22:07.014 --> 00:22:10.172
+<v Amit Hiremath>the POC is the customer likes it and he
+wants to continue.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2895-2
+00:22:10.172 --> 00:22:14.079
+<v Amit Hiremath>So now that's helping us right.
+You know so Omega care is continuing and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2895-3
+00:22:14.079 --> 00:22:16.808
+<v Amit Hiremath>we've got one billable developer there
+JPB growth.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2895-4
+00:22:16.808 --> 00:22:19.859
+<v Amit Hiremath>This is again how do we grow JPB practice
+from 13 to 20.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2956-0
+00:22:20.739 --> 00:22:25.873
+<v Amit Hiremath>And then CSAT of course to achieve five.
+So these are the things that we track.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2956-1
+00:22:25.873 --> 00:22:31.008
+<v Amit Hiremath>So this gives you an idea about what it
+means by 5 + 5 and similarly so some of</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2956-2
+00:22:31.008 --> 00:22:35.950
+<v Amit Hiremath>this will overlap with some of the
+architects that they will take up because</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2956-3
+00:22:35.950 --> 00:22:40.379
+<v Amit Hiremath>like if you take an example SMS,
+it's going to Vijay who's going to.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2985-0
+00:22:40.499 --> 00:22:46.223
+<v Amit Hiremath>Kind of need that architectural part and
+supporting that Kishore would be working</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2970-0
+00:22:46.059 --> 00:22:46.659
+<v Shivkumar C>Architect.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2985-1
+00:22:46.223 --> 00:22:49.923
+<v Amit Hiremath>on unit testing architectural best
+practices, right?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/2985-2
+00:22:49.923 --> 00:22:55.299
+<v Amit Hiremath>Then Ashish is working on again the CICD
+part or even focus for that matter.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3023-0
+00:22:57.419 --> 00:23:02.238
+<v Amit Hiremath>Dilip is working on A. lot of AI things,
+so or like crystal vision Dilip is</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3023-1
+00:23:02.238 --> 00:23:05.472
+<v Amit Hiremath>handling.
+So then similarly it flows down to 5 + 5</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3023-2
+00:23:05.472 --> 00:23:09.213
+<v Amit Hiremath>for the architects.
+So that's how the scaling up framework</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3023-3
+00:23:09.213 --> 00:23:11.179
+<v Amit Hiremath>works and what we have seen is.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3083-0
+00:23:11.619 --> 00:23:14.875
+<v Amit Hiremath>There are A.
+lot of when because and the idea is when</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3083-1
+00:23:14.875 --> 00:23:19.820
+<v Amit Hiremath>we present this to the leadership and all
+the functions every week and also on A.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3083-2
+00:23:19.820 --> 00:23:22.534
+<v Amit Hiremath>monthly basis,
+it increases the cooperation.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3083-3
+00:23:22.534 --> 00:23:27.056
+<v Amit Hiremath>I think we did discuss this in the CLC.
+I think Tech leads were not there,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3083-4
+00:23:27.056 --> 00:23:31.459
+<v Amit Hiremath>but we've seen that the visibility of the
+work that we all are doing at.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3087-0
+00:23:31.459 --> 00:23:33.516
+<v Amit Hiremath>Because the functions improves and
+there's A.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3087-1
+00:23:33.516 --> 00:23:35.619
+<v Amit Hiremath>lot of collaboration and support that
+happens.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3120-0
+00:23:36.579 --> 00:23:41.561
+<v Amit Hiremath>Right. So that's that's all, you know,
+I just wanted to kind of let you know so</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3120-1
+00:23:41.561 --> 00:23:46.169
+<v Amit Hiremath>that you know what's happening as A.
+overall progress for whatever you're</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3120-2
+00:23:46.169 --> 00:23:48.598
+<v Amit Hiremath>doing,
+how it actually culminates into</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3120-3
+00:23:48.598 --> 00:23:52.459
+<v Amit Hiremath>organizational metrices and how the
+organization looks at it.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3141-0
+00:23:52.659 --> 00:23:57.385
+<v Amit Hiremath>Any any questions or any thoughts or any
+recommendations from your side?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3141-1
+00:23:57.385 --> 00:24:01.399
+<v Amit Hiremath>You feel that? OK,
+I think why not we look at this kind of A.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3141-2
+00:24:01.399 --> 00:24:03.859
+<v Amit Hiremath>metrics? Any any suggestions for that?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3182-0
+00:24:10.379 --> 00:24:14.673
+<v Vijay Nadar>One Amit,
+just one thing right now Palash mentioned</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3148-0
+00:24:12.499 --> 00:24:13.099
+<v Amit Hiremath>Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3182-1
+00:24:14.673 --> 00:24:19.628
+<v Vijay Nadar>about the database time.
+Can we have a means across all the</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3160-0
+00:24:16.859 --> 00:24:17.099
+<v Amit Hiremath>Hmm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3182-2
+00:24:19.628 --> 00:24:24.004
+<v Vijay Nadar>project checks?
+What are the existing data types and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3174-0
+00:24:22.779 --> 00:24:24.299
+<v Amit Hiremath>Right, very nice.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3182-3
+00:24:24.004 --> 00:24:25.739
+<v Vijay Nadar>propose any new data?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3240-0
+00:24:25.699 --> 00:24:28.651
+<v Amit Hiremath>Sure. So yeah,
+I think it could be included as part of</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3240-1
+00:24:28.651 --> 00:24:33.053
+<v Amit Hiremath>our architecture best practices checklist.
+So Kishore, maybe we can add it there.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3195-0
+00:24:32.219 --> 00:24:32.419
+<v Vijay Nadar>Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3202-0
+00:24:32.939 --> 00:24:34.499
+<v Kishor Gwala>Sure I'll.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3240-2
+00:24:33.053 --> 00:24:36.757
+<v Amit Hiremath>That was A. good point Vijay.
+Though Vijay, just to kind of mention,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3240-3
+00:24:36.757 --> 00:24:41.105
+<v Amit Hiremath>there's one database performance related
+checklist that we have which is created</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3240-4
+00:24:41.105 --> 00:24:44.219
+<v Amit Hiremath>by our database practice team,
+Mayur Ambani and his team.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3236-0
+00:24:42.859 --> 00:24:44.779
+<v Vijay Nadar>OK, OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3275-0
+00:24:44.499 --> 00:24:48.551
+<v Amit Hiremath>And that we use for some of the we've not
+taken it this quarter up,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3275-1
+00:24:48.551 --> 00:24:53.259
+<v Amit Hiremath>but that's something that we have we've I
+think once we've done it for all the</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3275-2
+00:24:53.259 --> 00:24:56.835
+<v Amit Hiremath>projects across the board,
+I think maybe two quarters back,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3262-0
+00:24:56.219 --> 00:24:56.459
+<v Vijay Nadar>OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3275-3
+00:24:56.835 --> 00:25:01.007
+<v Amit Hiremath>but maybe the architectural best
+practices checklist can have another</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3275-4
+00:25:01.007 --> 00:25:02.259
+<v Amit Hiremath>point as A. database.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3326-0
+00:25:03.699 --> 00:25:07.452
+<v Amit Hiremath>And in fact, right, that's A.
+very good point Vijay.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3283-0
+00:25:04.459 --> 00:25:06.979
+<v Vijay Nadar>Sure, I'll check that to check this. Yep.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3326-1
+00:25:07.452 --> 00:25:13.048
+<v Amit Hiremath>And in fact another thing just to mention
+to you again, we can have questions,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3326-2
+00:25:13.048 --> 00:25:18.643
+<v Amit Hiremath>but because this happened yesterday,
+our marketing team is trying to launch A.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3299-0
+00:25:13.379 --> 00:25:14.659
+<v Aashish Sonawane>Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3326-3
+00:25:18.643 --> 00:25:22.539
+<v Amit Hiremath>campaign where they are using our 25
+years completion.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3372-0
+00:25:23.379 --> 00:25:26.383
+<v Amit Hiremath>With A.
+offer to our customers like you know</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3372-1
+00:25:26.383 --> 00:25:31.256
+<v Amit Hiremath>retargeting, it's called as A.
+retargeting or remarketing campaign where</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3372-2
+00:25:31.256 --> 00:25:36.464
+<v Amit Hiremath>for last 25 years whoever customers,
+prospects or anybody in the industry has</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3372-3
+00:25:36.464 --> 00:25:39.735
+<v Amit Hiremath>connected with us on LinkedIn.
+They are doing A.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3372-4
+00:25:39.735 --> 00:25:42.539
+<v Amit Hiremath>remarketing or retargeting campaign where.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3363-0
+00:25:42.179 --> 00:25:42.379
+<v Vijay Nadar>Mm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3417-0
+00:25:42.979 --> 00:25:46.468
+<v Amit Hiremath>We are sending them that something about
+25 years.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3417-1
+00:25:46.468 --> 00:25:51.530
+<v Amit Hiremath>So like one of the things that we
+discussed is why could why not we do 25</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3417-2
+00:25:51.530 --> 00:25:57.003
+<v Amit Hiremath>point checklist for architectural best
+practices right for your 25 years so and</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3417-3
+00:25:57.003 --> 00:26:02.339
+<v Amit Hiremath>that we can do it free of cost we can do
+A. 25 then I spoke about 25 pointer.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3406-0
+00:25:59.699 --> 00:25:59.859
+<v Vijay Nadar>Mm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3491-0
+00:26:02.659 --> 00:26:06.824
+<v Amit Hiremath>Checklist for Dev SEC OPS like DSOM
+Ashish. OK then then there is A.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3422-0
+00:26:05.979 --> 00:26:06.019
+<v Aashish Sonawane>Oh.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3491-1
+00:26:06.824 --> 00:26:10.084
+<v Amit Hiremath>cost optimization,
+cloud cost optimization 25 pointer</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3426-0
+00:26:07.219 --> 00:26:07.739
+<v Vijay Nadar>Means.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3491-2
+00:26:10.084 --> 00:26:12.921
+<v Amit Hiremath>checklist.
+So I think that's kind of how we're</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3491-3
+00:26:12.921 --> 00:26:16.000
+<v Amit Hiremath>thinking.
+So Kishore and maybe Ashish in the cloud</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3452-0
+00:26:15.619 --> 00:26:15.979
+<v Vijay Nadar>M.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3491-4
+00:26:16.000 --> 00:26:19.682
+<v Amit Hiremath>practice we can take this up.
+Kishore you can take it up key</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3491-5
+00:26:19.682 --> 00:26:22.339
+<v Amit Hiremath>architecture best practice may now we
+have.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3472-0
+00:26:20.459 --> 00:26:20.939
+<v Kishor Gwala>Sure.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3553-0
+00:26:22.579 --> 00:26:25.118
+<v Amit Hiremath>I think we already have 25 points to home
+game,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3499-0
+00:26:24.019 --> 00:26:26.539
+<v Kishor Gwala>We we have the category, yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3553-1
+00:26:25.118 --> 00:26:29.615
+<v Amit Hiremath>but why not use 25 pointers and keep that
+ready? OK, same Ashish, this all maybe up.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3509-0
+00:26:29.259 --> 00:26:30.219
+<v Kishor Gwala>Noted.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3553-2
+00:26:29.615 --> 00:26:33.583
+<v Amit Hiremath>I think you have created A. new one.
+This one I have seen and that's good.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3518-0
+00:26:32.179 --> 00:26:32.619
+<v Aashish Sonawane>Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3553-3
+00:26:33.583 --> 00:26:36.704
+<v Amit Hiremath>So you can convert that into 25 pointer,
+just expand it A.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3553-4
+00:26:36.704 --> 00:26:40.777
+<v Amit Hiremath>bit and same with the cost optimization.
+So we're thinking of launching that</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3553-5
+00:26:40.777 --> 00:26:42.259
+<v Amit Hiremath>campaign. We will go to all.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3603-0
+00:26:42.619 --> 00:26:45.427
+<v Amit Hiremath>The other connects that we have and we
+say OK,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3603-1
+00:26:45.427 --> 00:26:50.506
+<v Amit Hiremath>we can do it for you free of cost like 25
+pointer checklist for best best practices,</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3562-0
+00:26:47.699 --> 00:26:47.819
+<v Aashish Sonawane>OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3603-2
+00:26:50.506 --> 00:26:55.346
+<v Amit Hiremath>25 pointer checklist for cloud dev SEC
+OPS and maturity and 25 pointers for cost</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3603-3
+00:26:55.346 --> 00:26:58.752
+<v Amit Hiremath>optimization.
+So that's one thing that has come out now.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3603-4
+00:26:58.752 --> 00:27:02.099
+<v Amit Hiremath>So I mean because you mentioned Vijay
+that came out so.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3605-0
+00:27:02.099 --> 00:27:03.499
+<v Amit Hiremath>Let's let's take that up.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3608-0
+00:27:03.179 --> 00:27:05.659
+<v Kishor Gwala>Sure, OK, maybe.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3609-0
+00:27:03.939 --> 00:27:06.499
+<v Aashish Sonawane>Yes, Amit.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3623-0
+00:27:04.579 --> 00:27:09.666
+<v Amit Hiremath>OK. Apart from that,
+any other questions on the the 5 + 5 or</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3623-1
+00:27:09.666 --> 00:27:12.419
+<v Amit Hiremath>how we're looking at our metrics?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3672-0
+00:27:13.219 --> 00:27:17.150
+<v Aashish Sonawane>Yeah, Amit, the DevSecOps,
+now we have tried to convert it into</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3672-1
+00:27:17.150 --> 00:27:22.249
+<v Aashish Sonawane>cloud automation and security checklist.
+So title's different because we wanted to</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3641-0
+00:27:19.579 --> 00:27:19.819
+<v Amit Hiremath>Yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3672-2
+00:27:22.249 --> 00:27:26.733
+<v Aashish Sonawane>embed the automation part as well.
+So maybe that can be part of other 25</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3672-3
+00:27:26.733 --> 00:27:28.699
+<v Aashish Sonawane>checklists, which are 25 points.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3673-0
+00:27:26.899 --> 00:27:30.139
+<v Amit Hiremath>Yeah, yeah, absolutely. Yeah,
+we can do that.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3675-0
+00:27:29.179 --> 00:27:30.779
+<v Aashish Sonawane>Automation. Automation.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3697-0
+00:27:32.739 --> 00:27:36.614
+<v Amit Hiremath>Then I thought I'll just mention it to
+you because you know it came like I was</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3697-1
+00:27:36.614 --> 00:27:40.539
+<v Amit Hiremath>gonna have A. meeting tomorrow anyway,
+but thought I'll just mention it to you.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3689-0
+00:27:37.219 --> 00:27:37.339
+<v Aashish Sonawane>Yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3700-0
+00:27:41.739 --> 00:27:42.779
+<v Amit Hiremath>Anything else?</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3746-0
+00:27:42.619 --> 00:27:47.653
+<v Kishor Gwala>Yeah, noted. So just one thing Vijay,
+maybe on Friday we can connect on all</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3746-1
+00:27:47.653 --> 00:27:53.151
+<v Kishor Gwala>this. We already have a database section,
+but then any which way like we wanted to</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3746-2
+00:27:53.151 --> 00:27:58.318
+<v Kishor Gwala>kind of have a third iteration on the
+architecture best practices she's sheet</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3746-3
+00:27:58.318 --> 00:27:59.179
+<v Kishor Gwala>that we have.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3740-0
+00:27:58.699 --> 00:27:58.939
+<v Aashish Sonawane>Hmm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3799-0
+00:27:59.619 --> 00:28:04.179
+<v Kishor Gwala>So maybe on Friday we can connect and
+then we wanted to have a bit more</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3745-0
+00:28:00.059 --> 00:28:00.539
+<v Vijay Nadar>OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3758-0
+00:28:02.539 --> 00:28:04.259
+<v Vijay Nadar>Yeah, sure, sure.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3799-1
+00:28:04.179 --> 00:28:09.310
+<v Kishor Gwala>bifurcation depending upon the like last
+two quarters I would say almost like 20</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3799-2
+00:28:09.310 --> 00:28:13.618
+<v Kishor Gwala>projects we have covered.
+So there is a bit of a summary thing that</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3799-3
+00:28:13.618 --> 00:28:17.735
+<v Kishor Gwala>is also that we wanted.
+This is the second iteration that we are</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3799-4
+00:28:17.735 --> 00:28:18.179
+<v Kishor Gwala>having.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3821-0
+00:28:19.059 --> 00:28:22.535
+<v Kishor Gwala>So in 3rd edition we can do that exercise
+on Friday.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3821-1
+00:28:22.535 --> 00:28:27.979
+<v Kishor Gwala>I think we we have our that so there we
+can have a bit of a brainstorming on that.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3812-0
+00:28:24.859 --> 00:28:25.419
+<v Vijay Nadar>Mhm.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3827-0
+00:28:27.779 --> 00:28:31.979
+<v Vijay Nadar>Sure, sure. We can. We'll connect. Yeah,
+we'll connect.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3822-0
+00:28:28.379 --> 00:28:29.259
+<v Amit Hiremath>Makes sense.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3833-0
+00:28:30.179 --> 00:28:34.939
+<v Kishor Gwala>Yeah, sure. Yes, yes, yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3830-0
+00:28:33.499 --> 00:28:33.739
+<v Amit Hiremath>OK.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3831-0
+00:28:33.979 --> 00:28:34.299
+<v Mujaffarkhan Sanadi>Yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3832-0
+00:28:34.259 --> 00:28:34.379
+<v Yusuf Kumarkiri>E.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3835-0
+00:28:35.899 --> 00:28:36.259
+<v Amit Hiremath>Great.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3836-0
+00:28:37.219 --> 00:28:37.899
+<v Kishor Gwala>Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3894-0
+00:28:38.019 --> 00:28:41.275
+<v Amit Hiremath>If there are no questions,
+then maybe we can.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3894-1
+00:28:41.275 --> 00:28:46.797
+<v Amit Hiremath>We can leave the meetings now. OK, cool.
+Thank you. Great. All the best guys.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3846-0
+00:28:43.499 --> 00:28:43.619
+<v Aashish Sonawane>True.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3848-0
+00:28:44.539 --> 00:28:44.659
+<v Aashish Sonawane>Yes.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3897-0
+00:28:44.819 --> 00:28:51.179
+<v Yusuf Kumarkiri>OK. Thank you. Thank you. Thank you.
+Thank you, everyone. Thank you, everybody.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3891-0
+00:28:44.859 --> 00:28:50.459
+<v Kishor Gwala>OK. Yep. Yeah. Yeah. Thanks all.
+Thanks all.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3896-0
+00:28:46.779 --> 00:28:51.339
+<v Vijay Nadar>Thanks. Thanks. Thank you for your time.
+Have a great day. Yeah.</v>
+
+b08278d0-08bb-4e02-a219-e0718521863c/3894-2
+00:28:46.797 --> 00:28:48.779
+<v Amit Hiremath>Take care. Bye. Bye. Thanks.</v>

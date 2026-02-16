@@ -1,0 +1,17 @@
+// Monitoring System Architecture
+// Architecture Diagram
+
+Applicationlogs [icon: cloud]
+Microservices [icon: cloud]
+Databases [icon: cloud]
+Monitoringtools(e.g.,Nagios,Clarion) [icon: cloud]
+Sensors [icon: cloud]
+Dashboards [icon: cloud]
+Cloudinstances [icon: cloud]
+
+// Connections
+Applicationlogs > Microservices
+Microservices > Databases
+Databases > Monitoringtools(e.g.,Nagios,Clarion)
+Monitoringtools(e.g.,Nagios,Clarion) > Sensors
+Sensors > Dashboards

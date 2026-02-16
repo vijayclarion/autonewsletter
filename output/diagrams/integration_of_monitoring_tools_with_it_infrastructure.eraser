@@ -1,0 +1,6 @@
+// Integration of Monitoring Tools with IT Infrastructure
+// Integration Diagram
+
+System1 [icon: server] > API [icon: cloud]: "REST API"
+API > System2 [icon: database]: "Data Flow"
+System2 > System3 [icon: cloud]: "Integration"
