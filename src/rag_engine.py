@@ -46,7 +46,7 @@ class RAGEngine:
         # Initialize OpenAI
         if OPENAI_AVAILABLE:
             try:
-                self.client = OpenAI(api_key="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")
+                self.client = OpenAI(api_key="api_key_placeholder")
                 self.llm_available = True
                 print("✓ OpenAI LLM initialized")
             except Exception as e:
