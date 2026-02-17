@@ -252,9 +252,15 @@ class ContentRefiner:
         # Ensure action items start with a verb
         item = self._remove_casual_language(item)
         
-        # If doesn't start with verb, add one
-        if not re.match(r'^(Review|Implement|Evaluate|Plan|Schedule|Document|Analyze|Monitor|Test|Update)', item):
-            item = f"Review and {item[0].lower()}{item[1:]}"
+        # Don't add "Review and" prefix - use strong verbs directly
+        if not re.match(r'^(Review|Implement|Evaluate|Plan|Schedule|Document|Analyze|Monitor|Test|Update|Develop|Establish|Define|Create|Deploy|Optimize)', item, flags=re.IGNORECASE):
+            # Add appropriate verb based on content
+            if 'tool' in item.lower() or 'solution' in item.lower():
+                item = f"Evaluate {item[0].lower()}{item[1:]}"
+            elif 'process' in item.lower():
+                item = f"Establish {item[0].lower()}{item[1:]}"
+            else:
+                item = f"Implement {item[0].lower()}{item[1:]}"
         
         # Ensure proper ending punctuation
         if item and not item.endswith(('.', '!', '?')):
@@ -470,6 +476,70 @@ Be strict - only flag actual issues, not minor rewording."""
         return recommendations
 
 
+class StrategicContentEnhancer:
+    """Enhance content with executive framing and impact-focus"""
+    
+    def enhance_executive_summary(self, summary: str, strategic_insights: Dict) -> str:
+        """Add strategic framing to executive summary"""
+        
+        # Extract "So What?" insight
+        business_impact = strategic_insights.get('business_impact', '') if strategic_insights else ''
+        
+        # Reframe opening if weak
+        if summary.startswith("The content covers") or summary.startswith("This newsletter"):
+            # Replace weak opening with strong impact statement
+            summary = self._extract_core_value(summary)
+        
+        # Add "So What?" callout
+        if business_impact:
+            so_what_html = f'<div class="so-what">{business_impact}</div>'
+            summary = summary + '\n\n' + so_what_html
+        
+        return summary
+    
+    def _extract_core_value(self, summary: str) -> str:
+        """Extract core value from generic opening"""
+        # Simple implementation - remove generic openings
+        summary = re.sub(r'^(The content covers|This newsletter discusses|This document presents)\s+', '', summary, flags=re.IGNORECASE)
+        # Capitalize first letter
+        if summary:
+            summary = summary[0].upper() + summary[1:]
+        return summary
+    
+    def enhance_headline(self, title: str, description: str) -> str:
+        """Convert generic headlines to impact-focused"""
+        
+        # Patterns to fix
+        weak_patterns = {
+            r'^Introduction [Oo]f (.+)': r'\1 Drives Performance Optimization',
+            r'^Use [Oo]f (.+)': r'\1 Enables Strategic Decision-Making',
+            r'^(.+) Implementation$': r'How \1 Transforms Operations'
+        }
+        
+        for pattern, replacement in weak_patterns.items():
+            title = re.sub(pattern, replacement, title)
+        
+        return title
+    
+    def remove_action_item_prefix(self, action_item: str) -> str:
+        """Remove repetitive 'Review and' prefix"""
+        
+        # Remove "Review and" if it's added by refinement
+        action_item = re.sub(r'^Review and ', '', action_item, flags=re.IGNORECASE)
+        
+        # Ensure starts with strong verb
+        if not re.match(r'^(Implement|Develop|Establish|Define|Create|Deploy|Monitor|Analyze|Optimize|Evaluate)', action_item, flags=re.IGNORECASE):
+            # Add appropriate verb based on content
+            if 'tool' in action_item.lower() or 'solution' in action_item.lower():
+                action_item = f"Evaluate and deploy {action_item[0].lower()}{action_item[1:]}"
+            elif 'process' in action_item.lower():
+                action_item = f"Establish {action_item[0].lower()}{action_item[1:]}"
+            else:
+                action_item = f"Implement {action_item[0].lower()}{action_item[1:]}"
+        
+        return action_item
+
+
 class NewsletterContentProcessor:
     """Process newsletter content through refinement and accuracy review"""
     
@@ -477,6 +547,7 @@ class NewsletterContentProcessor:
         """Initialize processor"""
         self.refiner = ContentRefiner()
         self.validator = TechnicalAccuracyValidator()
+        self.enhancer = StrategicContentEnhancer()  # NEW
     
     def process_content(self, knowledge, source_content: str, verbose: bool = True) -> Dict:
         """

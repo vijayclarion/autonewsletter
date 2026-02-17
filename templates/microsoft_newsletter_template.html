@@ -98,10 +98,11 @@
         
         /* Executive Summary */
         .executive-summary {
-            background: linear-gradient(to right, var(--ms-blue) 4px, var(--ms-gray-10) 4px);
-            padding: 24px 24px 24px 28px;
-            margin-bottom: 32px;
-            border-radius: 4px;
+            background: linear-gradient(to right, var(--ms-blue) 4px, white 4px);
+            padding: 32px 32px 32px 36px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 120, 212, 0.12);
         }
         
         .executive-summary h2 {
@@ -116,6 +117,22 @@
             font-size: 15px;
             line-height: 1.7;
             margin-bottom: 12px;
+        }
+        
+        .executive-summary .so-what {
+            background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+            border-left: 4px solid var(--ms-orange);
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 4px;
+            font-weight: 500;
+            color: var(--ms-gray-130);
+        }
+
+        .executive-summary .so-what::before {
+            content: "💡 Key Insight: ";
+            font-weight: 600;
+            color: var(--ms-orange);
         }
         
         /* Section Headers */
@@ -341,96 +358,158 @@
             font-size: 18px;
         }
         
+        /* Strategic Insights Section */
+        .strategic-insights {
+            margin: 40px 0;
+            padding: 32px;
+            background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+            border-radius: 8px;
+        }
+
+        .insight-card {
+            background: white;
+            padding: 24px;
+            margin: 16px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .insight-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .insight-card.impact h4 {
+            color: var(--ms-blue);
+        }
+
+        .insight-card.risk h4 {
+            color: var(--ms-orange);
+        }
+
+        .insight-card.opportunity h4 {
+            color: var(--ms-green);
+        }
+
+        .insight-card p {
+            color: var(--ms-gray-90);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
         /* Diagram Container Styles */
         .diagram-container {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: var(--ms-gray-10);
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
             border-left: 4px solid var(--ms-blue);
-            border-radius: 4px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         .diagram-container h3 {
-            color: var(--ms-blue);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            font-size: 18px;
+            color: var(--ms-blue-dark);
+            font-size: 20px;
             font-weight: 600;
+            margin-bottom: 12px;
         }
         
         .diagram-purpose {
             font-style: italic;
             color: var(--ms-gray-90);
-            margin-bottom: 1rem;
-            font-size: 14px;
+            margin-bottom: 1.5rem;
+            padding-left: 16px;
+            border-left: 3px solid var(--ms-blue-light);
+        }
+        
+        .diagram-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 6px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .mermaid {
             background: white;
-            padding: 1.5rem;
-            border-radius: 4px;
+            padding: 2rem;
+            border-radius: 6px;
             margin: 1rem 0;
+            border: 1px solid var(--ms-gray-40);
             overflow-x: auto;
         }
         
         .diagram-description {
-            font-size: 0.9rem;
+            font-size: 14px;
             color: var(--ms-gray-90);
-            margin-top: 1rem;
-            line-height: 1.6;
+            margin-top: 1.5rem;
+            line-height: 1.7;
         }
         
         .diagrams-section {
-            margin: 40px 0;
+            margin: 48px 0;
+            padding: 32px;
+            background: var(--ms-gray-10);
+            border-radius: 8px;
+        }
+        
+        .diagram-edit-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: var(--ms-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .diagram-edit-link:hover {
+            background: var(--ms-blue-dark);
+        }
+        
+        /* NEW: Metrics Dashboard */
+        .metrics-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+            padding: 24px;
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+            border-radius: 8px;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ms-blue);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--ms-gray-90);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         /* Divider */
         .divider {
             height: 1px;
             background: var(--ms-gray-40);
-            margin: 32px 0;
-        }
-        
-        /* Diagram Containers */
-        .diagram-container {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-left: 4px solid #0078d4;
-            border-radius: 4px;
-        }
-        
-        .diagram-container h3 {
-            color: #0078d4;
-            margin-top: 0;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .diagram-purpose {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 14px;
-        }
-        
-        .mermaid {
-            background: white;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
-            overflow-x: auto;
-        }
-        
-        .diagram-description {
-            font-size: 14px;
-            color: var(--ms-gray-90);
-            margin-top: 1rem;
-            font-style: italic;
-        }
-        
-        .diagrams-section {
             margin: 32px 0;
         }
         
@@ -487,6 +566,12 @@
                 {{EXECUTIVE_SUMMARY}}
             </div>
             
+            <!-- Metrics Dashboard -->
+            {{METRICS_DASHBOARD}}
+            
+            <!-- Strategic Insights -->
+            {{STRATEGIC_INSIGHTS}}
+            
             <!-- Key Highlights -->
             <h2 class="section-header">Key Highlights</h2>
             <div class="highlights-grid">
@@ -504,9 +589,6 @@
             
             <!-- Action Items -->
             {{ACTION_ITEMS}}
-            
-            <!-- Diagrams Section -->
-            {{DIAGRAMS}}
             
             <div class="divider"></div>
             
