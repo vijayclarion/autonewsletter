@@ -408,8 +408,8 @@ MERMAID.JS CODE:"""
         Returns:
             HTML string with diagram container
         """
-        # Escape HTML entities in mermaid code if needed
-        safe_mermaid = mermaid_code.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        # Note: Mermaid code is not HTML-escaped as it needs to be processed by Mermaid.js library
+        # The Mermaid.js library handles rendering safely
         
         html = f"""<div class="diagram-container">
     <h3>{title}</h3>

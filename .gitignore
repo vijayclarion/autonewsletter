@@ -50,6 +50,4 @@ htmlcov/
 tmp/
 temp/
 *.tmp
-# Test files
-test_*.py
 
