@@ -266,7 +266,7 @@ class RAGEngine:
         return knowledge
     
     def _extract_executive_summary(self, chunks: List[Dict], context: str) -> str:
-        """Pass 1: Strategic Executive Summary with SO WHAT framing"""
+        """Pass 1: Strategic Executive Summary with business impact framing"""
         # Use early + late chunks for context
         early_chunks = [c for c in chunks if c['position'] == 'early'][:2]
         late_chunks = [c for c in chunks if c['position'] == 'late'][:2]
@@ -275,7 +275,7 @@ class RAGEngine:
         chunk_text = "\n\n".join([c['text'] for c in combined_chunks])
         context_text = chunk_text[:8000] if len(chunk_text) > 8000 else chunk_text
         
-        prompt = f"""Based on the following content, provide a strategic executive summary (2-3 paragraphs) that leads with "SO WHAT?" framing.
+        prompt = f"""Based on the following content, provide a strategic executive summary (2-3 paragraphs) that leads with business impact framing.
 
 REQUIREMENTS:
 - Lead with Business Impact: Why does this matter to the business?

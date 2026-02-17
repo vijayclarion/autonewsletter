@@ -10,7 +10,7 @@ The Enterprise Newsletter Generator is an AI-powered system that transforms vari
 - **Recursive Character-Based Chunking**: Preserves semantic boundaries (paragraphs, sentences) instead of arbitrary word splits
 - **Semantic Re-ranking**: Prioritizes business-impact content using weighted keyword scoring (business keywords 2x technical)
 - **5-Pass Extraction Strategy**: Specialized extraction for different content types with optimized context windows
-- **Executive-Grade Prompting**: Enforces assertive, analytical language with "SO WHAT?" framing
+- **Executive-Grade Prompting**: Enforces assertive, analytical language with business impact framing
 
 ### 2. **Advanced Document Preprocessing**
 - **Noise Reduction**: Filters transcript artifacts ([MUSIC], [APPLAUSE], filler words) while preserving context
@@ -265,7 +265,7 @@ classDiagram
 ## Output Quality Targets
 
 ### Executive Summary
-- ✅ Leads with "SO WHAT?" business impact framing
+- ✅ Leads with business impact framing
 - ✅ Identifies risk factors explicitly
 - ✅ Highlights strategic opportunities
 - ✅ Uses assertive, analytical language
@@ -325,7 +325,7 @@ Formula: `score = (business_keyword_count × 2) + (technical_keyword_count × 1)
 
 Each pass is optimized for specific content types:
 
-- **Pass 1**: Uses early + late chunks for contextual summary with strategic framing
+- **Pass 1**: Uses early + late chunks for contextual summary with business impact framing
 - **Pass 2**: Uses top-ranked chunks for high-impact highlights
 - **Pass 3**: Uses middle chunks for technical depth in feature articles
 - **Pass 4**: Uses first 4-6 chunks for supporting content (quick, varied extractions)
