@@ -44,6 +44,7 @@ class DiagramGenerator:
     MAX_CONTEXT_ARCHITECTURES = 3
     MAX_DIAGRAM_NODES = 15
     MAX_FALLBACK_ELEMENTS = 5
+    MAX_LABEL_LENGTH = 50
     
     def __init__(self, output_dir: str = "./output/diagrams"):
         self.output_dir = Path(output_dir)
@@ -290,10 +291,19 @@ Component2 > Component3 [icon: database]
         context_info = ""
         if context:
             if context.get('technologies'):
-                context_info += f"\nTechnologies: {', '.join(context['technologies'][:self.MAX_CONTEXT_TECHNOLOGIES])}"
+                # Ensure technologies is a list of strings
+                techs = context['technologies']
+                if isinstance(techs, list):
+                    tech_strs = [str(t) for t in techs[:self.MAX_CONTEXT_TECHNOLOGIES] if t]
+                    if tech_strs:
+                        context_info += f"\nTechnologies: {', '.join(tech_strs)}"
+            
             if context.get('architectures'):
-                arch_names = [a.get('name', '') for a in context.get('architectures', [])[:self.MAX_CONTEXT_ARCHITECTURES]]
-                context_info += f"\nArchitectures: {', '.join(arch_names)}"
+                archs = context['architectures']
+                if isinstance(archs, list):
+                    arch_names = [str(a.get('name', '')) for a in archs[:self.MAX_CONTEXT_ARCHITECTURES] if isinstance(a, dict) and a.get('name')]
+                    if arch_names:
+                        context_info += f"\nArchitectures: {', '.join(arch_names)}"
         
         # Create prompt for LLM
         prompt = f"""Generate a professional Mermaid.js diagram for a technical newsletter.
@@ -388,7 +398,7 @@ MERMAID.JS CODE:"""
                 code = "graph TD\n"
                 for i, element in enumerate(elements[:self.MAX_FALLBACK_ELEMENTS]):
                     safe_id = f"N{i}"
-                    safe_label = element.replace('"', "'")[:50]
+                    safe_label = str(element).replace('"', "'")[:self.MAX_LABEL_LENGTH]
                     code += f"    {safe_id}[{safe_label}]\n"
                 
                 # Add some connections

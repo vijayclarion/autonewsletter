@@ -294,7 +294,8 @@ class NewsletterGenerator:
         html += '  <h2 class="section-header">📊 Technical Architecture & Diagrams</h2>\n'
         
         for diagram in diagrams:
-            if hasattr(diagram, 'embed_html') and diagram.embed_html:
+            # DiagramSpec always has embed_html (may be None)
+            if diagram.embed_html:
                 html += diagram.embed_html + '\n'
         
         html += '</div>\n'
@@ -429,7 +430,8 @@ class NewsletterGenerator:
             md += f"### {diagram.title}\n\n"
             md += f"**Purpose:** {diagram.purpose}\n\n"
             
-            if hasattr(diagram, 'mermaid_code') and diagram.mermaid_code:
+            # DiagramSpec always has mermaid_code (may be None)
+            if diagram.mermaid_code:
                 md += f"```mermaid\n{diagram.mermaid_code}\n```\n\n"
             
             md += f"*{diagram.description}*\n\n---\n\n"
