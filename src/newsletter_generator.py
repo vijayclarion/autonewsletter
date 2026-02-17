@@ -112,6 +112,7 @@ class NewsletterGenerator:
         html_content = html_content.replace('{{DIAGRAMS}}', diagrams_html)  # NEW
         html_content = html_content.replace('{{TECHNOLOGIES}}', technologies_html)
         html_content = html_content.replace('{{BEST_PRACTICES}}', best_practices_html)
+        html_content = html_content.replace('{{DIAGRAMS}}', diagrams_html)  # NEW
         html_content = html_content.replace('{{FOOTER_DATE}}', datetime.now().strftime('%B %d, %Y at %I:%M %p'))
         
         # Write to file
@@ -414,12 +415,43 @@ class NewsletterGenerator:
                 md_content += f"- {practice}\n"
             md_content += "\n"
         
+        # Add diagrams section (NEW)
+        if diagrams:
+            md_content += self._build_diagrams_markdown(diagrams)
+        
         # Write to file
         md_path = self.output_dir / f"newsletter_{timestamp}.md"
         with open(md_path, 'w', encoding='utf-8') as f:
             f.write(md_content)
         
         return md_path
+    
+    def _build_diagrams_markdown(self, diagrams: List) -> str:
+        """
+        Build Markdown section for diagrams with Mermaid.js code blocks
+        
+        Args:
+            diagrams: List of DiagramSpec objects
+        
+        Returns:
+            Markdown string with Mermaid code blocks
+        """
+        if not diagrams:
+            return ""
+        
+        md = "\n\n## 📊 Technical Architecture & Diagrams\n\n"
+        
+        for diagram in diagrams:
+            md += f"### {diagram.title}\n\n"
+            md += f"**Purpose:** {diagram.purpose}\n\n"
+            
+            # mermaid_code is Optional[str], truthiness check skips None and empty strings
+            if diagram.mermaid_code:
+                md += f"```mermaid\n{diagram.mermaid_code}\n```\n\n"
+            
+            md += f"*{diagram.description}*\n\n---\n\n"
+        
+        return md
     
     def _generate_json(self, knowledge: ExtractedKnowledge, 
                       title: str, subtitle: str, timestamp: str,
@@ -457,6 +489,21 @@ class NewsletterGenerator:
             'diagram_suggestions': knowledge.diagram_suggestions,
             'metadata': knowledge.metadata
         }
+        
+        # Add diagrams array (NEW)
+        if diagrams:
+            json_data['diagrams'] = [
+                {
+                    'title': d.title,
+                    'diagram_type': d.diagram_type,
+                    'purpose': d.purpose,
+                    'elements': d.elements,
+                    'description': d.description,
+                    'mermaid_code': d.mermaid_code,
+                    'eraser_code': d.eraser_code,
+                    'image_path': d.image_path
+                } for d in diagrams
+            ]
         
         # Write to file
         json_path = self.output_dir / f"newsletter_{timestamp}.json"

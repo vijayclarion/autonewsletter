@@ -8,6 +8,7 @@ import os
 import json
 import re
 import requests
+import html
 from typing import Dict, List, Optional
 from pathlib import Path
 from dataclasses import dataclass
@@ -39,6 +40,13 @@ class DiagramGenerator:
     Generate technical diagrams for enterprise newsletters
     Supports Eraser.io diagram-as-code format
     """
+    
+    # Configuration constants
+    MAX_CONTEXT_TECHNOLOGIES = 5
+    MAX_CONTEXT_ARCHITECTURES = 3
+    MAX_DIAGRAM_NODES = 15
+    MAX_FALLBACK_ELEMENTS = 5
+    MAX_LABEL_LENGTH = 50
     
     def __init__(self, output_dir: str = "./output/diagrams"):
         self.output_dir = Path(output_dir)
@@ -420,6 +428,9 @@ Component2 > Component3 [icon: database]
             
             if diagram.eraser_code:
                 doc += f"**Eraser.io Code:**\n\n```\n{diagram.eraser_code}\n```\n\n"
+            
+            if diagram.mermaid_code:
+                doc += f"**Mermaid.js Code:**\n\n```mermaid\n{diagram.mermaid_code}\n```\n\n"
             
             if diagram.image_path:
                 doc += f"**Diagram File:** `{Path(diagram.image_path).name}`\n\n"
