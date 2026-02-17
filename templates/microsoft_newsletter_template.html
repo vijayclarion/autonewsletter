@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{TITLE}}</title>
+    
+    <!-- Mermaid.js Library for Diagram Rendering -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    
     <style>
         /* Microsoft Design System - Fluent UI inspired */
         :root {
@@ -343,6 +350,49 @@
             margin: 32px 0;
         }
         
+        /* Diagram Containers */
+        .diagram-container {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-left: 4px solid #0078d4;
+            border-radius: 4px;
+        }
+        
+        .diagram-container h3 {
+            color: #0078d4;
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .diagram-purpose {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 14px;
+        }
+        
+        .mermaid {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .diagram-description {
+            font-size: 14px;
+            color: var(--ms-gray-90);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .diagrams-section {
+            margin: 32px 0;
+        }
+        
         /* Footer */
         .footer {
             background: var(--ms-gray-130);
@@ -404,6 +454,9 @@
             
             <!-- Feature Articles -->
             {{FEATURE_ARTICLES}}
+            
+            <!-- Technical Diagrams -->
+            {{DIAGRAMS}}
             
             <!-- Quick Bites -->
             {{QUICK_BITES}}

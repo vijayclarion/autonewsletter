@@ -128,7 +128,14 @@ class EnterpriseNewsletterGenerator:
         if knowledge.diagram_suggestions:
             for suggestion in knowledge.diagram_suggestions:
                 try:
-                    diagram = self.diagram_generator.generate_diagram_from_suggestion(suggestion)
+                    diagram = self.diagram_generator.generate_diagram_from_suggestion(
+                        suggestion=suggestion,
+                        context={
+                            'technologies': knowledge.technologies,
+                            'architectures': knowledge.architectures,
+                            'full_content': combined_doc.content[:5000]
+                        }
+                    )
                     diagrams.append(diagram)
                 except Exception as e:
                     print(f"  ⚠ Diagram generation failed: {e}")
@@ -149,7 +156,8 @@ class EnterpriseNewsletterGenerator:
         newsletter_files = self.newsletter_generator.generate_newsletter(
             knowledge=knowledge,
             title=title,
-            subtitle=subtitle
+            subtitle=subtitle,
+            diagrams=diagrams  # Pass diagrams to newsletter generator
         )
         
         # Add metadata about refinement

@@ -26,7 +26,9 @@ class DiagramSpec:
     purpose: str
     elements: List[str]
     description: str
+    mermaid_code: Optional[str] = None  # NEW: Mermaid.js diagram code
     eraser_code: Optional[str] = None
+    embed_html: Optional[str] = None  # NEW: HTML wrapper for embedding
     image_path: Optional[str] = None
 
 
@@ -50,15 +52,16 @@ class DiagramGenerator:
         else:
             self.llm_available = False
     
-    def generate_diagram_from_suggestion(self, suggestion: Dict) -> DiagramSpec:
+    def generate_diagram_from_suggestion(self, suggestion: Dict, context: Dict = None) -> DiagramSpec:
         """
         Generate diagram specification from RAG suggestion
         
         Args:
             suggestion: Dictionary with diagram details from RAG engine
+            context: Optional context dict with technologies, architectures, full_content
         
         Returns:
-            DiagramSpec object with diagram details
+            DiagramSpec object with diagram details including Mermaid.js code
         """
         title = suggestion.get('title', 'Technical Diagram')
         diagram_type = suggestion.get('type', 'architecture')
@@ -77,8 +80,26 @@ class DiagramGenerator:
             description=description
         )
         
-        # Save diagram code to file
+        # Generate Mermaid.js diagram code (NEW)
+        mermaid_code = self._generate_mermaid_diagram(
+            title=title,
+            diagram_type=diagram_type,
+            elements=elements,
+            description=description,
+            context=context
+        )
+        
+        # Generate embeddable HTML (NEW)
+        embed_html = self._generate_embed_html(
+            title=title,
+            purpose=purpose,
+            mermaid_code=mermaid_code,
+            description=description
+        )
+        
+        # Save diagram code to files
         code_file = self._save_diagram_code(title, eraser_code)
+        self._save_mermaid_code(title, mermaid_code)
         
         return DiagramSpec(
             title=title,
@@ -86,7 +107,9 @@ class DiagramGenerator:
             purpose=purpose,
             elements=elements if isinstance(elements, list) else [],
             description=description,
+            mermaid_code=mermaid_code,  # NEW
             eraser_code=eraser_code,
+            embed_html=embed_html,  # NEW
             image_path=str(code_file)
         )
     
@@ -213,6 +236,192 @@ Component2 > Component3 [icon: database]
         print(f"     ✓ Saved diagram code: {file_path.name}")
         return file_path
     
+    def _save_mermaid_code(self, title: str, code: str) -> Path:
+        """Save Mermaid.js diagram code to file"""
+        # Clean filename
+        filename = "".join(c if c.isalnum() or c in (' ', '-', '_') else '_' for c in title)
+        filename = filename.replace(' ', '_').lower()
+        
+        file_path = self.output_dir / f"{filename}.mmd"
+        
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(code)
+        
+        print(f"     ✓ Saved Mermaid diagram: {file_path.name}")
+        return file_path
+    
+    def _generate_mermaid_diagram(self, title: str, diagram_type: str, 
+                                  elements: List[str], description: str,
+                                  context: Dict = None) -> str:
+        """
+        Generate Mermaid.js diagram code using LLM
+        
+        Args:
+            title: Diagram title
+            diagram_type: Type of diagram (architecture, workflow, integration, security)
+            elements: List of key elements to include
+            description: Diagram description
+            context: Optional context with technologies, architectures, content
+        
+        Returns:
+            Mermaid.js diagram code
+        """
+        if not self.llm_available:
+            return self._generate_fallback_mermaid(title, diagram_type, elements)
+        
+        # Map diagram types to Mermaid syntax
+        mermaid_type_map = {
+            'architecture': 'graph TD',
+            'workflow': 'sequenceDiagram',
+            'integration': 'graph LR',
+            'security': 'graph TB'
+        }
+        
+        mermaid_syntax = mermaid_type_map.get(diagram_type, 'graph TD')
+        
+        # Build context information if available
+        context_info = ""
+        if context:
+            if context.get('technologies'):
+                context_info += f"\nTechnologies: {', '.join(context['technologies'][:5])}"
+            if context.get('architectures'):
+                arch_names = [a.get('name', '') for a in context.get('architectures', [])[:3]]
+                context_info += f"\nArchitectures: {', '.join(arch_names)}"
+        
+        # Create prompt for LLM
+        prompt = f"""Generate a professional Mermaid.js diagram for a technical newsletter.
+
+Diagram Title: {title}
+Diagram Type: {diagram_type} (use {mermaid_syntax} syntax)
+Key Elements: {', '.join(elements) if isinstance(elements, list) else elements}
+Description: {description}{context_info}
+
+REQUIREMENTS:
+- Use proper Mermaid.js syntax for {mermaid_syntax}
+- Include all key elements from the list
+- Show clear relationships and data flow
+- Use descriptive labels
+- Keep it concise (max 12-15 nodes)
+- Professional and easy to read
+- For sequence diagrams, use proper participant declarations
+- For graph diagrams, use meaningful node IDs and labels
+
+Return ONLY the Mermaid.js code, no markdown fences or explanations.
+
+MERMAID.JS CODE:"""
+
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": "You are an expert in creating technical diagrams using Mermaid.js syntax. Generate clean, professional diagrams."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+                max_tokens=1500
+            )
+            
+            mermaid_code = response.choices[0].message.content.strip()
+            
+            # Clean up code blocks if present
+            if mermaid_code.startswith('```'):
+                lines = mermaid_code.split('\n')
+                # Remove first and last lines if they are markdown fences
+                if lines[0].startswith('```'):
+                    lines = lines[1:]
+                if lines and lines[-1].strip() == '```':
+                    lines = lines[:-1]
+                mermaid_code = '\n'.join(lines)
+            
+            # Remove "mermaid" language identifier if present at start
+            if mermaid_code.startswith('mermaid\n'):
+                mermaid_code = mermaid_code[8:]
+            
+            return mermaid_code.strip()
+            
+        except Exception as e:
+            print(f"     ⚠ Mermaid LLM generation failed: {e}")
+            return self._generate_fallback_mermaid(title, diagram_type, elements)
+    
+    def _generate_fallback_mermaid(self, title: str, diagram_type: str, 
+                                   elements: List[str]) -> str:
+        """
+        Generate simple fallback Mermaid.js diagram if LLM fails
+        
+        Args:
+            title: Diagram title
+            diagram_type: Type of diagram
+            elements: List of elements
+        
+        Returns:
+            Basic Mermaid.js code
+        """
+        if diagram_type == 'workflow':
+            return """sequenceDiagram
+    participant User
+    participant System
+    User->>System: Request
+    System-->>User: Response"""
+        
+        elif diagram_type == 'integration':
+            return """graph LR
+    A[System A] -->|API| B[Gateway]
+    B --> C[System B]
+    C --> D[Database]"""
+        
+        elif diagram_type == 'security':
+            return """graph TB
+    A[User] --> B[Authentication]
+    B --> C[Authorization]
+    C --> D[Protected Resource]"""
+        
+        else:  # architecture or default
+            # Try to use elements if available
+            if isinstance(elements, list) and len(elements) >= 2:
+                code = "graph TD\n"
+                for i, element in enumerate(elements[:5]):
+                    safe_id = f"N{i}"
+                    safe_label = element.replace('"', "'")[:50]
+                    code += f"    {safe_id}[{safe_label}]\n"
+                
+                # Add some connections
+                for i in range(min(len(elements) - 1, 4)):
+                    code += f"    N{i} --> N{i+1}\n"
+                
+                return code
+            else:
+                return """graph TD
+    A[Component A] --> B[Component B]
+    B --> C[Component C]"""
+    
+    def _generate_embed_html(self, title: str, purpose: str, 
+                            mermaid_code: str, description: str) -> str:
+        """
+        Generate HTML wrapper for Mermaid diagram embedding
+        
+        Args:
+            title: Diagram title
+            purpose: Purpose of the diagram
+            mermaid_code: Mermaid.js code
+            description: Diagram description
+        
+        Returns:
+            HTML string with diagram container
+        """
+        # Escape HTML entities in mermaid code if needed
+        safe_mermaid = mermaid_code.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        
+        html = f"""<div class="diagram-container">
+    <h3>{title}</h3>
+    <p class="diagram-purpose">{purpose}</p>
+    <div class="mermaid">
+{mermaid_code}
+    </div>
+    <p class="diagram-description">{description}</p>
+</div>"""
+        
+        return html
+    
     def generate_diagram_documentation(self, diagrams: List[DiagramSpec]) -> str:
         """
         Generate markdown documentation for all diagrams
@@ -242,6 +451,9 @@ Component2 > Component3 [icon: database]
             
             if diagram.eraser_code:
                 doc += f"**Eraser.io Code:**\n\n```\n{diagram.eraser_code}\n```\n\n"
+            
+            if diagram.mermaid_code:
+                doc += f"**Mermaid.js Code:**\n\n```mermaid\n{diagram.mermaid_code}\n```\n\n"
             
             if diagram.image_path:
                 doc += f"**Diagram File:** `{Path(diagram.image_path).name}`\n\n"
