@@ -294,14 +294,15 @@ Component2 > Component3 [icon: database]
                 # Ensure technologies is a list of strings
                 techs = context['technologies']
                 if isinstance(techs, list):
-                    tech_strs = [str(t) for t in techs[:self.MAX_CONTEXT_TECHNOLOGIES] if t]
+                    tech_strs = [str(t) for t in techs[:self.MAX_CONTEXT_TECHNOLOGIES] if t is not None and str(t).strip()]
                     if tech_strs:
                         context_info += f"\nTechnologies: {', '.join(tech_strs)}"
             
             if context.get('architectures'):
                 archs = context['architectures']
                 if isinstance(archs, list):
-                    arch_names = [str(a.get('name', '')) for a in archs[:self.MAX_CONTEXT_ARCHITECTURES] if isinstance(a, dict) and a.get('name')]
+                    arch_names = [str(a['name']).strip() for a in archs[:self.MAX_CONTEXT_ARCHITECTURES] 
+                                 if isinstance(a, dict) and 'name' in a and a['name'] is not None and str(a['name']).strip()]
                     if arch_names:
                         context_info += f"\nArchitectures: {', '.join(arch_names)}"
         
