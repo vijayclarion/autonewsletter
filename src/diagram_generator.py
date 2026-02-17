@@ -6,6 +6,7 @@ Generates technical diagrams using Eraser.io API or creates diagram specificatio
 
 import os
 import json
+import re
 import requests
 from typing import Dict, List, Optional
 from pathlib import Path
@@ -26,8 +27,11 @@ class DiagramSpec:
     purpose: str
     elements: List[str]
     description: str
+    mermaid_code: Optional[str] = None  # NEW - Mermaid.js diagram code
     eraser_code: Optional[str] = None
+    ascii_diagram: Optional[str] = None  # NEW - ASCII diagram for text fallback
     image_path: Optional[str] = None
+    embed_html: Optional[str] = None  # NEW - Ready-to-embed HTML
 
 
 class DiagramGenerator:
@@ -50,15 +54,16 @@ class DiagramGenerator:
         else:
             self.llm_available = False
     
-    def generate_diagram_from_suggestion(self, suggestion: Dict) -> DiagramSpec:
+    def generate_diagram_from_suggestion(self, suggestion: Dict, context: Dict = None) -> DiagramSpec:
         """
-        Generate diagram specification from RAG suggestion
+        Generate diagram specification with multiple formats from RAG suggestion
         
         Args:
             suggestion: Dictionary with diagram details from RAG engine
+            context: Additional context for better diagram generation (technologies, architectures, content)
         
         Returns:
-            DiagramSpec object with diagram details
+            DiagramSpec object with diagram details in multiple formats
         """
         title = suggestion.get('title', 'Technical Diagram')
         diagram_type = suggestion.get('type', 'architecture')
@@ -69,7 +74,16 @@ class DiagramGenerator:
         print(f"\n  🎨 Generating diagram: {title}")
         print(f"     Type: {diagram_type}")
         
-        # Generate Eraser.io diagram code
+        # Generate Mermaid.js diagram code
+        mermaid_code = self._generate_mermaid_diagram(
+            title=title,
+            diagram_type=diagram_type,
+            elements=elements,
+            description=description,
+            context=context
+        )
+        
+        # Generate Eraser.io diagram code (existing)
         eraser_code = self._generate_eraser_code(
             title=title,
             diagram_type=diagram_type,
@@ -77,8 +91,23 @@ class DiagramGenerator:
             description=description
         )
         
-        # Save diagram code to file
-        code_file = self._save_diagram_code(title, eraser_code)
+        # Generate ASCII diagram (fallback)
+        ascii_diagram = self._generate_ascii_diagram(
+            title=title,
+            diagram_type=diagram_type,
+            elements=elements
+        )
+        
+        # Generate embeddable HTML
+        embed_html = self._generate_embed_html(
+            title=title,
+            purpose=purpose,
+            mermaid_code=mermaid_code,
+            description=description
+        )
+        
+        # Save all diagram formats to files
+        self._save_diagram_files(title, mermaid_code, eraser_code, ascii_diagram)
         
         return DiagramSpec(
             title=title,
@@ -86,8 +115,11 @@ class DiagramGenerator:
             purpose=purpose,
             elements=elements if isinstance(elements, list) else [],
             description=description,
+            mermaid_code=mermaid_code,
             eraser_code=eraser_code,
-            image_path=str(code_file)
+            ascii_diagram=ascii_diagram,
+            embed_html=embed_html,
+            image_path=str(self.output_dir / f"{self._sanitize_filename(title)}.mermaid.md")
         )
     
     def _generate_eraser_code(self, title: str, diagram_type: str, 
@@ -147,6 +179,163 @@ Return ONLY the diagram code, no explanations."""
             print(f"     ⚠ LLM generation failed: {e}")
             return self._generate_fallback_diagram(title, diagram_type, elements)
     
+    def _generate_mermaid_diagram(self, title: str, diagram_type: str, 
+                                  elements: List[str], description: str,
+                                  context: Dict = None) -> str:
+        """
+        Generate Mermaid.js diagram code using LLM
+        
+        Returns valid Mermaid.js syntax based on diagram type
+        """
+        
+        if not self.llm_available:
+            return self._generate_fallback_mermaid(title, diagram_type, elements)
+        
+        # Determine Mermaid diagram type
+        mermaid_type_map = {
+            'architecture': 'graph TD',
+            'workflow': 'sequenceDiagram',
+            'integration': 'graph LR',
+            'security': 'graph TB'
+        }
+        
+        mermaid_type = mermaid_type_map.get(diagram_type, 'graph TD')
+        
+        # Build context string
+        context_str = ""
+        if context:
+            if context.get('technologies'):
+                context_str += f"\nTechnologies: {', '.join(context['technologies'][:10])}"
+            if context.get('architectures'):
+                arch_names = [a.get('name', '') for a in context['architectures'][:5] if isinstance(a, dict)]
+                if arch_names:
+                    context_str += f"\nArchitectures: {', '.join(arch_names)}"
+        
+        prompt = f"""Generate a Mermaid.js diagram for the following specification.
+
+Diagram Title: {title}
+Diagram Type: {diagram_type}
+Key Elements: {', '.join(elements) if isinstance(elements, list) else elements}
+Description: {description}
+{context_str}
+
+REQUIREMENTS:
+- Use {mermaid_type} syntax
+- Create a clear, readable diagram
+- Use actual component names from elements
+- Show relationships and data flow
+- Keep it concise (max 15 nodes)
+- Use descriptive labels
+
+MERMAID.JS SYNTAX GUIDE:
+- Architecture: graph TD; A[Component] --> B[Component]
+- Workflow: sequenceDiagram; participant A; A->>B: Action
+- Integration: graph LR; System1 --> API --> System2
+- Security: graph TB; User --> Auth --> Service
+
+Return ONLY the Mermaid.js code, no explanation.
+
+MERMAID.JS DIAGRAM:"""
+
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are an expert in creating technical diagrams using Mermaid.js syntax. Generate clear, accurate diagrams."
+                    },
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,
+                max_tokens=800,
+                timeout=30
+            )
+            
+            mermaid_code = response.choices[0].message.content.strip()
+            
+            # Clean up code block markers if present
+            mermaid_code = re.sub(r'^```mermaid\s*\n', '', mermaid_code)
+            mermaid_code = re.sub(r'\n```\s*$', '', mermaid_code)
+            
+            return mermaid_code
+            
+        except Exception as e:
+            print(f"  ⚠ Mermaid generation failed: {e}")
+            return self._generate_fallback_mermaid(title, diagram_type, elements)
+    
+    def _generate_fallback_mermaid(self, title: str, diagram_type: str, elements: List[str]) -> str:
+        """Generate simple fallback Mermaid diagram"""
+        if diagram_type == 'workflow':
+            return """sequenceDiagram
+    participant User
+    participant System
+    User->>System: Request
+    System-->>User: Response"""
+        else:
+            # Architecture/Integration/Security
+            if isinstance(elements, list) and len(elements) >= 2:
+                nodes = '\n    '.join([f"{chr(65+i)}[{elem}]" for i, elem in enumerate(elements[:5])])
+                connections = '\n    '.join([f"{chr(65+i)}-->{chr(65+i+1)}" for i in range(min(len(elements)-1, 4))])
+                return f"""graph TD
+    {nodes}
+    {connections}"""
+            else:
+                return """graph TD
+    A[Component A]-->B[Component B]
+    B-->C[Component C]"""
+    
+    def _generate_ascii_diagram(self, title: str, diagram_type: str, elements: List[str]) -> str:
+        """Generate simple ASCII diagram for text fallback"""
+        if not isinstance(elements, list) or len(elements) < 2:
+            return "  [Component A] --> [Component B] --> [Component C]"
+        
+        return " --> ".join([f"[{elem}]" for elem in elements[:5]])
+    
+    def _generate_embed_html(self, title: str, purpose: str, 
+                           mermaid_code: str, description: str) -> str:
+        """Generate ready-to-embed HTML with Mermaid diagram"""
+        # Escape HTML in title, purpose, and description
+        import html
+        title_safe = html.escape(title)
+        purpose_safe = html.escape(purpose)
+        description_safe = html.escape(description)
+        
+        return f"""<div class="diagram-container">
+    <h3>{title_safe}</h3>
+    <p class="diagram-purpose">{purpose_safe}</p>
+    <div class="mermaid">
+{mermaid_code}
+    </div>
+    <p class="diagram-description">{description_safe}</p>
+</div>"""
+    
+    def _save_diagram_files(self, title: str, mermaid_code: str, 
+                          eraser_code: str, ascii_diagram: str) -> None:
+        """Save all diagram formats to files"""
+        safe_title = self._sanitize_filename(title)
+        
+        # Save Mermaid
+        mermaid_file = self.output_dir / f"{safe_title}.mermaid.md"
+        with open(mermaid_file, 'w', encoding='utf-8') as f:
+            f.write(f"# {title}\n\n```mermaid\n{mermaid_code}\n```\n")
+        
+        # Save Eraser.io
+        eraser_file = self.output_dir / f"{safe_title}.eraser"
+        with open(eraser_file, 'w', encoding='utf-8') as f:
+            f.write(eraser_code)
+        
+        # Save ASCII
+        ascii_file = self.output_dir / f"{safe_title}.txt"
+        with open(ascii_file, 'w', encoding='utf-8') as f:
+            f.write(f"{title}\n{'=' * len(title)}\n\n{ascii_diagram}\n")
+        
+        print(f"     ✓ Saved diagram files: {safe_title}.[mermaid.md|eraser|txt]")
+    
+    def _sanitize_filename(self, title: str) -> str:
+        """Convert title to safe filename"""
+        return re.sub(r'[^\w\s-]', '', title).strip().replace(' ', '_').lower()
+    
     def _generate_fallback_diagram(self, title: str, diagram_type: str, 
                                    elements: List[str]) -> str:
         """Generate basic fallback diagram code"""
@@ -198,20 +387,6 @@ Component1 [icon: user] > Component2 [icon: server]
 Component2 > Component3 [icon: database]
 """
             return code
-    
-    def _save_diagram_code(self, title: str, code: str) -> Path:
-        """Save diagram code to file"""
-        # Clean filename
-        filename = "".join(c if c.isalnum() or c in (' ', '-', '_') else '_' for c in title)
-        filename = filename.replace(' ', '_').lower()
-        
-        file_path = self.output_dir / f"{filename}.eraser"
-        
-        with open(file_path, 'w', encoding='utf-8') as f:
-            f.write(code)
-        
-        print(f"     ✓ Saved diagram code: {file_path.name}")
-        return file_path
     
     def generate_diagram_documentation(self, diagrams: List[DiagramSpec]) -> str:
         """
