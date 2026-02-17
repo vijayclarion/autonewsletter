@@ -40,14 +40,16 @@ class NewsletterGenerator:
     
     def generate_newsletter(self, knowledge: ExtractedKnowledge, 
                           title: str = "Technology Newsletter",
-                          subtitle: str = "Enterprise IT Update") -> Dict[str, str]:
+                          subtitle: str = "Enterprise IT Update",
+                          diagrams: List = None) -> Dict[str, str]:  # NEW: diagrams param
         """
-        Generate newsletter in multiple formats
+        Generate newsletter in multiple formats with embedded diagrams
         
         Args:
             knowledge: Extracted knowledge from RAG engine
             title: Newsletter title
             subtitle: Newsletter subtitle
+            diagrams: List of DiagramSpec objects to embed (optional)
         
         Returns:
             Dictionary with paths to generated files
@@ -58,15 +60,15 @@ class NewsletterGenerator:
         print("-" * 70)
         
         # Generate Markdown
-        md_path = self._generate_markdown(knowledge, title, subtitle, timestamp)
+        md_path = self._generate_markdown(knowledge, title, subtitle, timestamp, diagrams)
         print(f"  ✓ Markdown: {md_path.name}")
         
-        # Generate HTML (with template)
-        html_path = self._generate_html_from_template(knowledge, title, subtitle, timestamp)
-        print(f"  ✓ HTML (Microsoft Template): {html_path.name}")
+        # Generate HTML (with template and diagrams)
+        html_path = self._generate_html_from_template(knowledge, title, subtitle, timestamp, diagrams)
+        print(f"  ✓ HTML (Microsoft Template + Diagrams): {html_path.name}")
         
         # Generate JSON
-        json_path = self._generate_json(knowledge, title, subtitle, timestamp)
+        json_path = self._generate_json(knowledge, title, subtitle, timestamp, diagrams)
         print(f"  ✓ JSON: {json_path.name}")
         
         return {
@@ -79,8 +81,9 @@ class NewsletterGenerator:
         }
     
     def _generate_html_from_template(self, knowledge: ExtractedKnowledge, 
-                                     title: str, subtitle: str, timestamp: str) -> Path:
-        """Generate HTML newsletter using Microsoft template"""
+                                     title: str, subtitle: str, timestamp: str, 
+                                     diagrams: List = None) -> Path:  # NEW: diagrams param
+        """Generate HTML newsletter using Microsoft template with embedded diagrams"""
         
         if not self.html_template:
             # Fallback to inline generation if template not found
@@ -94,6 +97,7 @@ class NewsletterGenerator:
         action_items_html = self._build_action_items(knowledge.action_items)
         technologies_html = self._build_technologies(knowledge.technologies)
         best_practices_html = self._build_best_practices(knowledge.best_practices)
+        diagrams_html = self._build_diagrams_section(diagrams)  # NEW
         
         # Replace placeholders in template
         html_content = self.html_template
@@ -105,6 +109,7 @@ class NewsletterGenerator:
         html_content = html_content.replace('{{FEATURE_ARTICLES}}', feature_articles_html)
         html_content = html_content.replace('{{QUICK_BITES}}', quick_bites_html)
         html_content = html_content.replace('{{ACTION_ITEMS}}', action_items_html)
+        html_content = html_content.replace('{{DIAGRAMS}}', diagrams_html)  # NEW
         html_content = html_content.replace('{{TECHNOLOGIES}}', technologies_html)
         html_content = html_content.replace('{{BEST_PRACTICES}}', best_practices_html)
         html_content = html_content.replace('{{FOOTER_DATE}}', datetime.now().strftime('%B %d, %Y at %I:%M %p'))
@@ -272,9 +277,44 @@ class NewsletterGenerator:
         html += '</ul>\n</div>\n'
         return html
     
+    def _build_diagrams_section(self, diagrams: List) -> str:
+        """Build HTML section for diagrams"""
+        if not diagrams:
+            return ""
+        
+        html = '<div class="section diagrams-section">\n'
+        html += '  <h2 class="section-header">📊 Technical Architecture & Diagrams</h2>\n'
+        
+        for diagram in diagrams:
+            if hasattr(diagram, 'embed_html') and diagram.embed_html:
+                html += diagram.embed_html + '\n'
+        
+        html += '</div>\n'
+        return html
+    
+    def _build_diagrams_markdown(self, diagrams: List) -> str:
+        """Build Markdown section for diagrams"""
+        if not diagrams:
+            return ""
+        
+        md = "\n\n## 📊 Technical Architecture & Diagrams\n\n"
+        
+        for diagram in diagrams:
+            md += f"### {diagram.title}\n\n"
+            md += f"**Purpose:** {diagram.purpose}\n\n"
+            
+            if hasattr(diagram, 'mermaid_code') and diagram.mermaid_code:
+                md += f"```mermaid\n{diagram.mermaid_code}\n```\n\n"
+            
+            md += f"*{diagram.description}*\n\n"
+            md += "---\n\n"
+        
+        return md
+    
     def _generate_markdown(self, knowledge: ExtractedKnowledge, 
-                          title: str, subtitle: str, timestamp: str) -> Path:
-        """Generate Markdown newsletter"""
+                          title: str, subtitle: str, timestamp: str,
+                          diagrams: List = None) -> Path:  # NEW: diagrams param
+        """Generate Markdown newsletter with embedded diagrams"""
         
         md_content = f"""# {title}
 
@@ -357,6 +397,10 @@ class NewsletterGenerator:
                         md_content += f"- {item}\n"
                     md_content += "\n"
         
+        # Add diagrams (NEW)
+        if diagrams:
+            md_content += self._build_diagrams_markdown(diagrams)
+        
         # Add technologies
         if knowledge.technologies:
             md_content += "\n---\n\n## Technologies Mentioned\n\n"
@@ -378,8 +422,24 @@ class NewsletterGenerator:
         return md_path
     
     def _generate_json(self, knowledge: ExtractedKnowledge, 
-                      title: str, subtitle: str, timestamp: str) -> Path:
-        """Generate JSON newsletter data"""
+                      title: str, subtitle: str, timestamp: str,
+                      diagrams: List = None) -> Path:  # NEW: diagrams param
+        """Generate JSON newsletter data with diagrams"""
+        
+        # Build diagrams data for JSON
+        diagrams_data = []
+        if diagrams:
+            for diagram in diagrams:
+                diagram_dict = {
+                    'title': diagram.title,
+                    'type': diagram.diagram_type,
+                    'purpose': diagram.purpose,
+                    'elements': diagram.elements,
+                    'description': diagram.description
+                }
+                if hasattr(diagram, 'mermaid_code') and diagram.mermaid_code:
+                    diagram_dict['mermaid_code'] = diagram.mermaid_code
+                diagrams_data.append(diagram_dict)
         
         json_data = {
             'title': title,
@@ -393,6 +453,7 @@ class NewsletterGenerator:
             'technologies': knowledge.technologies,
             'architectures': knowledge.architectures,
             'best_practices': knowledge.best_practices,
+            'diagrams': diagrams_data,  # NEW: Include diagrams
             'diagram_suggestions': knowledge.diagram_suggestions,
             'metadata': knowledge.metadata
         }
