@@ -294,7 +294,8 @@ class NewsletterGenerator:
         html += '  <h2 class="section-header">📊 Technical Architecture & Diagrams</h2>\n'
         
         for diagram in diagrams:
-            # DiagramSpec always has embed_html (may be None)
+            # embed_html is Optional[str] in DiagramSpec, truthiness check is sufficient
+            # as we want to skip both None and empty string cases
             if diagram.embed_html:
                 html += diagram.embed_html + '\n'
         
@@ -430,7 +431,7 @@ class NewsletterGenerator:
             md += f"### {diagram.title}\n\n"
             md += f"**Purpose:** {diagram.purpose}\n\n"
             
-            # DiagramSpec always has mermaid_code (may be None)
+            # mermaid_code is Optional[str], truthiness check skips None and empty strings
             if diagram.mermaid_code:
                 md += f"```mermaid\n{diagram.mermaid_code}\n```\n\n"
             
