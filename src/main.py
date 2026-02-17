@@ -128,6 +128,7 @@ class EnterpriseNewsletterGenerator:
         if knowledge.diagram_suggestions:
             for suggestion in knowledge.diagram_suggestions:
                 try:
+                    # Pass additional context for better diagram generation
                     diagram = self.diagram_generator.generate_diagram_from_suggestion(
                         suggestion=suggestion,
                         context={
@@ -157,7 +158,7 @@ class EnterpriseNewsletterGenerator:
             knowledge=knowledge,
             title=title,
             subtitle=subtitle,
-            diagrams=diagrams  # Pass diagrams to newsletter generator
+            diagrams=diagrams  # NEW: Pass diagrams for embedding
         )
         
         # Add metadata about refinement
