@@ -412,7 +412,7 @@ List each issue with:
 Be strict - only flag actual issues, not minor rewording."""
             
             response = self.client.chat.completions.create(
-                model="gpt-4.1-mini",
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are a technical accuracy reviewer. Verify that extracted content matches source material exactly."},
                     {"role": "user", "content": prompt}

@@ -40,6 +40,7 @@ class ProcessedDocument:
     word_count: int = 0
     sections: List[Dict] = field(default_factory=list)
     images: List[str] = field(default_factory=list)
+    speaker_stats: Dict = field(default_factory=dict)
 
 
 class DocumentPreprocessor:
@@ -54,6 +55,39 @@ class DocumentPreprocessor:
             '.txt': self._process_text,
             '.md': self._process_markdown
         }
+        
+        # Noise patterns for removal
+        self.noise_patterns = [
+            r'\[MUSIC\]', r'\[APPLAUSE\]', r'\[LAUGHTER\]', r'\[INAUDIBLE\]',
+            r'\(inaudible\)', r'\(crosstalk\)',
+            r'<.*?>',  # HTML tags
+        ]
+        
+        # Filler word patterns
+        self.filler_patterns = [
+            r'\b(um|uh|ah|er|hmm)\b',
+            r'\byou know\b',
+            r'\bI mean\b',
+            r'\blike\s+',
+            r'\bbasically\b'
+        ]
+    
+    def _reduce_noise(self, text: str) -> str:
+        """Remove noise patterns and excessive filler words from text"""
+        # Remove noise patterns
+        for pattern in self.noise_patterns:
+            text = re.sub(pattern, '', text, flags=re.IGNORECASE)
+        
+        # Reduce (but don't eliminate) filler words to preserve context
+        for pattern in self.filler_patterns:
+            # Replace multiple occurrences with single space
+            text = re.sub(pattern, ' ', text, flags=re.IGNORECASE)
+        
+        # Clean up whitespace
+        text = re.sub(r'\s+', ' ', text)
+        text = text.strip()
+        
+        return text
     
     def process_document(self, file_path: str) -> ProcessedDocument:
         """Process document based on file extension"""
@@ -72,13 +106,14 @@ class DocumentPreprocessor:
         return processor(file_path)
     
     def _process_vtt(self, file_path: str) -> ProcessedDocument:
-        """Process VTT transcript files"""
+        """Process VTT transcript files with speaker statistics"""
         with open(file_path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
         
         content_lines = []
         speakers = set()
         sections = []
+        speaker_word_counts = {}
         current_section = {"speaker": None, "content": [], "timestamp": None}
         
         for line in lines:
@@ -96,29 +131,66 @@ class DocumentPreprocessor:
                 speaker = speaker_match.group(1).strip()
                 content = speaker_match.group(2).strip()
                 
+                # Apply noise reduction
+                content = self._reduce_noise(content)
+                
+                if not content:
+                    continue
+                
                 speakers.add(speaker)
+                
+                # Track word count per speaker
+                word_count = len(content.split())
+                speaker_word_counts[speaker] = speaker_word_counts.get(speaker, 0) + word_count
+                
+                # Format with speaker attribution
                 content_lines.append(f"{speaker}: {content}")
                 
+                # Track sections with speaker transitions
                 if current_section["speaker"] != speaker and current_section["content"]:
-                    sections.append(current_section.copy())
+                    sections.append({
+                        "speaker": current_section["speaker"],
+                        "content": ' '.join(current_section["content"]),
+                        "timestamp": current_section["timestamp"]
+                    })
                     current_section = {"speaker": speaker, "content": [content], "timestamp": current_section["timestamp"]}
                 else:
                     current_section["speaker"] = speaker
                     current_section["content"].append(content)
         
+        # Add last section
         if current_section["content"]:
-            sections.append(current_section)
+            sections.append({
+                "speaker": current_section["speaker"],
+                "content": ' '.join(current_section["content"]),
+                "timestamp": current_section["timestamp"]
+            })
         
         full_content = "\n".join(content_lines)
         
+        # Calculate speaker contribution percentages
+        total_words = sum(speaker_word_counts.values())
+        speaker_stats = {}
+        for speaker, word_count in speaker_word_counts.items():
+            percentage = (word_count / total_words * 100) if total_words > 0 else 0
+            speaker_stats[speaker] = {
+                "word_count": word_count,
+                "percentage": round(percentage, 1)
+            }
+        
         return ProcessedDocument(
             content=full_content,
-            metadata={"file_name": Path(file_path).name, "format": "vtt", "source_type": "transcript"},
+            metadata={
+                "file_name": Path(file_path).name,
+                "format": "vtt",
+                "source_type": "transcript"
+            },
             document_type="transcript",
             speakers=sorted(list(speakers)),
             word_count=len(full_content.split()),
             sections=sections,
-            images=[]
+            images=[],
+            speaker_stats=speaker_stats
         )
     
     def _process_docx(self, file_path: str) -> ProcessedDocument:
