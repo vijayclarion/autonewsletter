@@ -466,9 +466,9 @@ class NewsletterGenerator:
                     'purpose': d.purpose,
                     'elements': d.elements,
                     'description': d.description,
-                    'mermaid_code': d.mermaid_code if hasattr(d, 'mermaid_code') else None,
-                    'eraser_code': d.eraser_code if hasattr(d, 'eraser_code') else None,
-                    'image_path': d.image_path if hasattr(d, 'image_path') else None
+                    'mermaid_code': d.mermaid_code,
+                    'eraser_code': d.eraser_code,
+                    'image_path': d.image_path
                 } for d in diagrams
             ]
         

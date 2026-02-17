@@ -7,6 +7,7 @@ Generates technical diagrams using Eraser.io API or creates diagram specificatio
 import os
 import json
 import requests
+import html
 from typing import Dict, List, Optional
 from pathlib import Path
 from dataclasses import dataclass
@@ -408,19 +409,23 @@ MERMAID.JS CODE:"""
         Returns:
             HTML string with diagram container
         """
+        # HTML-escape user-controlled fields to prevent XSS
+        safe_title = html.escape(title)
+        safe_purpose = html.escape(purpose)
+        safe_description = html.escape(description)
         # Note: Mermaid code is not HTML-escaped as it needs to be processed by Mermaid.js library
         # The Mermaid.js library handles rendering safely
         
-        html = f"""<div class="diagram-container">
-    <h3>{title}</h3>
-    <p class="diagram-purpose">{purpose}</p>
+        html_output = f"""<div class="diagram-container">
+    <h3>{safe_title}</h3>
+    <p class="diagram-purpose">{safe_purpose}</p>
     <div class="mermaid">
 {mermaid_code}
     </div>
-    <p class="diagram-description">{description}</p>
+    <p class="diagram-description">{safe_description}</p>
 </div>"""
         
-        return html
+        return html_output
     
     def generate_diagram_documentation(self, diagrams: List[DiagramSpec]) -> str:
         """
