@@ -207,7 +207,8 @@ Return ONLY the diagram code, no explanations."""
             if context.get('technologies'):
                 context_str += f"\nTechnologies: {', '.join(context['technologies'][:10])}"
             if context.get('architectures'):
-                arch_names = [a.get('name', '') for a in context['architectures'][:5] if isinstance(a, dict)]
+                # Filter dicts first, then slice to ensure we get up to 5 valid names
+                arch_names = [a.get('name', '') for a in [x for x in context['architectures'] if isinstance(x, dict)][:5]]
                 if arch_names:
                     context_str += f"\nArchitectures: {', '.join(arch_names)}"
         
@@ -275,8 +276,9 @@ MERMAID.JS DIAGRAM:"""
         else:
             # Architecture/Integration/Security
             if isinstance(elements, list) and len(elements) >= 2:
-                nodes = '\n    '.join([f"{chr(65+i)}[{elem}]" for i, elem in enumerate(elements[:5])])
-                connections = '\n    '.join([f"{chr(65+i)}-->{chr(65+i+1)}" for i in range(min(len(elements)-1, 4))])
+                # Use Node0, Node1, etc. instead of A, B to avoid issues with >26 elements
+                nodes = '\n    '.join([f"Node{i}[{elem}]" for i, elem in enumerate(elements[:5])])
+                connections = '\n    '.join([f"Node{i}-->Node{i+1}" for i in range(min(len(elements)-1, 4))])
                 return f"""graph TD
     {nodes}
     {connections}"""
@@ -334,7 +336,8 @@ MERMAID.JS DIAGRAM:"""
     
     def _sanitize_filename(self, title: str) -> str:
         """Convert title to safe filename"""
-        return re.sub(r'[^\w\s-]', '', title).strip().replace(' ', '_').lower()
+        # Remove special chars, replace spaces and hyphens with underscores for consistency
+        return re.sub(r'[^\w\s-]', '', title).strip().replace(' ', '_').replace('-', '_').lower()
     
     def _generate_fallback_diagram(self, title: str, diagram_type: str, 
                                    elements: List[str]) -> str:
