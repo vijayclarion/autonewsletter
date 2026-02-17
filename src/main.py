@@ -6,8 +6,9 @@ Includes Step 3 (Refinement & Polish) and Step 4 (Technical Accuracy Review)
 
 import os
 import sys
+import re
 from pathlib import Path
-from typing import List
+from typing import List, Dict
 from datetime import datetime
 
 # Import all modules
@@ -112,6 +113,16 @@ class EnterpriseNewsletterGenerator:
         print(f"     - Technologies: {len(knowledge.technologies)}")
         print(f"     - Diagram Suggestions: {len(knowledge.diagram_suggestions)}")
         
+        # NEW Step 2.5: Quality Validation
+        print("\n🔍 Step 2.5: Quality Validation")
+        print("-" * 70)
+        quality_score = self._validate_extraction_quality(knowledge, combined_doc.content)
+        print(f"  Quality Score: {quality_score:.1%}")
+        
+        if quality_score < 0.7:
+            print("  ⚠ Quality below threshold, but continuing with current extraction...")
+            # Note: In a full implementation, you could trigger re-extraction here
+        
         # ============================================================================
         # STEP 3: REFINEMENT & POLISH 
         # ============================================================================
@@ -164,6 +175,25 @@ class EnterpriseNewsletterGenerator:
         # Add metadata about refinement
         newsletter_files['refinement_results'] = processing_results['refinement_results']
         
+        # NEW Step 6: Generate Quality Report
+        print("\n📊 Step 6: Quality Metrics Report")
+        print("-" * 70)
+        quality_report = self._generate_quality_report(
+            knowledge=knowledge,
+            diagrams=diagrams,
+            quality_score=quality_score,
+            processing_results=processing_results
+        )
+        
+        print(f"  Overall Quality Score: {quality_report['overall_score']:.1%}")
+        print(f"  Content Metrics:")
+        for key, value in quality_report['content_metrics'].items():
+            print(f"    - {key}: {value}")
+        print(f"  Quality Gates:")
+        for key, value in quality_report['quality_gates'].items():
+            status = '✓' if value else '✗'
+            print(f"    {status} {key}: {value}")
+        
         # Summary
         print("\n" + "=" * 70)
         print("✅ NEWSLETTER GENERATION COMPLETE!")
@@ -182,6 +212,7 @@ class EnterpriseNewsletterGenerator:
         
         # Quality summary
         print(f"\n📊 Quality Metrics:")
+        print(f"   • Overall Score: {quality_report['overall_score']:.1%}")
         print(f"   • Refinement: {'✓ Applied' if processing_results['refinement_results'] else '○ None needed'}")
         print(f"   • Issues Found: {len(processing_results['issues'])}")
         print(f"   • Warnings: {len(processing_results['warnings'])}")
@@ -198,12 +229,62 @@ class EnterpriseNewsletterGenerator:
                 } for d in diagrams
             ],
             'refinement': processing_results['refinement_results'],
+            'quality_report': quality_report,  # NEW
             'summary': {
                 'input_files': len(input_files),
                 'total_words': combined_doc.word_count,
                 'diagrams_generated': len(diagrams),
+                'quality_score': quality_score,  # NEW
                 'generated_at': datetime.now().isoformat()
             }
+        }
+    
+    def _validate_extraction_quality(self, knowledge, source_content: str) -> float:
+        """Validate extraction quality with scoring"""
+        score = 1.0
+        
+        # Check executive summary length
+        if len(knowledge.executive_summary) < 500:
+            score -= 0.2
+        
+        # Check for specific examples (numbers, metrics)
+        if not re.search(r'\d+', knowledge.executive_summary):
+            score -= 0.15
+        
+        # Check highlight depth
+        if knowledge.key_highlights:
+            avg_desc_length = sum(len(h.get('description', '')) for h in knowledge.key_highlights) / len(knowledge.key_highlights)
+            if avg_desc_length < 100:
+                score -= 0.15
+        
+        # Check for strategic insights
+        if not hasattr(knowledge, 'strategic_insights') or not knowledge.strategic_insights or not knowledge.strategic_insights.get('business_impact'):
+            score -= 0.2
+        
+        # Check diagram suggestions
+        if not knowledge.diagram_suggestions or len(knowledge.diagram_suggestions) < 2:
+            score -= 0.1
+        
+        return max(0.0, score)
+    
+    def _generate_quality_report(self, knowledge, diagrams, quality_score, processing_results) -> Dict:
+        """Generate comprehensive quality metrics report"""
+        return {
+            'overall_score': quality_score,
+            'content_metrics': {
+                'executive_summary_length': len(knowledge.executive_summary),
+                'key_highlights_count': len(knowledge.key_highlights),
+                'feature_articles_count': len(knowledge.feature_articles),
+                'diagrams_generated': len(diagrams),
+                'has_strategic_insights': hasattr(knowledge, 'strategic_insights') and bool(knowledge.strategic_insights)
+            },
+            'quality_gates': {
+                'depth_check': quality_score >= 0.7,
+                'strategic_framing': hasattr(knowledge, 'strategic_insights') and bool(knowledge.strategic_insights),
+                'diagrams_present': len(diagrams) > 0,
+                'accuracy_validated': processing_results.get('accuracy_review', {}).get('is_accurate', False) if isinstance(processing_results.get('accuracy_review'), dict) else False
+            },
+            'recommendations': processing_results.get('warnings', [])
         }
 
 

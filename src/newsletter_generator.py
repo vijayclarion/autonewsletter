@@ -91,6 +91,10 @@ class NewsletterGenerator:
         
         # Build components
         executive_summary_html = self._build_executive_summary(knowledge.executive_summary)
+        metrics_dashboard_html = self._build_metrics_dashboard(knowledge)  # NEW
+        strategic_insights_html = self._build_strategic_insights_section(
+            knowledge.strategic_insights if hasattr(knowledge, 'strategic_insights') else {}
+        )  # NEW
         key_highlights_html = self._build_key_highlights(knowledge.key_highlights)
         feature_articles_html = self._build_feature_articles(knowledge.feature_articles)
         quick_bites_html = self._build_quick_bites(knowledge.quick_bites)
@@ -105,6 +109,8 @@ class NewsletterGenerator:
         html_content = html_content.replace('{{SUBTITLE}}', subtitle)
         html_content = html_content.replace('{{DATE}}', datetime.now().strftime('%B %d, %Y'))
         html_content = html_content.replace('{{EXECUTIVE_SUMMARY}}', executive_summary_html)
+        html_content = html_content.replace('{{METRICS_DASHBOARD}}', metrics_dashboard_html)  # NEW
+        html_content = html_content.replace('{{STRATEGIC_INSIGHTS}}', strategic_insights_html)  # NEW
         html_content = html_content.replace('{{KEY_HIGHLIGHTS}}', key_highlights_html)
         html_content = html_content.replace('{{FEATURE_ARTICLES}}', feature_articles_html)
         html_content = html_content.replace('{{QUICK_BITES}}', quick_bites_html)
@@ -112,7 +118,6 @@ class NewsletterGenerator:
         html_content = html_content.replace('{{DIAGRAMS}}', diagrams_html)  # NEW
         html_content = html_content.replace('{{TECHNOLOGIES}}', technologies_html)
         html_content = html_content.replace('{{BEST_PRACTICES}}', best_practices_html)
-        html_content = html_content.replace('{{DIAGRAMS}}', diagrams_html)  # NEW
         html_content = html_content.replace('{{FOOTER_DATE}}', datetime.now().strftime('%B %d, %Y at %I:%M %p'))
         
         # Write to file
@@ -279,7 +284,7 @@ class NewsletterGenerator:
         return html
     
     def _build_diagrams_section(self, diagrams: List) -> str:
-        """Build HTML section for diagrams"""
+        """Build HTML section for diagrams with Eraser.io images"""
         if not diagrams:
             return ""
         
@@ -287,10 +292,98 @@ class NewsletterGenerator:
         html += '  <h2 class="section-header">📊 Technical Architecture & Diagrams</h2>\n'
         
         for diagram in diagrams:
-            if hasattr(diagram, 'embed_html') and diagram.embed_html:
-                html += diagram.embed_html + '\n'
+            html += '<div class="diagram-container">\n'
+            html += f'  <h3>{diagram.title}</h3>\n'
+            html += f'  <p class="diagram-purpose">{diagram.purpose}</p>\n'
+            
+            # Use Eraser image if available, otherwise Mermaid
+            if hasattr(diagram, 'eraser_image_path') and diagram.eraser_image_path:
+                # Eraser.io professional diagram
+                html += f'  <img src="{diagram.eraser_image_path}" alt="{diagram.title}" class="diagram-image" />\n'
+                
+                # Add edit link if available
+                if hasattr(diagram, 'eraser_edit_url') and diagram.eraser_edit_url:
+                    html += f'  <a href="{diagram.eraser_edit_url}" class="diagram-edit-link" target="_blank">✏️ Edit Diagram</a>\n'
+            elif hasattr(diagram, 'mermaid_code') and diagram.mermaid_code:
+                # Mermaid.js fallback
+                html += f'  <div class="mermaid">\n{diagram.mermaid_code}\n  </div>\n'
+            
+            html += f'  <p class="diagram-description">{diagram.description}</p>\n'
+            html += '</div>\n'
         
         html += '</div>\n'
+        return html
+    
+    def _build_strategic_insights_section(self, strategic_insights: Dict) -> str:
+        """Build strategic insights section"""
+        if not strategic_insights:
+            return ""
+        
+        html = '<div class="section strategic-insights">\n'
+        html += '  <h2 class="section-header">Strategic Insights</h2>\n'
+        
+        if strategic_insights.get('business_impact'):
+            html += f'<div class="insight-card impact">\n'
+            html += f'  <h4>💼 Business Impact</h4>\n'
+            html += f'  <p>{strategic_insights["business_impact"]}</p>\n'
+            html += f'</div>\n'
+        
+        if strategic_insights.get('risk_factors'):
+            html += f'<div class="insight-card risk">\n'
+            html += f'  <h4>⚠️ Risk Factors</h4>\n'
+            html += f'  <p>{strategic_insights["risk_factors"]}</p>\n'
+            html += f'</div>\n'
+        
+        if strategic_insights.get('strategic_opportunities'):
+            html += f'<div class="insight-card opportunity">\n'
+            html += f'  <h4>🚀 Strategic Opportunities</h4>\n'
+            html += f'  <p>{strategic_insights["strategic_opportunities"]}</p>\n'
+            html += f'</div>\n'
+        
+        html += '</div>\n'
+        return html
+    
+    def _build_metrics_dashboard(self, knowledge) -> str:
+        """Build metrics dashboard from extracted data"""
+        metrics = []
+        
+        # Extract metrics from content
+        if hasattr(knowledge, 'key_highlights') and knowledge.key_highlights:
+            metrics.append({
+                'value': len(knowledge.key_highlights),
+                'label': 'Key Insights'
+            })
+        
+        if hasattr(knowledge, 'technologies') and knowledge.technologies:
+            metrics.append({
+                'value': len(knowledge.technologies),
+                'label': 'Technologies'
+            })
+        
+        if hasattr(knowledge, 'feature_articles') and knowledge.feature_articles:
+            metrics.append({
+                'value': len(knowledge.feature_articles),
+                'label': 'Deep Dives'
+            })
+        
+        # Look for numerical metrics in strategic insights
+        if hasattr(knowledge, 'strategic_insights') and knowledge.strategic_insights:
+            if knowledge.strategic_insights.get('key_metrics'):
+                for metric in knowledge.strategic_insights['key_metrics']:
+                    if isinstance(metric, dict):
+                        metrics.append(metric)
+        
+        if not metrics:
+            return ""
+        
+        html = '<div class="metrics-dashboard">\n'
+        for metric in metrics[:4]:  # Max 4 metrics
+            html += f'  <div class="metric-card">\n'
+            html += f'    <span class="metric-value">{metric["value"]}</span>\n'
+            html += f'    <span class="metric-label">{metric["label"]}</span>\n'
+            html += f'  </div>\n'
+        html += '</div>\n'
+        
         return html
     
     def _build_diagrams_markdown(self, diagrams: List) -> str:

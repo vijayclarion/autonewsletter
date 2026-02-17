@@ -30,9 +30,60 @@ class DiagramSpec:
     description: str
     mermaid_code: Optional[str] = None  # NEW - Mermaid.js diagram code
     eraser_code: Optional[str] = None
+    eraser_image_path: Optional[str] = None  # NEW: Path to downloaded PNG from Eraser.io
+    eraser_edit_url: Optional[str] = None  # NEW: URL to edit on Eraser.io
     ascii_diagram: Optional[str] = None  # NEW - ASCII diagram for text fallback
     image_path: Optional[str] = None
     embed_html: Optional[str] = None  # NEW - Ready-to-embed HTML
+
+
+class EraserClient:
+    """Client for Eraser.io API"""
+    
+    def __init__(self, api_key: Optional[str] = None):
+        self.api_key = api_key or os.environ.get('ERASER_API_KEY')
+        self.base_url = "https://api.eraser.io/api/render"
+        self.headers = {
+            "Authorization": f"Bearer {self.api_key}" if self.api_key else "",
+            "Content-Type": "application/json"
+        }
+    
+    def create_diagram(self, diagram_code: str, diagram_type: str = "cloud-architecture-diagram") -> Dict:
+        """
+        Create diagram using Eraser.io API
+        
+        Args:
+            diagram_code: Eraser diagram syntax
+            diagram_type: Type of diagram (cloud-architecture-diagram, sequence-diagram, etc.)
+        
+        Returns:
+            Dict with diagram_url, png_url, svg_url
+        """
+        payload = {
+            "text": diagram_code,
+            "diagramType": diagram_type,
+            "background": True,
+            "theme": "light",
+            "scale": 2
+        }
+        
+        try:
+            response = requests.post(self.base_url, json=payload, headers=self.headers, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            
+            return {
+                'success': True,
+                'diagram_url': data.get('url'),
+                'png_url': data.get('pngUrl'),
+                'svg_url': data.get('svgUrl'),
+                'edit_url': data.get('editUrl')
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'error': str(e)
+            }
 
 
 class DiagramGenerator:
@@ -61,6 +112,13 @@ class DiagramGenerator:
                 self.llm_available = False
         else:
             self.llm_available = False
+        
+        # Initialize Eraser.io client
+        self.eraser_client = EraserClient()
+        if self.eraser_client.api_key:
+            print("  ✓ Eraser.io API key detected")
+        else:
+            print("  ⚠ No Eraser.io API key found (diagrams will use Mermaid.js only)")
     
     def generate_diagram_from_suggestion(self, suggestion: Dict, context: Dict = None) -> DiagramSpec:
         """
@@ -92,12 +150,32 @@ class DiagramGenerator:
         )
         
         # Generate Eraser.io diagram code (existing)
-        eraser_code = self._generate_eraser_code(
+        eraser_code = self._generate_eraser_diagram(
             title=title,
             diagram_type=diagram_type,
             elements=elements,
-            description=description
+            description=description,
+            context=context
         )
+        
+        # Call Eraser.io API to generate image
+        eraser_result = None
+        eraser_image_path = None
+        eraser_edit_url = None
+        
+        if self.eraser_client and self.eraser_client.api_key:
+            eraser_result = self.eraser_client.create_diagram(
+                diagram_code=eraser_code,
+                diagram_type=self._map_to_eraser_type(diagram_type)
+            )
+            
+            # Download diagram image if API call successful
+            if eraser_result and eraser_result.get('success'):
+                eraser_image_path = self._download_diagram_image(
+                    eraser_result['png_url'],
+                    title
+                )
+                eraser_edit_url = eraser_result.get('edit_url')
         
         # Generate ASCII diagram (fallback)
         ascii_diagram = self._generate_ascii_diagram(
@@ -106,12 +184,13 @@ class DiagramGenerator:
             elements=elements
         )
         
-        # Generate embeddable HTML
+        # Generate embeddable HTML with Eraser image support
         embed_html = self._generate_embed_html(
             title=title,
             purpose=purpose,
             mermaid_code=mermaid_code,
-            description=description
+            description=description,
+            eraser_image_url=eraser_image_path  # NEW: Include Eraser image
         )
         
         # Save all diagram formats to files
@@ -125,53 +204,71 @@ class DiagramGenerator:
             description=description,
             mermaid_code=mermaid_code,
             eraser_code=eraser_code,
+            eraser_image_path=eraser_image_path,  # NEW
+            eraser_edit_url=eraser_edit_url,  # NEW
             ascii_diagram=ascii_diagram,
             embed_html=embed_html,
             image_path=str(self.output_dir / f"{self._sanitize_filename(title)}.mermaid.md")
         )
     
-    def _generate_eraser_code(self, title: str, diagram_type: str, 
-                             elements: List[str], description: str) -> str:
+    def _generate_eraser_diagram(self, title: str, diagram_type: str, 
+                                 elements: List[str], description: str,
+                                 context: Dict = None) -> str:
         """
-        Generate Eraser.io diagram-as-code
+        Generate Eraser.io diagram syntax using LLM
         
-        Eraser.io supports multiple diagram types:
-        - Cloud Architecture Diagrams
-        - Sequence Diagrams
-        - Entity Relationship Diagrams
-        - Flowcharts
+        Eraser.io uses its own diagram syntax
         """
         
         if not self.llm_available:
-            return self._generate_fallback_diagram(title, diagram_type, elements)
+            return self._generate_fallback_eraser(title, diagram_type, elements)
         
-        # Create prompt for LLM to generate Eraser.io code
-        prompt = f"""Generate Eraser.io diagram-as-code for the following technical diagram.
+        # Map diagram type to Eraser type
+        eraser_type_map = {
+            'architecture': 'cloud-architecture-diagram',
+            'workflow': 'sequence-diagram',
+            'integration': 'cloud-architecture-diagram',
+            'security': 'cloud-architecture-diagram'
+        }
+        
+        eraser_type = eraser_type_map.get(diagram_type, 'cloud-architecture-diagram')
+        
+        prompt = f"""Generate an Eraser.io diagram using their syntax.
 
 Diagram Title: {title}
-Diagram Type: {diagram_type}
+Diagram Type: {diagram_type} (Eraser type: {eraser_type})
 Key Elements: {', '.join(elements) if isinstance(elements, list) else elements}
 Description: {description}
 
-Eraser.io Syntax Guide:
-- For architecture diagrams, use: ComponentName [icon: icon-name]
-- Connect components with arrows: Component1 > Component2
-- Add labels: Component1 > Component2: "label text"
-- Group components: group "Group Name" {{ Component1; Component2 }}
-- Use icons from: aws, azure, gcp, kubernetes, database, server, user, etc.
+ERASER.IO SYNTAX GUIDE:
+- Use simple text-based syntax
+- Components: ComponentName [icon]
+- Connections: Component1 > Component2 (label)
+- Groups: // Group Name
+- Example:
+  Frontend [browser] > API Gateway [cloud]
+  API Gateway > Database [database]
+  
+  // Monitoring
+  Prometheus [monitoring] > Grafana [dashboard]
 
-Generate clean, professional Eraser.io diagram code that follows Microsoft-style architecture diagram conventions.
-Return ONLY the diagram code, no explanations."""
+Return ONLY the Eraser.io diagram code.
+
+ERASER DIAGRAM CODE:"""
 
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4.1-mini",
+                model="gpt-4o-mini",
                 messages=[
-                    {"role": "system", "content": "You are an expert in creating technical architecture diagrams using Eraser.io diagram-as-code syntax."},
+                    {
+                        "role": "system",
+                        "content": "You are an expert in creating Eraser.io diagrams. Generate clear, professional diagram syntax."
+                    },
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.7,
-                max_tokens=1500
+                temperature=0.3,
+                max_tokens=800,
+                timeout=30
             )
             
             eraser_code = response.choices[0].message.content.strip()
@@ -184,8 +281,8 @@ Return ONLY the diagram code, no explanations."""
             return eraser_code
             
         except Exception as e:
-            print(f"     ⚠ LLM generation failed: {e}")
-            return self._generate_fallback_diagram(title, diagram_type, elements)
+            print(f"  ⚠ Eraser generation failed: {e}")
+            return self._generate_fallback_eraser(title, diagram_type, elements)
     
     def _generate_mermaid_diagram(self, title: str, diagram_type: str, 
                                   elements: List[str], description: str,
@@ -302,21 +399,62 @@ MERMAID.JS DIAGRAM:"""
         
         return " --> ".join([f"[{elem}]" for elem in elements[:5]])
     
+    def _map_to_eraser_type(self, diagram_type: str) -> str:
+        """Map internal diagram type to Eraser.io diagram type"""
+        mapping = {
+            'architecture': 'cloud-architecture-diagram',
+            'workflow': 'sequence-diagram',
+            'integration': 'cloud-architecture-diagram',
+            'security': 'cloud-architecture-diagram'
+        }
+        return mapping.get(diagram_type, 'cloud-architecture-diagram')
+    
+    def _download_diagram_image(self, image_url: str, title: str) -> Optional[str]:
+        """Download diagram image from Eraser.io"""
+        try:
+            response = requests.get(image_url, timeout=30)
+            response.raise_for_status()
+            
+            # Save to output directory
+            safe_title = self._sanitize_filename(title)
+            image_path = self.output_dir / f"{safe_title}.png"
+            
+            with open(image_path, 'wb') as f:
+                f.write(response.content)
+            
+            print(f"  ✓ Downloaded Eraser diagram: {image_path.name}")
+            return str(image_path)
+            
+        except Exception as e:
+            print(f"  ⚠ Failed to download diagram: {e}")
+            return None
+    
+    def _generate_fallback_eraser(self, title: str, diagram_type: str, 
+                                   elements: List[str]) -> str:
+        """Generate basic fallback Eraser diagram code"""
+        return self._generate_fallback_diagram(title, diagram_type, elements)
+    
     def _generate_embed_html(self, title: str, purpose: str, 
-                           mermaid_code: str, description: str) -> str:
-        """Generate ready-to-embed HTML with Mermaid diagram"""
+                           mermaid_code: str, description: str,
+                           eraser_image_url: Optional[str] = None) -> str:
+        """Generate ready-to-embed HTML with Eraser image (primary) or Mermaid fallback"""
         # Escape HTML in title, purpose, and description
         import html
         title_safe = html.escape(title)
         purpose_safe = html.escape(purpose)
         description_safe = html.escape(description)
         
+        # Use Eraser.io image if available (higher quality)
+        if eraser_image_url:
+            diagram_html = f'<img src="{eraser_image_url}" alt="{title_safe}" class="diagram-image" />'
+        else:
+            # Fallback to Mermaid.js
+            diagram_html = f'<div class="mermaid">\n{mermaid_code}\n</div>'
+        
         return f"""<div class="diagram-container">
     <h3>{title_safe}</h3>
     <p class="diagram-purpose">{purpose_safe}</p>
-    <div class="mermaid">
-{mermaid_code}
-    </div>
+    {diagram_html}
     <p class="diagram-description">{description_safe}</p>
 </div>"""
     
