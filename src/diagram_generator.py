@@ -39,6 +39,12 @@ class DiagramGenerator:
     Supports Eraser.io diagram-as-code format
     """
     
+    # Configuration constants
+    MAX_CONTEXT_TECHNOLOGIES = 5
+    MAX_CONTEXT_ARCHITECTURES = 3
+    MAX_DIAGRAM_NODES = 15
+    MAX_FALLBACK_ELEMENTS = 5
+    
     def __init__(self, output_dir: str = "./output/diagrams"):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True, parents=True)
@@ -284,9 +290,9 @@ Component2 > Component3 [icon: database]
         context_info = ""
         if context:
             if context.get('technologies'):
-                context_info += f"\nTechnologies: {', '.join(context['technologies'][:5])}"
+                context_info += f"\nTechnologies: {', '.join(context['technologies'][:self.MAX_CONTEXT_TECHNOLOGIES])}"
             if context.get('architectures'):
-                arch_names = [a.get('name', '') for a in context.get('architectures', [])[:3]]
+                arch_names = [a.get('name', '') for a in context.get('architectures', [])[:self.MAX_CONTEXT_ARCHITECTURES]]
                 context_info += f"\nArchitectures: {', '.join(arch_names)}"
         
         # Create prompt for LLM
@@ -302,7 +308,7 @@ REQUIREMENTS:
 - Include all key elements from the list
 - Show clear relationships and data flow
 - Use descriptive labels
-- Keep it concise (max 12-15 nodes)
+- Keep it concise (max {self.MAX_DIAGRAM_NODES} nodes)
 - Professional and easy to read
 - For sequence diagrams, use proper participant declarations
 - For graph diagrams, use meaningful node IDs and labels
@@ -380,13 +386,13 @@ MERMAID.JS CODE:"""
             # Try to use elements if available
             if isinstance(elements, list) and len(elements) >= 2:
                 code = "graph TD\n"
-                for i, element in enumerate(elements[:5]):
+                for i, element in enumerate(elements[:self.MAX_FALLBACK_ELEMENTS]):
                     safe_id = f"N{i}"
                     safe_label = element.replace('"', "'")[:50]
                     code += f"    {safe_id}[{safe_label}]\n"
                 
                 # Add some connections
-                for i in range(min(len(elements) - 1, 4)):
+                for i in range(min(len(elements) - 1, self.MAX_FALLBACK_ELEMENTS - 1)):
                     code += f"    N{i} --> N{i+1}\n"
                 
                 return code
