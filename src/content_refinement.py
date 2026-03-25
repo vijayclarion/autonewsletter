@@ -4,6 +4,7 @@ Content Refinement & Technical Accuracy Review Module
 Implements Step 3 and Step 4 of the newsletter generation pipeline:
 - Step 3: Refinement & Polish (professional tone, proper formatting)
 - Step 4: Technical Accuracy Review (verify against source content)
+- Step 5 (new): Narrative Quality Validation (story flow, tone, engagement)
 """
 
 import re
@@ -540,93 +541,412 @@ class StrategicContentEnhancer:
         return action_item
 
 
+class NarrativeQualityValidator:
+    """
+    Validate and improve the narrative quality of newsletter content.
+
+    Checks for:
+    - Weak or generic opening statements
+    - Missing "why it matters" framing
+    - Passive voice prevalence
+    - Speculative language
+    - Narrative arc completeness in feature articles
+    - Section intro engagement
+    """
+
+    # Weak opener patterns
+    _WEAK_OPENERS = [
+        r'^(this\s+(document|content|newsletter|meeting|presentation|session))\s+(covers|discusses|presents|reviews|explores)',
+        r'^(the\s+(following|content|document))\s+(covers|discusses|presents)',
+        r'^(we\s+(discussed|talked|went\s+over|covered|looked\s+at))',
+        r'^(there\s+(are|were|is|was)\s+several)',
+        r'^(in\s+this\s+(section|newsletter|article|edition))',
+    ]
+
+    # Passive voice markers
+    _PASSIVE_MARKERS = [
+        r'\b(is|are|was|were)\s+\w+ed\b',
+        r'\b(has|have|had)\s+been\s+\w+ed\b',
+        r'\bwill\s+be\s+\w+ed\b',
+    ]
+
+    # Speculative terms
+    _SPECULATIVE_TERMS = [
+        'might', 'could', 'possibly', 'perhaps', 'probably', 'maybe',
+        'likely', 'seems', 'appears', 'suggests', 'apparently', 'somewhat',
+    ]
+
+    # Required narrative arc fields for feature articles
+    _NARRATIVE_ARC_FIELDS = ['hook', 'context', 'key_ideas', 'benefits', 'what_this_means']
+
+    def validate_executive_summary(self, summary: str) -> Dict:
+        """
+        Validate the executive summary for narrative quality.
+
+        Returns:
+            Dict with 'score' (0-100), 'issues', and 'recommendations'
+        """
+        issues = []
+        recommendations = []
+        score = 100
+
+        if not summary or len(summary) < 100:
+            return {
+                'score': 0,
+                'issues': ['Executive summary is missing or too short'],
+                'recommendations': ['Generate a 3-5 paragraph executive summary with business impact framing'],
+            }
+
+        # Check for weak opener
+        for pattern in self._WEAK_OPENERS:
+            if re.match(pattern, summary.strip(), re.IGNORECASE):
+                issues.append("Opens with a weak, generic statement")
+                recommendations.append(
+                    "Replace opening sentence with a bold strategic assertion that leads with business impact"
+                )
+                score -= 20
+                break
+
+        # Check paragraph count
+        paragraphs = [p.strip() for p in summary.split('\n\n') if len(p.strip()) > 30]
+        if len(paragraphs) < 3:
+            issues.append(f"Executive summary has only {len(paragraphs)} paragraph(s); aim for 3-5")
+            recommendations.append("Expand to 3-5 paragraphs covering: business signal, problem, solution, impact, recommendation")
+            score -= 15
+
+        # Passive voice check
+        passive_count = sum(len(re.findall(p, summary, re.IGNORECASE)) for p in self._PASSIVE_MARKERS)
+        sentence_count = max(len(re.findall(r'[.!?]', summary)), 1)
+        passive_ratio = passive_count / sentence_count
+        if passive_ratio > 0.25:
+            issues.append(f"High passive voice usage ({passive_ratio:.0%} of sentences)")
+            recommendations.append("Rewrite passive constructions with active, assertive verbs")
+            score -= 15
+
+        # Speculative language check
+        spec_count = sum(1 for w in self._SPECULATIVE_TERMS if re.search(rf'\b{w}\b', summary, re.IGNORECASE))
+        if spec_count > 3:
+            found_terms = [w for w in self._SPECULATIVE_TERMS if re.search(rf'\b{w}\b', summary, re.IGNORECASE)]
+            issues.append(f"Contains {spec_count} speculative terms ({', '.join(found_terms[:3])}...)")
+            recommendations.append("Replace speculative language with confident, factual assertions")
+            score -= 10
+
+        # Check for "why it matters" framing
+        impact_signals = [r'\b(impact|revenue|cost|efficiency|competitive|risk|opportunity|savings|growth)\b']
+        has_impact = any(re.search(p, summary, re.IGNORECASE) for p in impact_signals)
+        if not has_impact:
+            issues.append("Missing business impact framing")
+            recommendations.append("Add explicit business impact language (revenue, cost, efficiency, risk, competitive advantage)")
+            score -= 15
+
+        return {
+            'score': max(0, score),
+            'issues': issues,
+            'recommendations': recommendations,
+            'paragraph_count': len(paragraphs),
+            'passive_ratio': round(passive_ratio, 2),
+            'speculative_count': spec_count,
+        }
+
+    def validate_feature_articles(self, articles: List[Dict]) -> Dict:
+        """
+        Validate feature articles for narrative arc completeness.
+
+        Returns:
+            Dict with per-article scores and overall recommendations
+        """
+        if not articles:
+            return {'overall_score': 0, 'articles': [], 'issues': ['No feature articles found']}
+
+        article_results = []
+        total_score = 0
+
+        for i, article in enumerate(articles):
+            result = self._validate_single_article(article, index=i + 1)
+            article_results.append(result)
+            total_score += result['score']
+
+        return {
+            'overall_score': round(total_score / len(articles)),
+            'articles': article_results,
+            'issues': [r['issues'] for r in article_results if r['issues']],
+        }
+
+    def validate_highlights(self, highlights: List[Dict]) -> Dict:
+        """
+        Validate key highlights for depth and specificity.
+
+        Returns:
+            Dict with 'score', 'issues', 'recommendations'
+        """
+        if not highlights:
+            return {'score': 0, 'issues': ['No highlights found'], 'recommendations': []}
+
+        issues = []
+        recommendations = []
+        score = 100
+
+        # Check for generic titles
+        generic_titles = 0
+        for h in highlights:
+            title = h.get('title', '') if isinstance(h, dict) else str(h)
+            # Titles shorter than 4 words or without action words are likely generic
+            if len(title.split()) < 4:
+                generic_titles += 1
+
+        if generic_titles > len(highlights) * 0.5:
+            issues.append(f"{generic_titles}/{len(highlights)} highlight titles are too short or generic")
+            recommendations.append(
+                "Rewrite titles as impact statements that include the specific outcome "
+                "(e.g. 'AI Review Cuts Defect Escape Rate by 30%' not 'AI Review')"
+            )
+            score -= 25
+
+        # Check for 'why_it_matters' field
+        has_why = sum(1 for h in highlights if isinstance(h, dict) and h.get('why_it_matters'))
+        if has_why == 0:
+            issues.append("Highlights are missing 'why it matters' context")
+            recommendations.append("Add a 'why_it_matters' sentence to each highlight")
+            score -= 15
+
+        return {
+            'score': max(0, score),
+            'count': len(highlights),
+            'issues': issues,
+            'recommendations': recommendations,
+        }
+
+    def generate_section_intros(self, knowledge) -> Dict[str, str]:
+        """
+        Generate compelling introductory sentences for each newsletter section.
+
+        Args:
+            knowledge: ExtractedKnowledge object
+
+        Returns:
+            Dict mapping section name to intro text
+        """
+        intros = {}
+
+        # Highlights intro
+        if knowledge.key_highlights:
+            count = len(knowledge.key_highlights)
+            categories = set()
+            for h in knowledge.key_highlights:
+                if isinstance(h, dict):
+                    categories.add(h.get('category', ''))
+            cat_text = f" spanning {', '.join(c for c in categories if c)}" if categories else ""
+            intros['highlights'] = (
+                f"{count} strategic developments{cat_text} demand immediate attention "
+                f"from engineering, architecture, and leadership teams."
+            )
+
+        # Feature articles intro
+        if knowledge.feature_articles:
+            titles = [a.get('title', '') for a in knowledge.feature_articles if isinstance(a, dict)][:2]
+            if titles:
+                intros['features'] = (
+                    f"The following deep-dive analyses — including '{titles[0]}' "
+                    f"— translate technical complexity into clear business impact and actionable guidance."
+                )
+            else:
+                intros['features'] = (
+                    "These deep-dive analyses examine the most consequential technical developments, "
+                    "providing the strategic context and recommended actions decision-makers need."
+                )
+
+        # Quick bites intro
+        if knowledge.quick_bites:
+            intros['quick_bites'] = (
+                "Beyond the headline stories, these rapid intelligence updates flag "
+                "emerging signals that deserve a place on your strategic radar."
+            )
+
+        # Action items intro
+        if knowledge.action_items:
+            total_items = sum(
+                len(v) for v in knowledge.action_items.values() if isinstance(v, list)
+            )
+            intros['action_items'] = (
+                f"Strategy without execution is noise. "
+                f"The following {total_items} prioritized actions are segmented by role "
+                f"for immediate implementation."
+            )
+
+        return intros
+
+    # ------------------------------------------------------------------
+    # Internal helpers
+    # ------------------------------------------------------------------
+
+    def _validate_single_article(self, article: Dict, index: int) -> Dict:
+        """Validate a single feature article"""
+        issues = []
+        score = 100
+        title = article.get('title', f'Article {index}')
+
+        # Check for narrative arc completeness
+        missing_fields = [f for f in self._NARRATIVE_ARC_FIELDS if not article.get(f)]
+        if missing_fields:
+            issues.append(f"Missing narrative arc fields: {', '.join(missing_fields)}")
+            score -= len(missing_fields) * 10
+
+        # Check hook quality
+        hook = article.get('hook', '')
+        if hook:
+            for pattern in self._WEAK_OPENERS:
+                if re.match(pattern, hook.strip(), re.IGNORECASE):
+                    issues.append("Hook opens with a weak generic statement")
+                    score -= 15
+                    break
+
+        # Check 'what_this_means' exists
+        if not article.get('what_this_means'):
+            issues.append("Missing 'What This Means' business-to-technical bridge")
+            score -= 15
+
+        # Check call to action
+        cta = article.get('call_to_action', '')
+        if not cta or len(cta) < 20:
+            issues.append("Call to action is missing or too vague")
+            score -= 10
+
+        return {
+            'title': title,
+            'score': max(0, score),
+            'issues': issues,
+        }
+
+
 class NewsletterContentProcessor:
-    """Process newsletter content through refinement and accuracy review"""
-    
+    """Process newsletter content through refinement, accuracy review, and narrative validation"""
+
     def __init__(self):
         """Initialize processor"""
         self.refiner = ContentRefiner()
         self.validator = TechnicalAccuracyValidator()
-        self.enhancer = StrategicContentEnhancer()  # NEW
-    
+        self.enhancer = StrategicContentEnhancer()
+        self.narrative_validator = NarrativeQualityValidator()
+
     def process_content(self, knowledge, source_content: str, verbose: bool = True) -> Dict:
         """
-        Process extracted knowledge through refinement and accuracy review
-        
+        Process extracted knowledge through refinement, accuracy review, and narrative validation.
+
         Args:
             knowledge: ExtractedKnowledge object
             source_content: Original source content for validation
             verbose: Whether to print processing details
-        
+
         Returns:
             Dictionary with processed content and review results
         """
         results = {
             'refinement_results': {},
             'accuracy_review': None,
+            'narrative_validation': {},
+            'section_intros': {},
             'processed_knowledge': knowledge,
             'issues': [],
             'warnings': []
         }
-        
+
         if verbose:
             print("\n📝 Step 3: Refinement & Polish")
             print("-" * 70)
-        
+
         # Refine executive summary
         if knowledge.executive_summary:
             summary_result = self.refiner.refine_executive_summary(knowledge.executive_summary)
             knowledge.executive_summary = summary_result.refined_text
             results['refinement_results']['executive_summary'] = summary_result
-            
+
             if verbose and summary_result.changes_made:
                 print(f"  ✓ Executive Summary: {len(summary_result.changes_made)} refinements")
-        
+
         # Refine highlights
         if knowledge.key_highlights:
             knowledge.key_highlights = self.refiner.refine_highlights(knowledge.key_highlights)
             if verbose:
                 print(f"  ✓ Key Highlights: Refined {len(knowledge.key_highlights)} items")
-        
+
         # Refine feature articles
         if knowledge.feature_articles:
             knowledge.feature_articles = self.refiner.refine_feature_articles(knowledge.feature_articles)
             if verbose:
                 print(f"  ✓ Feature Articles: Refined {len(knowledge.feature_articles)} articles")
-        
+
         # Refine action items
         if knowledge.action_items:
             knowledge.action_items = self.refiner.refine_action_items(knowledge.action_items)
             if verbose:
                 print(f"  ✓ Action Items: Refined {len(knowledge.action_items)} categories")
-        
+
         if verbose:
             print("\n🔍 Step 4: Technical Accuracy Review")
             print("-" * 70)
-        
+
         # Validate technical accuracy
         combined_content = f"{knowledge.executive_summary}\n\n"
-        combined_content += "\n".join([h.get('description', '') for h in knowledge.key_highlights])
-        
+        combined_content += "\n".join([
+            h.get('description', '') if isinstance(h, dict) else str(h)
+            for h in knowledge.key_highlights
+        ])
+
         accuracy_review = self.validator.validate_technical_accuracy(combined_content, source_content)
         results['accuracy_review'] = accuracy_review
-        
+
         if verbose:
             print(f"  Confidence Score: {accuracy_review.confidence_score:.1%}")
             print(f"  Is Accurate: {'✓ Yes' if accuracy_review.is_accurate else '✗ No'}")
-            
+
             if accuracy_review.issues_found:
                 print(f"\n  ⚠ Issues Found: {len(accuracy_review.issues_found)}")
                 for issue in accuracy_review.issues_found:
                     print(f"    - {issue['type']}: {issue['description']}")
                 results['issues'] = accuracy_review.issues_found
-            
+
             if accuracy_review.recommendations:
                 print(f"\n  💡 Recommendations:")
                 for rec in accuracy_review.recommendations:
                     print(f"    - {rec}")
                 results['warnings'] = accuracy_review.recommendations
-        
+
+        # ----------------------------------------------------------------
+        # Step 5 (NEW): Narrative Quality Validation
+        # ----------------------------------------------------------------
+        if verbose:
+            print("\n✍️  Step 5: Narrative Quality Validation")
+            print("-" * 70)
+
+        summary_narrative = self.narrative_validator.validate_executive_summary(knowledge.executive_summary)
+        articles_narrative = self.narrative_validator.validate_feature_articles(knowledge.feature_articles)
+        highlights_narrative = self.narrative_validator.validate_highlights(knowledge.key_highlights)
+
+        results['narrative_validation'] = {
+            'executive_summary': summary_narrative,
+            'feature_articles': articles_narrative,
+            'highlights': highlights_narrative,
+        }
+
+        if verbose:
+            print(f"  Executive Summary Score: {summary_narrative['score']}/100")
+            print(f"  Feature Articles Score:  {articles_narrative.get('overall_score', 0)}/100")
+            print(f"  Highlights Score:        {highlights_narrative['score']}/100")
+            if summary_narrative.get('issues'):
+                for issue in summary_narrative['issues']:
+                    print(f"    ⚠ Summary: {issue}")
+            if articles_narrative.get('issues'):
+                print(f"    ⚠ Articles: {len(articles_narrative['issues'])} articles have narrative issues")
+
+        # Generate section introductions
+        section_intros = self.narrative_validator.generate_section_intros(knowledge)
+        results['section_intros'] = section_intros
+        # Attach to knowledge for use in template rendering
+        knowledge.section_intros = section_intros  # type: ignore[attr-defined]
+
+        if verbose and section_intros:
+            print(f"  ✓ Section Intros: Generated for {len(section_intros)} section(s)")
+
         return results
 
 
@@ -637,4 +957,5 @@ if __name__ == "__main__":
     print("\n✓ Module initialized successfully!")
     print("  - ContentRefiner: Professional tone and formatting")
     print("  - TechnicalAccuracyValidator: Accuracy verification")
+    print("  - NarrativeQualityValidator: Narrative quality and tone analysis")
     print("  - NewsletterContentProcessor: Full pipeline processing")

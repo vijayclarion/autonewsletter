@@ -45,8 +45,8 @@ class EnterpriseNewsletterGenerator:
         self.content_processor = NewsletterContentProcessor()
         print("  ✓ Content Refinement & Accuracy Review")
         
-        self.newsletter_generator = NewsletterGenerator(output_dir=output_dir)
-        print("  ✓ Newsletter Generator")
+        self.newsletter_generator = NewsletterGenerator(output_dir=output_dir, template="storytelling")
+        print("  ✓ Newsletter Generator (Storytelling Template)")
         
         self.diagram_generator = DiagramGenerator(output_dir=f"{output_dir}/diagrams")
         print("  ✓ Diagram Generator")
@@ -189,11 +189,14 @@ class EnterpriseNewsletterGenerator:
         print(f"  Content Metrics:")
         for key, value in quality_report['content_metrics'].items():
             print(f"    - {key}: {value}")
+        print(f"  Narrative Quality:")
+        for key, value in quality_report.get('narrative_quality', {}).items():
+            print(f"    - {key}: {value}/100")
         print(f"  Quality Gates:")
         for key, value in quality_report['quality_gates'].items():
             status = '✓' if value else '✗'
             print(f"    {status} {key}: {value}")
-        
+
         # Summary
         print("\n" + "=" * 70)
         print("✅ NEWSLETTER GENERATION COMPLETE!")
@@ -203,20 +206,21 @@ class EnterpriseNewsletterGenerator:
         print(f"   • Markdown: {Path(newsletter_files['markdown']).name}")
         print(f"   • HTML: {Path(newsletter_files['html']).name}")
         print(f"   • JSON: {Path(newsletter_files['json']).name}")
-        
+
         if diagrams:
             print(f"\n🎨 Diagrams:")
             for diagram in diagrams:
                 print(f"   • {diagram.title}: {Path(diagram.image_path).name}")
             print(f"   • Documentation: diagrams_guide.md")
-        
+
         # Quality summary
         print(f"\n📊 Quality Metrics:")
         print(f"   • Overall Score: {quality_report['overall_score']:.1%}")
+        print(f"   • Storytelling: {'✓ Enabled' if quality_report['quality_gates'].get('storytelling_elements') else '○ Partial'}")
         print(f"   • Refinement: {'✓ Applied' if processing_results['refinement_results'] else '○ None needed'}")
         print(f"   • Issues Found: {len(processing_results['issues'])}")
         print(f"   • Warnings: {len(processing_results['warnings'])}")
-        
+
         print("\n" + "=" * 70)
         
         return {
@@ -242,33 +246,49 @@ class EnterpriseNewsletterGenerator:
     def _validate_extraction_quality(self, knowledge, source_content: str) -> float:
         """Validate extraction quality with scoring"""
         score = 1.0
-        
-        # Check executive summary length
+
+        # Check executive summary length (3-5 paragraphs ~ 600+ chars)
         if len(knowledge.executive_summary) < 500:
             score -= 0.2
-        
+
         # Check for specific examples (numbers, metrics)
         if not re.search(r'\d+', knowledge.executive_summary):
             score -= 0.15
-        
+
         # Check highlight depth
         if knowledge.key_highlights:
-            avg_desc_length = sum(len(h.get('description', '')) for h in knowledge.key_highlights) / len(knowledge.key_highlights)
+            avg_desc_length = sum(
+                len(h.get('description', '')) if isinstance(h, dict) else len(str(h))
+                for h in knowledge.key_highlights
+            ) / len(knowledge.key_highlights)
             if avg_desc_length < 100:
                 score -= 0.15
-        
+
         # Check for strategic insights
-        if not hasattr(knowledge, 'strategic_insights') or not knowledge.strategic_insights or not knowledge.strategic_insights.get('business_impact'):
-            score -= 0.2
-        
+        if not hasattr(knowledge, 'strategic_insights') or not knowledge.strategic_insights \
+                or not knowledge.strategic_insights.get('business_impact'):
+            score -= 0.15
+
+        # Check for narrative intro (storytelling)
+        if not getattr(knowledge, 'narrative_intro', ''):
+            score -= 0.05
+
+        # Check for industry perspective (storytelling)
+        if not getattr(knowledge, 'industry_perspective', {}):
+            score -= 0.05
+
         # Check diagram suggestions
         if not knowledge.diagram_suggestions or len(knowledge.diagram_suggestions) < 2:
             score -= 0.1
-        
+
         return max(0.0, score)
-    
+
     def _generate_quality_report(self, knowledge, diagrams, quality_score, processing_results) -> Dict:
         """Generate comprehensive quality metrics report"""
+        narrative_validation = processing_results.get('narrative_validation', {})
+        summary_score = narrative_validation.get('executive_summary', {}).get('score', 0)
+        articles_score = narrative_validation.get('feature_articles', {}).get('overall_score', 0)
+
         return {
             'overall_score': quality_score,
             'content_metrics': {
@@ -276,13 +296,24 @@ class EnterpriseNewsletterGenerator:
                 'key_highlights_count': len(knowledge.key_highlights),
                 'feature_articles_count': len(knowledge.feature_articles),
                 'diagrams_generated': len(diagrams),
-                'has_strategic_insights': hasattr(knowledge, 'strategic_insights') and bool(knowledge.strategic_insights)
+                'has_strategic_insights': hasattr(knowledge, 'strategic_insights') and bool(knowledge.strategic_insights),
+                'has_narrative_intro': bool(getattr(knowledge, 'narrative_intro', '')),
+                'has_industry_perspective': bool(getattr(knowledge, 'industry_perspective', {})),
+            },
+            'narrative_quality': {
+                'executive_summary_score': summary_score,
+                'feature_articles_score': articles_score,
             },
             'quality_gates': {
                 'depth_check': quality_score >= 0.7,
                 'strategic_framing': hasattr(knowledge, 'strategic_insights') and bool(knowledge.strategic_insights),
+                'storytelling_elements': bool(getattr(knowledge, 'narrative_intro', '')) and bool(getattr(knowledge, 'industry_perspective', {})),
                 'diagrams_present': len(diagrams) > 0,
-                'accuracy_validated': processing_results.get('accuracy_review', {}).get('is_accurate', False) if isinstance(processing_results.get('accuracy_review'), dict) else False
+                'accuracy_validated': (
+                    processing_results.get('accuracy_review', {}).get('is_accurate', False)
+                    if isinstance(processing_results.get('accuracy_review'), dict)
+                    else False
+                ),
             },
             'recommendations': processing_results.get('warnings', [])
         }
