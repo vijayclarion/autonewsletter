@@ -31,6 +31,9 @@ class ExtractedKnowledge:
     diagram_suggestions: List[Dict] = field(default_factory=list)
     metadata: Dict = field(default_factory=dict)
     strategic_insights: Dict = field(default_factory=dict)
+    # Storytelling enhancements
+    narrative_intro: str = ""           # Compelling opening hook for the newsletter
+    industry_perspective: Dict = field(default_factory=dict)  # Thought-leadership section
 
 
 class RAGEngine:
@@ -242,12 +245,24 @@ class RAGEngine:
         best_practices = self._extract_best_practices(chunks[:6], content[:6000])
         diagrams = self._extract_diagrams(chunks[:6], content[:6000])
         print(f" ✓")
-        
-        # Pass 5: Strategic Insights (NEW)
+
+        # Pass 5: Strategic Insights
         print(f"    • Pass 5: Strategic Insights...", end='', flush=True)
         strategic_insights = self._extract_strategic_insights(content[:8000])
         print(f" ✓")
-        
+
+        # Pass 6: Narrative Intro (storytelling hook)
+        print(f"    • Pass 6: Narrative Intro...", end='', flush=True)
+        narrative_intro = self._extract_narrative_intro(executive_summary, strategic_insights)
+        print(f" ✓")
+
+        # Pass 7: Industry Perspective (thought leadership)
+        print(f"    • Pass 7: Industry Perspective...", end='', flush=True)
+        industry_perspective = self._extract_industry_perspective(
+            content[:6000], technologies, strategic_insights
+        )
+        print(f" ✓")
+
         # Build ExtractedKnowledge object
         knowledge = ExtractedKnowledge(
             executive_summary=executive_summary,
@@ -260,9 +275,11 @@ class RAGEngine:
             best_practices=best_practices,
             diagram_suggestions=diagrams,
             metadata={'total_words': total_words, 'total_chars': total_chars},
-            strategic_insights=strategic_insights
+            strategic_insights=strategic_insights,
+            narrative_intro=narrative_intro,
+            industry_perspective=industry_perspective,
         )
-        
+
         return knowledge
     
     def _extract_executive_summary(self, chunks: List[Dict], context: str) -> str:
@@ -275,75 +292,90 @@ class RAGEngine:
         chunk_text = "\n\n".join([c['text'] for c in combined_chunks])
         context_text = chunk_text[:8000] if len(chunk_text) > 8000 else chunk_text
         
-        prompt = f"""Based on the following content, provide a strategic executive summary (2-3 paragraphs) that leads with business impact framing.
+        prompt = f"""Based on the following content, write a strategic executive summary (3-5 paragraphs) that a C-suite technology leader would send to the board.
 
 REQUIREMENTS:
-- Lead with Business Impact: Why does this matter to the business?
-- Risk Factors: What risks or challenges are highlighted?
-- Strategic Opportunities: What opportunities for growth or competitive advantage?
-- Use assertive, analytical language (NOT passive or speculative)
-- Include specific data points and concrete examples
-- Executive-grade prose with authority
+- Paragraph 1 — Lead with the single most important business signal from this content. What is the strategic implication RIGHT NOW?
+- Paragraph 2 — Articulate the core problem or opportunity with precision. Use specific examples and data points from the content.
+- Paragraph 3 — Describe the solution or approach being taken. What makes it differentiated? Be specific.
+- Paragraph 4 — Quantify the business impact: cost savings, time reduction, risk mitigation, revenue opportunity. Use numbers from the content where available.
+- Paragraph 5 (optional) — Issue a bold, clear recommendation. What must leadership do in the next 30/60/90 days?
+
+TONE: Authoritative, analytical, executive-grade. Active voice throughout. No hedging phrases (might, could, possibly). No passive constructions. Every sentence must add insight.
+
+AVOID:
+- Opening with "This document covers..." or "The content discusses..."
+- Filler phrases: "basically", "actually", "you know"
+- Speculative language: "might", "could", "possibly", "perhaps", "probably"
+- Vague generalities without supporting specifics
 
 Content:
 {context_text}
 
 Strategic Executive Summary:"""
         
-        return self._extract_with_llm_v2('executive_summary', prompt, max_tokens=800, temperature=0.5)
+        return self._extract_with_llm_v2('executive_summary', prompt, max_tokens=1200, temperature=0.5)
     
     def _extract_key_highlights(self, ranked_chunks: List[Dict], context: str) -> List[Dict]:
         """Pass 2: Key Highlights with re-ranked chunks"""
         chunk_text = "\n\n".join([c['text'] for c in ranked_chunks])
         context_text = chunk_text[:8000] if len(chunk_text) > 8000 else chunk_text
-        
+
         prompt = f"""Based on the following high-impact content, extract 5-7 key highlights.
 
 For each highlight, provide:
-- title: Assertive, impactful title (7-10 words) - NO vague generalities
-- description: Specific description (2-3 sentences) with concrete examples and data points
-- category: One of "Business Impact" | "Risk Factor" | "Strategic Opportunity"
+- title: Assertive, impact-led title (7-12 words) that states a clear finding — NOT a vague label
+- description: 3-4 sentences. Start with the business consequence, then provide specific context and at least one concrete example or data point from the content.
+- category: One of "Business Impact" | "Risk Factor" | "Strategic Opportunity" | "Technical Achievement"
+- why_it_matters: 1 sentence explaining the "so what?" for a senior technology leader
+
+REQUIREMENTS:
+- Every title must communicate an insight, not just a topic (e.g. "AI Code Review Cuts Defect Rate by 30%" NOT "AI Code Review")
+- Descriptions must use active voice and confident, present-tense assertions
+- Include numbers, percentages, or timeframes wherever the source contains them
 
 AVOID:
-- Vague generalities
-- Passive voice
-- Speculative language (might, could, possibly, maybe)
+- Passive voice ("is being", "was implemented")
+- Speculative language (might, could, possibly, maybe, perhaps)
+- Generic statements without supporting detail
 
-Return as JSON array of objects with "title", "description", and "category" keys.
+Return as JSON array of objects with "title", "description", "category", and "why_it_matters" keys.
 
 Content:
 {context_text}
 
 Key Highlights (JSON):"""
-        
-        result = self._extract_with_llm_v2('key_highlights', prompt, max_tokens=1500, temperature=0.4)
+
+        result = self._extract_with_llm_v2('key_highlights', prompt, max_tokens=2000, temperature=0.4)
         return self._parse_json_safe(result, [])
-    
+
     def _extract_feature_articles(self, chunks: List[Dict], context: str) -> List[Dict]:
-        """Pass 3: Feature Articles with deep-dive focus"""
+        """Pass 3: Feature Articles with deep-dive focus and narrative arc"""
         # Focus on middle chunks for technical depth
         middle_chunks = [c for c in chunks if c['position'] == 'middle'][:4]
         if len(middle_chunks) < 2:
             middle_chunks = chunks[:4]
-        
+
         chunk_text = "\n\n".join([c['text'] for c in middle_chunks])
         context_text = chunk_text[:10000] if len(chunk_text) > 10000 else chunk_text
-        
-        prompt = f"""Based on the following content, identify 2-4 major topics for deep-dive feature articles.
 
-For each article, provide:
-- title: Clear, descriptive title
-- context: Problem statement or background with concrete examples
-- key_ideas: Detailed technical concepts (extract specific examples, NOT generic descriptions)
-- benefits: Quantified benefits when possible
-- best_practices: Actionable best practices (specific, not generic)
-- call_to_action: Specific next step with timeline
+        prompt = f"""Based on the following content, write 2-4 deep-dive feature articles with a compelling narrative arc.
+
+Each article must follow this structure (Problem → Solution → Impact):
+- title: Bold, specific headline that states the core finding (not just the topic)
+- hook: 1-2 powerful opening sentences that grab attention and state the stakes immediately
+- context: 2-3 sentences framing the problem or opportunity with business urgency and specific examples
+- key_ideas: 3-4 sentences on the technical solution or approach. Name specific tools, architectures, or methodologies. Be precise.
+- benefits: 2-3 sentences with quantified business outcomes (use numbers from the source). Describe who benefits and how.
+- what_this_means: 2 sentences bridging technical detail to business value. Format: "For [audience], this means [specific outcome]."
+- best_practices: 3-5 specific, actionable best practices. Each starts with a strong verb.
+- call_to_action: 1 bold recommendation with a specific timeline (e.g. "30 days", "this quarter", "Q2").
 
 REQUIREMENTS:
-- Extract specific examples and details from content
-- Each article must have UNIQUE insights (no repetition across articles)
-- Use assertive, analytical language
-- Avoid vague generalities
+- Each article must deliver UNIQUE insights — no overlap between articles
+- Use active voice and assertive, analytical language throughout
+- Ground every claim in content from the source material
+- No hedging, no passive voice, no speculative language
 
 Return as JSON array of objects.
 
@@ -352,7 +384,7 @@ Content:
 
 Feature Articles (JSON):"""
         
-        result = self._extract_with_llm_v2('feature_articles', prompt, max_tokens=2500, temperature=0.4)
+        result = self._extract_with_llm_v2('feature_articles', prompt, max_tokens=3500, temperature=0.4)
         return self._parse_json_safe(result, [])
     
     def _extract_quick_bites(self, chunks: List[Dict], context: str) -> List[str]:
@@ -470,12 +502,14 @@ Diagrams (JSON):"""
         return self._parse_json_safe(result, [])
     
     def _extract_strategic_insights(self, context: str) -> Dict:
-        """Pass 5: Strategic Insights (NEW)"""
+        """Pass 5: Strategic Insights"""
         prompt = f"""Analyze the following content for strategic framing. Extract:
-- business_impact: How this impacts business outcomes (revenue, cost, efficiency)
-- risk_factors: Key risks and challenges identified
-- strategic_opportunities: Opportunities for growth or competitive advantage
-- key_metrics: Any KPIs or metrics mentioned
+- business_impact: 2-3 sentences on how this directly impacts business outcomes (revenue, cost, efficiency, time-to-market). Be specific — name the mechanism, not just the outcome.
+- risk_factors: 2-3 sentences identifying the most material risks or challenges. State the consequence of inaction.
+- strategic_opportunities: 2-3 sentences on the most actionable opportunities for growth or competitive advantage. Be specific about the window of opportunity.
+- key_metrics: A list of specific KPIs, percentages, or quantitative measures mentioned in the content. If none are explicit, derive reasonable proxy metrics.
+
+TONE: Authoritative, analytical. No hedging. Active voice.
 
 Return as JSON object with these four keys.
 
@@ -483,8 +517,63 @@ Content:
 {context[:8000]}
 
 Strategic Insights (JSON):"""
-        
-        result = self._extract_with_llm_v2('strategic_insights', prompt, max_tokens=800, temperature=0.4)
+
+        result = self._extract_with_llm_v2('strategic_insights', prompt, max_tokens=1000, temperature=0.4)
+        return self._parse_json_safe(result, {})
+
+    def _extract_narrative_intro(self, executive_summary: str, strategic_insights: Dict) -> str:
+        """Pass 6: Generate a compelling narrative hook for the newsletter opening"""
+        business_impact = strategic_insights.get('business_impact', '') if strategic_insights else ''
+        opportunities = strategic_insights.get('strategic_opportunities', '') if strategic_insights else ''
+
+        prompt = f"""Write a compelling 2-3 sentence opening hook for an enterprise technology newsletter.
+
+EXECUTIVE SUMMARY:
+{executive_summary[:1500]}
+
+BUSINESS IMPACT:
+{business_impact}
+
+STRATEGIC OPPORTUNITIES:
+{opportunities}
+
+REQUIREMENTS:
+- Start with a bold, provocative statement about the current state of enterprise technology — NOT "This newsletter covers..."
+- Immediately frame the reader's challenge or opportunity
+- End by asserting why THIS edition's content is essential reading right now
+- Confident, authoritative tone. Present tense. Active voice. No hedging.
+
+Newsletter Opening Hook (plain text):"""
+
+        return self._extract_with_llm_v2('narrative_intro', prompt, max_tokens=200, temperature=0.5)
+
+    def _extract_industry_perspective(self, context: str, technologies: List[str],
+                                      strategic_insights: Dict) -> Dict:
+        """Pass 7: Industry Perspective — thought leadership section"""
+        tech_list = ', '.join(technologies[:10]) if technologies else 'various technologies'
+        business_impact = strategic_insights.get('business_impact', '') if strategic_insights else ''
+        opportunities = strategic_insights.get('strategic_opportunities', '') if strategic_insights else ''
+
+        prompt = f"""Based on the following content and context, write an authoritative "Industry Perspective" section for an enterprise technology newsletter.
+
+CONTENT SUMMARY:
+{context[:3000]}
+
+TECHNOLOGIES DISCUSSED: {tech_list}
+BUSINESS IMPACT CONTEXT: {business_impact}
+STRATEGIC OPPORTUNITIES: {opportunities}
+
+Return a JSON object with these exact keys:
+- headline: A bold, declarative 8-12 word headline stating a clear industry position (NOT a question, NOT vague)
+- perspective: 3-4 sentences of expert analysis that place these developments in the broader industry macro-trend. Name the trend. Be opinionated.
+- bold_prediction: 1-2 sentences stating a confident, specific prediction about where this is heading in the next 12-18 months. No hedging.
+- recommendation: 1 clear, actionable recommendation for enterprise decision-makers. Start with a strong imperative verb (e.g. "Mandate", "Establish", "Accelerate").
+
+TONE: Senior analyst / industry thought leader. Authoritative. Opinionated. Active voice. No hedging.
+
+Industry Perspective (JSON):"""
+
+        result = self._extract_with_llm_v2('industry_perspective', prompt, max_tokens=700, temperature=0.5)
         return self._parse_json_safe(result, {})
     
     def _extract_with_llm_v2(self, category: str, prompt: str, max_tokens: int = 2000, temperature: float = 0.4) -> str:
