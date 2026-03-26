@@ -10,11 +10,8 @@ import re
 from typing import List, Dict, Optional
 from dataclasses import dataclass, field
 
-try:
-    from openai import OpenAI
-    OPENAI_AVAILABLE = True
-except ImportError:
-    OPENAI_AVAILABLE = False
+from langchain_core.messages import HumanMessage, SystemMessage
+from llm_config import get_llm
 
 
 @dataclass
@@ -47,19 +44,16 @@ class RAGEngine:
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         
-        # Initialize OpenAI with API key from environment
-        if OPENAI_AVAILABLE:
-            try:
-                api_key = os.environ.get('OPENAI_API_KEY', 'api_key_placeholder')
-                self.client = OpenAI(api_key=api_key)
-                self.llm_available = True
-                print("✓ OpenAI LLM initialized")
-            except Exception as e:
-                print(f"⚠ OpenAI initialization failed: {e}")
-                self.llm_available = False
-        else:
+        # Initialize LLM via LangChain abstraction layer
+        try:
+            self.llm = get_llm()
+            self.llm_available = True
+            provider = os.environ.get('LLM_PROVIDER', 'openai')
+            print(f"✓ LLM initialized ({provider})")
+        except Exception as e:
+            print(f"⚠ LLM initialization failed: {e}")
+            self.llm = None
             self.llm_available = False
-            print("⚠ OpenAI not available")
         
         # Skip vector DB initialization
         self.chroma_client = None
@@ -596,18 +590,13 @@ AVOID:
 - Safe/passive voice"""
         
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=temperature,
-                max_tokens=max_tokens,
-                timeout=60
-            )
-            
-            return response.choices[0].message.content.strip()
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=prompt),
+            ]
+            llm = self.llm.bind(temperature=temperature, max_tokens=max_tokens)
+            response = llm.invoke(messages)
+            return response.content.strip()
             
         except Exception as e:
             print(f"\n    Error in {category}: {e}")
@@ -619,21 +608,13 @@ AVOID:
             return ""
         
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are an expert enterprise technology analyst and technical writer. Extract only factual information from the content provided."
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.7,
-                max_tokens=2000,
-                timeout=60
-            )
-            
-            return response.choices[0].message.content.strip()
+            messages = [
+                SystemMessage(content="You are an expert enterprise technology analyst and technical writer. Extract only factual information from the content provided."),
+                HumanMessage(content=prompt),
+            ]
+            llm = self.llm.bind(temperature=0.7, max_tokens=2000)
+            response = llm.invoke(messages)
+            return response.content.strip()
             
         except Exception as e:
             print(f"\n    Error in {category}: {e}")

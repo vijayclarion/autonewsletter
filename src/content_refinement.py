@@ -11,11 +11,8 @@ import re
 from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass, field
 
-try:
-    from openai import OpenAI
-    OPENAI_AVAILABLE = True
-except ImportError:
-    OPENAI_AVAILABLE = False
+from langchain_core.messages import HumanMessage, SystemMessage
+from llm_config import get_llm
 
 
 @dataclass
@@ -275,7 +272,12 @@ class TechnicalAccuracyValidator:
     
     def __init__(self):
         """Initialize validator"""
-        self.client = OpenAI(api_key="api_key_placeholder") if OPENAI_AVAILABLE else None
+        try:
+            self.llm = get_llm()
+            self.llm_available = True
+        except Exception:
+            self.llm = None
+            self.llm_available = False
         
         # Speculative indicators
         self.speculative_keywords = [
@@ -330,7 +332,7 @@ class TechnicalAccuracyValidator:
             })
         
         # Check for factual claims
-        if self.client:
+        if self.llm_available:
             factual_issues = self._validate_factual_claims(content, source_content)
             if factual_issues:
                 review.is_accurate = False
@@ -394,7 +396,7 @@ class TechnicalAccuracyValidator:
     
     def _validate_factual_claims(self, content: str, source_content: str) -> List[Dict]:
         """Validate factual claims using LLM"""
-        if not self.client:
+        if not self.llm_available:
             return []
         
         try:
@@ -418,19 +420,13 @@ List each issue with:
 
 Be strict - only flag actual issues, not minor rewording."""
             
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": "You are a technical accuracy reviewer. Verify that extracted content matches source material exactly."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3,
-                max_tokens=500,
-                timeout=30
-            )
-            
-            # Parse response for issues
-            response_text = response.choices[0].message.content.strip()
+            messages = [
+                SystemMessage(content="You are a technical accuracy reviewer. Verify that extracted content matches source material exactly."),
+                HumanMessage(content=prompt),
+            ]
+            llm = self.llm.bind(temperature=0.3, max_tokens=500)
+            response = llm.invoke(messages)
+            response_text = response.content.strip()
             
             if 'no issues' in response_text.lower() or 'accurate' in response_text.lower():
                 return []
