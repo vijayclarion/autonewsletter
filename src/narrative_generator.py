@@ -13,11 +13,8 @@ import re
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
 
-try:
-    from openai import OpenAI
-    OPENAI_AVAILABLE = True
-except ImportError:
-    OPENAI_AVAILABLE = False
+from langchain_core.messages import HumanMessage, SystemMessage
+from llm_config import get_llm
 
 
 @dataclass
@@ -78,15 +75,11 @@ class NarrativeGenerator:
 
     def __init__(self):
         """Initialize narrative generator with LLM support"""
-        if OPENAI_AVAILABLE:
-            try:
-                import os
-                api_key = os.environ.get('OPENAI_API_KEY', 'api_key_placeholder')
-                self.client = OpenAI(api_key=api_key)
-                self.llm_available = True
-            except Exception:
-                self.llm_available = False
-        else:
+        try:
+            self.llm = get_llm()
+            self.llm_available = True
+        except Exception:
+            self.llm = None
             self.llm_available = False
 
         # Passive voice indicators
@@ -590,17 +583,13 @@ Industry Perspective (JSON):"""
             "Every sentence earns its place by adding insight, not just information."
         )
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt},
-                ],
-                temperature=temperature,
-                max_tokens=max_tokens,
-                timeout=60,
-            )
-            return response.choices[0].message.content.strip()
+            messages = [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=prompt),
+            ]
+            llm = self.llm.bind(temperature=temperature, max_tokens=max_tokens)
+            response = llm.invoke(messages)
+            return response.content.strip()
         except Exception as e:
             print(f"  ⚠ Narrative LLM call failed: {e}")
             return ""

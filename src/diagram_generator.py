@@ -13,11 +13,8 @@ from typing import Dict, List, Optional
 from pathlib import Path
 from dataclasses import dataclass
 
-try:
-    from openai import OpenAI
-    OPENAI_AVAILABLE = True
-except ImportError:
-    OPENAI_AVAILABLE = False
+from langchain_core.messages import HumanMessage, SystemMessage
+from llm_config import get_llm
 
 
 @dataclass
@@ -103,14 +100,12 @@ class DiagramGenerator:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True, parents=True)
         
-        # Initialize OpenAI for diagram code generation
-        if OPENAI_AVAILABLE:
-            try:
-                self.client = OpenAI()
-                self.llm_available = True
-            except:
-                self.llm_available = False
-        else:
+        # Initialize LLM via LangChain abstraction layer
+        try:
+            self.llm = get_llm()
+            self.llm_available = True
+        except Exception:
+            self.llm = None
             self.llm_available = False
         
         # Initialize Eraser.io client
@@ -257,21 +252,13 @@ Return ONLY the Eraser.io diagram code.
 ERASER DIAGRAM CODE:"""
 
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are an expert in creating Eraser.io diagrams. Generate clear, professional diagram syntax."
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3,
-                max_tokens=800,
-                timeout=30
-            )
-            
-            eraser_code = response.choices[0].message.content.strip()
+            messages = [
+                SystemMessage(content="You are an expert in creating Eraser.io diagrams. Generate clear, professional diagram syntax."),
+                HumanMessage(content=prompt),
+            ]
+            llm = self.llm.bind(temperature=0.3, max_tokens=800)
+            response = llm.invoke(messages)
+            eraser_code = response.content.strip()
             
             # Clean up code blocks if present
             if eraser_code.startswith('```'):
@@ -344,21 +331,13 @@ Return ONLY the Mermaid.js code, no explanation.
 MERMAID.JS DIAGRAM:"""
 
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are an expert in creating technical diagrams using Mermaid.js syntax. Generate clear, accurate diagrams."
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3,
-                max_tokens=800,
-                timeout=30
-            )
-            
-            mermaid_code = response.choices[0].message.content.strip()
+            messages = [
+                SystemMessage(content="You are an expert in creating technical diagrams using Mermaid.js syntax. Generate clear, accurate diagrams."),
+                HumanMessage(content=prompt),
+            ]
+            llm = self.llm.bind(temperature=0.3, max_tokens=800)
+            response = llm.invoke(messages)
+            mermaid_code = response.content.strip()
             
             # Clean up code block markers if present
             mermaid_code = re.sub(r'^```mermaid\s*\n', '', mermaid_code)
