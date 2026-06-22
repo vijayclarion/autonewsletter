@@ -1,0 +1,8 @@
+source_dir: "Documents"          # default ingest folder (FR-001)
+output_dir: "editions"
+archive_dir: "archive"
+classification_default: internal # edition label floor (FR-017)
+classifier:
+  confidence_threshold: 0.8      # below -> ambiguous, excluded + flagged (FR-008)
+diagrams:
+  max_regeneration_retries: 2    # then drop + flag (FR-013)

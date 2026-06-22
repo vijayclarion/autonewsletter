@@ -1,0 +1,10 @@
+    @page { size: A4; margin: 18mm 16mm; }
+    body { max-width: none; padding: 0; font-size: 11pt; }
+    .classification-banner { margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .masthead { page-break-after: avoid; }
+    section { page-break-inside: auto; }
+    section > h2 { page-break-after: avoid; }
+    figure { page-break-inside: avoid; }
+    section[data-kind="tldr"] { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    a { text-decoration: none; color: inherit; }
+    footer { position: static; }

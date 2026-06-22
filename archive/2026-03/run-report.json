@@ -1,0 +1,97 @@
+{
+  "run_id": "1db24932-4a97-4d47-afe4-09c96a1a5ad9",
+  "month": "2026-03",
+  "outcome": "edition_ready",
+  "started_at": "2026-06-11T16:19:57.334049+00:00",
+  "finished_at": "2026-06-11T16:20:17.639279+00:00",
+  "stages": {
+    "ingest": {
+      "status": "completed",
+      "seconds": 1.174
+    },
+    "classify": {
+      "status": "completed",
+      "seconds": 0.005
+    },
+    "redact": {
+      "status": "completed",
+      "seconds": 0.013
+    },
+    "index": {
+      "status": "completed",
+      "seconds": 1.412
+    },
+    "generate": {
+      "status": "completed",
+      "seconds": 0.026
+    },
+    "diagrams": {
+      "status": "completed",
+      "seconds": 10.982
+    },
+    "render": {
+      "status": "completed",
+      "seconds": 0.163
+    },
+    "pdf": {
+      "status": "completed",
+      "seconds": 6.415
+    }
+  },
+  "files": {
+    "ingested": 6,
+    "skipped": 1
+  },
+  "chunks": {
+    "total": 26,
+    "technical": 15,
+    "non_technical": 11,
+    "ambiguous": 0,
+    "eligible": 15
+  },
+  "sections": {
+    "stories": 1,
+    "omitted": 0,
+    "total_rendered": 4
+  },
+  "diagrams": {
+    "valid": 1,
+    "failed": 0
+  },
+  "cost": {
+    "models": {
+      "mock-classifier": {
+        "calls": 2,
+        "input_tokens": 2064,
+        "output_tokens": 380,
+        "cost_usd": 0.0
+      },
+      "mock-embedder": {
+        "calls": 2,
+        "input_tokens": 1048,
+        "output_tokens": 0,
+        "cost_usd": 0.0
+      },
+      "mock-writer": {
+        "calls": 4,
+        "input_tokens": 3923,
+        "output_tokens": 554,
+        "cost_usd": 0.0
+      },
+      "mock-diagrammer": {
+        "calls": 2,
+        "input_tokens": 723,
+        "output_tokens": 76,
+        "cost_usd": 0.0
+      }
+    },
+    "total_cost_usd": 0.0
+  },
+  "prompt_versions": [
+    "classifier.v1",
+    "writer-story.v1",
+    "writer-tldr.v1",
+    "diagrammer.v1",
+    "alt-text.v1"
+  ]
+}

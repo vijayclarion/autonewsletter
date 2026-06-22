@@ -1,0 +1,5 @@
+newsletter_title: "Engineering Insights"
+logo_path: null
+palette: { primary: "#1F3A5F", accent: "#E07B39", text: "#1A1A1A" }
+typography: { heading: "Segoe UI", body: "Georgia" }
+pending_brand_assets: true

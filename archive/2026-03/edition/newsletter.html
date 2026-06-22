@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering Insights — Edition #1 (2026-03)</title>
+<style>
+  :root {
+    --color-primary: #1F3A5F;
+    --color-accent: #E07B39;
+    --color-text: #1A1A1A;
+    --font-heading: "Segoe UI", "Segoe UI", Arial, sans-serif;
+    --font-body: "Georgia", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: var(--font-body); color: var(--color-text);
+    max-width: 54rem; margin: 0 auto; padding: 0 1.5rem 3rem; line-height: 1.65;
+  }
+  h1, h2, h3, figcaption, .masthead, .classification-banner { font-family: var(--font-heading); }
+  a { color: var(--color-primary); }
+
+  .classification-banner {
+    background: var(--color-primary); color: #fff; text-align: center;
+    text-transform: uppercase; letter-spacing: .15em; font-size: .75rem;
+    padding: .35rem 1rem; margin: 0 -1.5rem;
+  }
+  .masthead {
+    display: flex; align-items: center; gap: 1.25rem;
+    border-bottom: 4px solid var(--color-accent); padding: 1.5rem 0 1rem; margin-bottom: 1rem;
+  }
+  .masthead .logo img { max-height: 64px; }
+  .masthead .logo-placeholder {
+    width: 64px; height: 64px; border: 2px dashed var(--color-accent); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-accent); font-size: 1.6rem; font-weight: 700;
+  }
+  .masthead h1 { margin: 0; font-size: 1.9rem; color: var(--color-primary); }
+  .masthead .edition-line { margin: .2rem 0 0; color: #555; font-size: .95rem; }
+
+  section { margin: 2rem 0; }
+  section > h2 {
+    color: var(--color-primary); border-bottom: 1px solid #ddd;
+    padding-bottom: .3rem; font-size: 1.4rem;
+  }
+  section[data-kind="tldr"] {
+    background: color-mix(in srgb, var(--color-primary) 6%, white);
+    border-left: 4px solid var(--color-primary); padding: .75rem 1.25rem; border-radius: 4px;
+  }
+  section[data-kind="tldr"] > h2 { border-bottom: none; margin-top: .25rem; }
+
+  figure { margin: 1.75rem auto; text-align: center; max-width: 100%; }
+  figure svg { max-width: 100%; height: auto; }
+  figcaption { font-size: .9rem; color: #555; margin-top: .5rem; }
+
+  sup.citation { color: var(--color-accent); font-size: .75em; }
+  code {
+    font-family: Consolas, "Courier New", monospace; font-size: .9em;
+    background: #f4f4f4; padding: .1rem .35rem; border-radius: 3px;
+  }
+  .callout {
+    border-left: 4px solid var(--color-accent); background: #fdf6f0;
+    padding: .75rem 1.25rem; margin: 1.25rem 0; border-radius: 4px;
+  }
+  section[data-kind="references"] { font-size: .9rem; color: #444; }
+  section[data-kind="references"] li { margin-bottom: .35rem; }
+
+  footer {
+    margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd;
+    font-size: .8rem; color: #777;
+  }
+
+  /* Print stylesheet (FR-026): same template, print-faithful rendering */
+  @media print {
+    @page { size: A4; margin: 18mm 16mm; }
+    body { max-width: none; padding: 0; font-size: 11pt; }
+    .classification-banner { margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .masthead { page-break-after: avoid; }
+    section { page-break-inside: auto; }
+    section > h2 { page-break-after: avoid; }
+    figure { page-break-inside: avoid; }
+    section[data-kind="tldr"] { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    a { text-decoration: none; color: inherit; }
+    footer { position: static; }
+  }
+</style>
+</head>
+<body>
+<div class="classification-banner" role="note" aria-label="Document classification">
+  internal
+</div>
+
+<header class="masthead">
+  <div class="logo">
+    <div class="logo-placeholder" title="Brand logo pending">E</div>
+  </div>
+  <div>
+    <h1>Engineering Insights</h1>
+    <p class="edition-line">Edition #1 — 2026-03</p>
+  </div>
+</header>
+
+<main>
+<section data-kind="tldr">
+  <h2>TL;DR</h2>
+  <ul><li>The team advanced its key technical initiatives this month.</li></ul>
+</section>
+<section data-kind="story">
+  <h2>This Month in Engineering</h2>
+  <p>Design Note: Caching Strategy for the Read Path We evaluated three caching approaches for the product catalog read path: cache-aside, write-through, and write-behind. <sup class="citation" id="ref-c1">[c1]</sup></p>
+<p>The gateway rollout needs a canary stage: route five percent of traffic through the new API gateway for 48 hours, watch the p99 latency dashboard, then ramp to fifty percent.. <sup class="citation" id="ref-c2">[c2]</sup></p>
+<p>Platform Architecture Review — May 2026 Engineering monthly sync Platform &amp; Data teams. <sup class="citation" id="ref-c3">[c3]</sup></p>
+<p>Current State: Legacy Reverse Proxy Authentication duplicated in every microservice No centralized rate limiting Manual TLS certificate rotation Routing rules spread across twelve config files. <sup class="citation" id="ref-c4">[c4]</sup></p>
+<p>Target State: Managed API Gateway Central JWT validation at the edge Declarative routing with per-service policies Built-in rate limiting and request quotas Automatic certificate management. <sup class="citation" id="ref-c5">[c5]</sup></p>
+<p>Caching Layer Results Redis write-through cache in staging Median read latency: 120 ms to 18 ms Cache hit rate: 94 percent Next: production rollout behind a feature flag Notes: Mention that the feature flag rollout starts the first week of June.. <sup class="citation" id="ref-c6">[c6]</sup></p>
+  <figure role="img" aria-label="Source content flows into a processing pipeline, which produces the newsletter draft.">
+    <svg id="my-svg" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart" style="max-width: 661.547px; background-color: white;" viewBox="0 0 661.546875 70" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#552222;}#my-svg .error-text{fill:#552222;stroke:#552222;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#333333;stroke:#333333;}#my-svg .marker.cross{stroke:#333333;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#my-svg .cluster-label text{fill:#333;}#my-svg .cluster-label span{color:#333;}#my-svg .cluster-label span p{background-color:transparent;}#my-svg .label text,#my-svg span{fill:#333;color:#333;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon,#my-svg .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#my-svg .rough-node .label text,#my-svg .node .label text,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-anchor:middle;}#my-svg .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#my-svg .rough-node .label,#my-svg .node .label,#my-svg .image-shape .label,#my-svg .icon-shape .label{text-align:center;}#my-svg .node.clickable{cursor:pointer;}#my-svg .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#my-svg .arrowheadPath{fill:#333333;}#my-svg .edgePath .path{stroke:#333333;stroke-width:1px;}#my-svg .flowchart-link{stroke:#333333;fill:none;}#my-svg .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#my-svg .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#my-svg .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#my-svg .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#my-svg .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#my-svg .cluster text{fill:#333;}#my-svg .cluster span{color:#333;}#my-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#my-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#my-svg rect.text{fill:none;stroke-width:0;}#my-svg .icon-shape,#my-svg .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#my-svg .icon-shape p,#my-svg .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#my-svg .icon-shape .label rect,#my-svg .image-shape .label rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#my-svg .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#my-svg .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#my-svg .node .neo-node{stroke:#9370DB;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].node path{stroke:#9370DB;stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#9370DB;filter:none;}#my-svg [data-look="neo"].node circle{stroke:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="my-svg_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointEnd-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="11.5" refY="7" markerUnits="userSpaceOnUse" markerWidth="10.5" markerHeight="14" orient="auto"><path d="M 0 0 L 11.5 7 L 0 14 z" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-pointStart-margin" class="marker flowchart-v2" viewBox="0 0 11.5 14" refX="1" refY="7" markerUnits="userSpaceOnUse" markerWidth="11.5" markerHeight="14" orient="auto"><polygon points="0,7 11.5,14 11.5,0" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleEnd-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refY="5" refX="12.25" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-circleStart-margin" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-2" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 0; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="my-svg_flowchart-v2-crossEnd-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="17.7" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5;"/></marker><marker id="my-svg_flowchart-v2-crossStart-margin" class="marker cross flowchart-v2" viewBox="0 0 15 15" refX="-3.5" refY="7.5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1,1 L 14,14 M 1,14 L 14,1" class="arrowMarkerPath" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"/><g class="edgePaths"><path d="M177.766,35L181.932,35C186.099,35,194.432,35,202.099,35C209.766,35,216.766,35,220.266,35L223.766,35" id="my-svg-L_A_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_B_0" data-points="W3sieCI6MTc3Ljc2NTYyNSwieSI6MzV9LHsieCI6MjAyLjc2NTYyNSwieSI6MzV9LHsieCI6MjI3Ljc2NTYyNSwieSI6MzV9XQ==" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/><path d="M423.625,35L427.792,35C431.958,35,440.292,35,447.958,35C455.625,35,462.625,35,466.125,35L469.625,35" id="my-svg-L_B_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_C_0" data-points="W3sieCI6NDIzLjYyNSwieSI6MzV9LHsieCI6NDQ4LjYyNSwieSI6MzV9LHsieCI6NDczLjYyNSwieSI6MzV9XQ==" data-look="classic" marker-end="url(#my-svg_flowchart-v2-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_C_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="my-svg-flowchart-A-0" data-look="classic" transform="translate(92.8828125, 35)"><rect class="basic label-container" style="" x="-84.8828125" y="-27" width="169.765625" height="54"/><g class="label" style="" transform="translate(-54.8828125, -12)"><rect/><foreignObject width="109.765625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Source Content</p></span></div></foreignObject></g></g><g class="node default" id="my-svg-flowchart-B-1" data-look="classic" transform="translate(325.6953125, 35)"><rect class="basic label-container" style="" x="-97.9296875" y="-27" width="195.859375" height="54"/><g class="label" style="" transform="translate(-67.9296875, -12)"><rect/><foreignObject width="135.859375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Processing Pipeline</p></span></div></foreignObject></g></g><g class="node default" id="my-svg-flowchart-C-3" data-look="classic" transform="translate(563.5859375, 35)"><rect class="basic label-container" style="" x="-89.9609375" y="-27" width="179.921875" height="54"/><g class="label" style="" transform="translate(-59.9609375, -12)"><rect/><foreignObject width="119.921875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Newsletter Draft</p></span></div></foreignObject></g></g></g></g></g><defs><filter id="my-svg-drop-shadow" height="130%" width="130%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs><defs><filter id="my-svg-drop-shadow-small" height="150%" width="150%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-opacity="0.06" flood-color="#000000"/></filter></defs></svg>
+    <figcaption>High-level flow from source content to the newsletter draft.</figcaption>
+  </figure>
+</section>
+<section data-kind="action_items">
+  <h2>Action Items</h2>
+  <ul><li><strong>Solution Architect</strong>: follow up on the open design decisions.</li></ul>
+</section>
+<section data-kind="references">
+  <h2>References</h2>
+  <p><strong>This Month in Engineering</strong></p>
+<ul><li><sup class="citation" id="ref-c1">[c1]</sup> <code>1d82e7c4-bac7-42ba-a51a-dd76e4011dd0</code> — caching-design-note.pdf {&quot;page&quot;: 1}</li><li><sup class="citation" id="ref-c2">[c2]</sup> <code>983af916-f200-4b9f-a532-5710f339facc</code> — deployment-notes.txt {&quot;lines&quot;: &quot;3-4&quot;}</li><li><sup class="citation" id="ref-c3">[c3]</sup> <code>ff532f7a-629c-4ae6-8dbf-3d0d677b5c3b</code> — platform-deck.pptx {&quot;slide&quot;: 1}</li><li><sup class="citation" id="ref-c4">[c4]</sup> <code>7eff3532-b993-40ce-8e43-6f5aa68c3340</code> — platform-deck.pptx {&quot;slide&quot;: 2}</li><li><sup class="citation" id="ref-c5">[c5]</sup> <code>e1813b55-0d2b-4cf7-99d1-89456fd53e53</code> — platform-deck.pptx {&quot;slide&quot;: 3}</li><li><sup class="citation" id="ref-c6">[c6]</sup> <code>7db02738-13fd-46f7-b214-b684aa36996c</code> — platform-deck.pptx {&quot;slide&quot;: 4}</li></ul>
+</section>
+</main>
+
+<footer>
+  <p>Engineering Insights — Edition #1 (2026-03).
+     Classification: internal. Template enterprise-v1.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "edition": "2026-05",
+  "archived_at": "2026-06-15T11:18:24.093836+00:00",
+  "template_version": "enterprise-v1",
+  "classification_label": "internal",
+  "algorithm": "sha256",
+  "artifacts": {
+    "config/brand.yaml": "94f1af76a4f424297d06a25d13ecce3ea2b0fd8e75c37470cc32adfc7089bc27",
+    "config/config.yaml": "3f1746ec2150abb072bae97fc710bd5598ce35d88426aa976e4209cdcc0ef6e8",
+    "config/models.yaml": "4892fa23a24caf8ee242e9e8bd76768227148a528c6bf624996244341fb608f4",
+    "config/redaction.yaml": "2c597f64874168d66835a4a5277db44141495cfe22fde19024f38eba1c7aaf6f",
+    "edition/diagrams/embracing-a-cloud-first-approach-navigat.mmd": "cb76c8b7e47aea0aa32d7cce0aefbcc5d5adf714101ac53429bee86e45ecd7f9",
+    "edition/diagrams/embracing-a-cloud-first-approach-navigat.svg": "8b5fd0c04d15723776684f7c014264fe9fa8bd0fb4d0d6c2c594a0ff57aeba3c",
+    "edition/diagrams/integrating-forward-deployed-engineers-w.mmd": "d8f0187be00faba1b7e196d46f6cb5f51ff46ae5ae273fad065806892cf5b452",
+    "edition/diagrams/integrating-forward-deployed-engineers-w.svg": "194b6a23ff4ac55b4966316544e7224088f4026a2cca49530b72fe7ab5523caa",
+    "edition/newsletter.html": "291b6ae14328db1184dd9312abbe820d51d709e09e302362cd1061e6570325dd",
+    "edition/newsletter.pdf": "25ddda4508151b889cfcda6ebf862ee89d1a9277e822650fb2b5b831a6cf2786",
+    "prompts/alt-text.v1.md": "dd122aba72e2d403f366066630a5c9ec16f23b788bb562c513a60f6661e764fa",
+    "prompts/classifier.v1.md": "333e1735ad3a843cfaf01b082d7d080888dcba93c0f9f11715665b830aad0b5f",
+    "prompts/diagrammer.v1.md": "bf9f110a1cbbea5ddc6f42a8511a3999584fb84d8a83ae307bd2df2a441cac12",
+    "prompts/writer-story.v1.md": "239a9b24276c7e21f38194be9308479b696f196c478e05ea2f9a05ae4575176e",
+    "prompts/writer-tldr.v1.md": "99c3f8dee38fff9d2a09e780e71a35cb8462cb8f2aaf61046000e3238438d940",
+    "report/summary.md": "4b2b81af7262f366ec1b9e90381eb2903dfc18bda2f9323b618e14597734cca8",
+    "run-report.json": "fb4cda60190a9745aa578fd92c81c36bb080265552afde51d4bf83c02badf3a6",
+    "runs/764e3d8b-bba9-43ed-ae39-264f1aed4234.jsonl": "010c419e6e2cccb17a3e1d9cf55a77bd2d9e06fbbba54dd0b4de5a924a6fd684"
+  }
+}

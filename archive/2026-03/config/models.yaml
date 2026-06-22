@@ -1,0 +1,10 @@
+allowlist:
+  - mock                          # local deterministic adapter; content never leaves the machine
+providers:
+  mock: {}
+roles:
+  classifier: { provider: mock, model: mock-classifier }
+  writer:     { provider: mock, model: mock-writer }
+  diagrammer: { provider: mock, model: mock-diagrammer }
+  embedder:   { provider: mock, model: mock-embedder }
+pricing: {}                       # mock calls cost nothing

@@ -1,0 +1,91 @@
+{
+  "run_id": "764e3d8b-bba9-43ed-ae39-264f1aed4234",
+  "month": "2026-05",
+  "outcome": "edition_ready",
+  "started_at": "2026-06-15T09:51:01.142057+00:00",
+  "finished_at": "2026-06-15T10:09:07.884712+00:00",
+  "stages": {
+    "ingest": {
+      "status": "completed",
+      "seconds": 3.602
+    },
+    "classify": {
+      "status": "completed",
+      "seconds": 984.008
+    },
+    "redact": {
+      "status": "completed",
+      "seconds": 0.07
+    },
+    "index": {
+      "status": "completed",
+      "seconds": 24.255
+    },
+    "generate": {
+      "status": "completed",
+      "seconds": 55.604
+    },
+    "diagrams": {
+      "status": "completed",
+      "seconds": 14.468
+    },
+    "render": {
+      "status": "completed",
+      "seconds": 0.296
+    },
+    "pdf": {
+      "status": "completed",
+      "seconds": 4.342
+    }
+  },
+  "files": {
+    "ingested": 7,
+    "skipped": 0
+  },
+  "chunks": {
+    "total": 1038,
+    "technical": 445,
+    "non_technical": 491,
+    "ambiguous": 102,
+    "eligible": 445
+  },
+  "sections": {
+    "stories": 5,
+    "omitted": 0,
+    "total_rendered": 8
+  },
+  "diagrams": {
+    "valid": 1,
+    "failed": 0
+  },
+  "cost": {
+    "models": {
+      "gpt-4o-mini": {
+        "calls": 70,
+        "input_tokens": 69997,
+        "output_tokens": 21174,
+        "cost_usd": 0.023204
+      },
+      "all-MiniLM-L6-v2": {
+        "calls": 12,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": 0.0
+      },
+      "gpt-4o": {
+        "calls": 14,
+        "input_tokens": 51152,
+        "output_tokens": 3645,
+        "cost_usd": 0.16433
+      }
+    },
+    "total_cost_usd": 0.187534
+  },
+  "prompt_versions": [
+    "classifier.v1",
+    "writer-story.v1",
+    "writer-tldr.v1",
+    "diagrammer.v1",
+    "alt-text.v1"
+  ]
+}

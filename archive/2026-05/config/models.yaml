@@ -1,0 +1,20 @@
+allowlist:                       # remote providers permitted to receive content (FR-027)
+  - anthropic                    # active: producer-supplied Claude key
+  - openai                       # retained alternative; switch = edit roles below
+providers:
+  anthropic:
+    api_key_env: ANTHROPIC_API_KEY   # fallback: git-ignored claudeapi-key.txt (research R13)
+  openai:
+    api_key_env: OPENAI_API_KEY
+roles:                           # logical role -> provider/model routing
+  classifier: { provider: openai, model: gpt-4o-mini }
+  writer:     { provider: openai, model: gpt-4o }
+  diagrammer: { provider: openai, model: gpt-4o }
+  embedder:   { provider: local, model: all-MiniLM-L6-v2 }  # on-machine, no API key needed
+pricing:                         # per-1M-token costs for run reports (FR-024)
+  claude-sonnet-4-6:         { input: 3.00, output: 15.00 }
+  claude-haiku-4-5-20251001: { input: 1.00, output: 5.00 }
+  gpt-4o:      { input: 2.50, output: 10.00 }
+  gpt-4o-mini: { input: 0.15, output: 0.60 }
+  text-embedding-3-small: { input: 0.02, output: 0 }
+  all-MiniLM-L6-v2: { input: 0, output: 0 }

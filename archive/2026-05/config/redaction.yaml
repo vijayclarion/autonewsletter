@@ -1,0 +1,7 @@
+redact:
+  emails: true
+  phone_numbers: true
+  custom_patterns: []            # regexes
+speaker_handling: role           # map speaker names -> roles (FR-019)
+role_map: {}                     # optional explicit mapping, e.g. "Jane Doe": "Solution Architect"
+default_speaker_role: "Team Member"

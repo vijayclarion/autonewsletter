@@ -1,0 +1,10 @@
+redact:
+  emails: true
+  phone_numbers: true
+  custom_patterns: []
+speaker_handling: role
+role_map:
+  "Priya Sharma": "Solution Architect"
+  "Daniel Brooks": "Platform Lead"
+  "Aisha Khan": "Data Engineer"
+default_speaker_role: "Team Member"

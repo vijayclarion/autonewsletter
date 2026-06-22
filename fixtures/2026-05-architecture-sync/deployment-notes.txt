@@ -1,0 +1,8 @@
+Deployment checklist notes — platform team
+
+The gateway rollout needs a canary stage: route five percent of traffic through the new
+API gateway for 48 hours, watch the p99 latency dashboard, then ramp to fifty percent.
+
+Rollback plan: DNS swap back to the legacy proxy, which stays warm for two weeks.
+
+Reminder: book the team lunch for the quarter celebration, somewhere with outdoor seating.

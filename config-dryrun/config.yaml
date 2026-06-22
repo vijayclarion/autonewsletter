@@ -1,0 +1,11 @@
+# Offline fixture dry-run configuration (constitution Principle V).
+# Identical pipeline, but models.yaml routes every role to the local mock provider,
+# so nothing leaves the machine and no API key is needed.
+source_dir: "fixtures"
+output_dir: "editions"
+archive_dir: "archive"
+classification_default: internal
+classifier:
+  confidence_threshold: 0.8
+diagrams:
+  max_regeneration_retries: 2
